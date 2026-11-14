@@ -59,18 +59,31 @@ layout in a script, or keep a git history of your layout's revisions.
 
 ## Install
 
-You need a [Rust toolchain](https://rustup.rs) (and a C compiler, which macOS and most Linux systems have).
+With Homebrew (macOS and Linux):
 
 ```sh
-git clone https://github.com/LucaKaufmann/keyloom.git
-cd keyloom
-cargo install --path crates/keyloom-cli
-keyloom --version
+brew install lucakaufmann/tap/keyloom
 ```
 
-This puts one binary, `keyloom`, in `~/.cargo/bin`. It is both the CLI and the MCP server (`keyloom mcp`).
+Or with the install script, which downloads the binary for your system to `~/.local/bin`:
 
-Developed and tested on macOS. Linux should work; Windows is untested.
+```sh
+curl -fsSL https://github.com/LucaKaufmann/keyloom/releases/latest/download/install.sh | sh
+```
+
+Or download a binary from the [releases page](https://github.com/LucaKaufmann/keyloom/releases), or build
+from source with a [Rust toolchain](https://rustup.rs):
+
+```sh
+cargo install --git https://github.com/LucaKaufmann/keyloom keyloom-cli
+```
+
+Any of these gives you one binary, `keyloom`. It is both the CLI and the MCP server (`keyloom mcp`). Check
+it with `keyloom --version`.
+
+There are binaries for macOS (Apple silicon and Intel) and Linux (x86-64 and ARM). keyloom is developed on
+macOS; on Linux it builds and passes its tests, but the keyboard features haven't been tried there. Windows
+is untested.
 
 ## Set up your agent
 
@@ -83,7 +96,8 @@ It teaches Claude the commands and only loads when you talk about your keyboard:
 
 ```sh
 mkdir -p ~/.claude/skills/keyloom
-cp skills/keyloom/SKILL.md ~/.claude/skills/keyloom/
+curl -fsSL https://raw.githubusercontent.com/LucaKaufmann/keyloom/main/skills/keyloom/SKILL.md \
+  -o ~/.claude/skills/keyloom/SKILL.md
 ```
 
 For other agents, point them at [skills/keyloom/SKILL.md](skills/keyloom/SKILL.md) or at `keyloom --help`.

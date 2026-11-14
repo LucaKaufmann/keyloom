@@ -53,7 +53,7 @@ Where the build differs from the specs: see the end of [DESIGN.md](DESIGN.md).
 Not planned in detail. Roughly in order of usefulness:
 
 - Confirm the unchecked encodings above with real layouts.
-- Easier install: crates.io, prebuilt binaries, Homebrew.
+- Publish to crates.io; signed macOS binaries.
 - Other ZSA keyboards (Moonlander, ErgoDox EZ). The engine, format and rendering are geometry-generic;
   what's missing is position names, the effort map and testing.
 - QMK `keymap.c` export.

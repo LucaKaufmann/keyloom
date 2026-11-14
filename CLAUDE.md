@@ -42,3 +42,10 @@ KEYLOOM_DEBUG=1 keyloom …                       # debug logging on stderr
 - Live features change the physical keyboard; always `keyloom live reset` after trying them.
 - The test fixture `oryx-9qMJK-ZPjbXz.json` is a real Voyager layout; `example-EXMPL-exmpl1.json` is made up.
   Hardware checks so far were done with Keymapp 1.3.7.
+
+## Releasing
+
+Bump `version` in `Cargo.toml`, add a `CHANGELOG.md` entry, commit, then push a tag `vX.Y.Z`.
+`.github/workflows/release.yml` builds the binaries, publishes the GitHub release (with `install.sh`) and,
+if the `HOMEBREW_TAP_TOKEN` secret is set, updates `Formula/keyloom.rb` in `LucaKaufmann/homebrew-tap`.
+Without the secret, copy `keyloom.rb` from the release to the tap by hand.
