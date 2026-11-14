@@ -28,7 +28,7 @@ fi
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
-echo "Downloading $name…"
+echo "Downloading ${name}..."
 curl -fsSL "$base/$name.tar.gz" -o "$tmp/$name.tar.gz"
 curl -fsSL "$base/$name.tar.gz.sha256" -o "$tmp/$name.tar.gz.sha256"
 
