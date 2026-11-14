@@ -4,7 +4,7 @@ Version 0.1.0, 2026-11-14.
 
 ## What works
 
-Everything below is implemented and covered by 112 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
+Everything below is implemented and covered by 117 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
 server, golden renders). The tests need no network and no keyboard.
 
 | Area | Commands | Spec |
@@ -13,7 +13,7 @@ server, golden renders). The tests need no network and no keyboard.
 | See | `show`, `layers`, `summary`, `key`, `find`, `free`, `ref`, `guides` | [02](specs/02-engine.md), [07](specs/07-knowledge.md) |
 | Audit | `validate` (14 rules), `diff` | [02](specs/02-engine.md) |
 | Improve | `draft`, `set`, `clear`, `layer`, `combo`, `apply`, undo | [02](specs/02-engine.md) |
-| Carry over to Oryx | `guide`, `verify` | [03](specs/03-apply-guide.md) |
+| Carry over to Oryx | `guide`, `push`, `verify` | [03](specs/03-apply-guide.md), [write API](oryx-write-api.md) |
 | On the keyboard | `status`, `live`, `--show`, `guide --step` | [06](specs/06-live.md) |
 | Agents | `keyloom mcp` (16 tools, resources, 4 prompts), the Claude Code skill | [05](specs/05-mcp.md) |
 
@@ -58,7 +58,9 @@ Not planned in detail. Roughly in order of usefulness:
   what's missing is position names, the effort map and testing.
 - QMK `keymap.c` export.
 
-Out of scope for now: writing to Oryx, building or flashing firmware, a GUI.
+- `push` into the user's own Oryx layout (needs a login), and combos in `push`.
+
+Out of scope for now: building or flashing firmware, a GUI.
 
 ## Risks
 

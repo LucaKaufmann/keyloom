@@ -2,7 +2,8 @@
 
 A CLI and MCP server (Rust) that lets AI agents see, audit and improve ZSA keyboard layouts. It imports
 layouts from Oryx into a local git-backed workspace, renders and explores them, validates them, edits
-drafts, and turns a draft into step-by-step Oryx instructions. It never writes to Oryx or flashes firmware.
+drafts, and turns a draft into step-by-step Oryx instructions or a new Oryx layout (`push`). It never changes
+the user's existing Oryx layouts and never flashes firmware.
 Read `README.md`, then `docs/DESIGN.md` and `docs/STATUS.md` (status, what was checked on hardware).
 
 ## Build, run, check
@@ -39,6 +40,8 @@ KEYLOOM_DEBUG=1 keyloom …                       # debug logging on stderr
   `KEYLOOM_HOME` to a temporary directory (copy the real one if you need its data).
 - Tests must not depend on the machine: e2e tests set `KEYMAPP_SOCKET` to a missing socket and
   `KEYLOOM_USB_SERIALS=""`.
+- `keyloom push` creates a public layout on Oryx every time it runs: test it against `push::fake::FakeOryx`, not the
+  real Oryx, and never send a login or write to a layout keyloom didn't just create.
 - Live features change the physical keyboard; always `keyloom live reset` after trying them.
 - The test fixture `oryx-9qMJK-ZPjbXz.json` is a real Voyager layout; `example-EXMPL-exmpl1.json` is made up.
   Hardware checks so far were done with Keymapp 1.3.7.

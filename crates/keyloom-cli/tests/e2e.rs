@@ -544,6 +544,9 @@ fn round_five_fixes() {
     assert_eq!(keyloom(h, &["set", "wow", "WoW", "L.thumb.1", "KC_LALT"]).0, 0);
     let (_, guide, _) = keyloom(h, &["guide", "wow"]);
     assert!(guide.starts_with("NOT READY TO FLASH: this draft has 1 validation error(s)") && guide.contains("[layer-no-exit]"), "{guide}");
+    // …and it isn't pushed to Oryx (refused before any network call).
+    let (code, _, err) = keyloom(h, &["push", "wow"]);
+    assert!(code == 1 && err.contains("Nothing was sent to Oryx") && err.contains("[layer-no-exit]"), "{err}");
     assert_eq!(keyloom(h, &["draft", "undo", "wow"]).0, 0);
     assert!(!keyloom(h, &["guide", "wow"]).1.contains("NOT READY"));
     // A draft-only layer can't be shown on the keyboard; an existing one maps to the firmware's number.

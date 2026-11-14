@@ -5,8 +5,8 @@ A CLI and MCP server that lets AI agents **see, audit and improve** ZSA keyboard
 Your layout lives in Oryx, ZSA's web configurator, where an AI agent can't read it. keyloom imports it into
 local, versioned files and gives the agent what it needs to work with it: a picture of every layer, where
 each key is and how hard it is to reach, how the layers connect, a keycode reference, validation rules and
-layer-design guides. Changes happen in drafts. keyloom turns a finished draft into step-by-step instructions
-for Oryx and checks the result after you flash.
+layer-design guides. Changes happen in drafts. keyloom gets a finished draft into Oryx, either as step-by-step instructions or
+as a new Oryx layout it creates for you, and checks the result after you flash.
 
 ```
 Voyager · 9qMJK@ZPjbXz · layer 0 "Main"
@@ -20,8 +20,8 @@ Voyager · 9qMJK@ZPjbXz · layer 0 "Main"
 ```
 
 **Supported keyboard:** ZSA Voyager.
-**Not a flasher:** keyloom never writes to Oryx and never builds or flashes firmware. You apply its change
-list in Oryx and flash as usual.
+**Not a flasher:** keyloom never changes your own Oryx layouts and never builds or flashes firmware. You
+compile and flash in Oryx as usual.
 
 ## Contents
 
@@ -168,8 +168,9 @@ keyloom set wow WoW L.thumb.1 'TG(WoW)'           #    the same key leaves the l
 keyloom set wow WoW L.home.1 A
 keyloom validate wow                           # 3. check it
 keyloom diff <id> draft:wow                    #    and see what changed
-keyloom guide wow                              # 4. the steps to make in Oryx
-#    … make the changes in Oryx, compile, flash …
+keyloom guide wow                              # 4a. the steps to make in Oryx yourself
+keyloom push wow                               # 4b. or: a new Oryx layout with the draft in it
+#    … in Oryx: make the changes (4a) or open the link (4b), compile, flash …
 keyloom import <id>                            # 5. fetch the new revision
 keyloom verify wow                             #    and confirm it matches the draft
 ```
@@ -177,7 +178,26 @@ keyloom verify wow                             #    and confirm it matches the d
 `keyloom draft undo wow` takes back the last edit. `keyloom guide wow --step` walks through the Oryx steps
 one at a time and lights the key for each step on the keyboard.
 
-An agent does steps 1 to 4 for you and hands you the guide.
+An agent does steps 1 to 4 for you and hands you the guide or the link.
+
+### `keyloom push`
+
+`keyloom push <draft>` asks Oryx for a copy of the revision your draft started from, writes the draft's
+layers into that copy, reads it back to check, and prints its link:
+
+```
+Created a new layout on Oryx from draft:wow: https://configure.zsa.io/voyager/layouts/Xx6vM/latest/0
+  copied 9qMJK@GGKdog, then wrote 4 layer(s), added 1, removed 0
+  ✓ read back from Oryx: layers and keys match the draft
+```
+
+- It sends no login, so it can't change anything in your account. The copy is a new, public layout that
+  belongs to no account, like one made by a visitor who isn't signed in.
+- The copy keeps your trackball, RGB and timing settings. Combos aren't written yet; if the draft changes
+  them, keyloom says so.
+- It doesn't compile or flash. Open the link, look it over, then compile and flash in Oryx.
+- It uses the calls Oryx's own website uses. They are undocumented and ZSA may change them; `keyloom guide`
+  always works. See [docs/oryx-write-api.md](docs/oryx-write-api.md).
 
 ## Naming keys, layers and actions
 
@@ -224,7 +244,7 @@ Everything else works without Keymapp.
 | `ref`, `guides` | Keycode reference, layer-design guides |
 | `validate`, `diff` | Audit a layout, compare two |
 | `draft`, `set`, `clear`, `layer`, `combo`, `apply` | Edit drafts (`apply` takes a JSON file of edits, all or nothing) |
-| `guide`, `verify` | Oryx steps for a draft, check after flashing |
+| `guide`, `push`, `verify` | Oryx steps for a draft, or a new Oryx layout holding it; check after flashing |
 | `status`, `live` | Keymapp and the keyboard |
 | `export` | Write a layout to a file |
 | `mcp` | Run the MCP server |
@@ -238,13 +258,14 @@ Layouts live in `~/.local/share/keyloom` (set `KEYLOOM_HOME` to change it). It i
 keyloom commits to after every change, so you have a full history. Imported revisions never change; drafts
 keep a log of their edits.
 
-keyloom talks to two things: Oryx's public API (to fetch a layout you name) and Keymapp on your own machine.
-Nothing else leaves your computer.
+keyloom talks to two things: Oryx (to fetch a layout you name and, only when you run `keyloom push`, to
+create a new layout from a draft) and Keymapp on your own machine. Nothing else leaves your computer.
 
 ## Limits
 
 - Voyager only. Other ZSA boards (Moonlander, ErgoDox EZ) aren't supported yet.
-- Read-only towards Oryx: you make the changes there yourself, following the guide.
+- keyloom never edits your existing Oryx layouts. `guide` gives you the steps to make yourself; `push`
+  creates a separate new layout.
 - Private Oryx layouts can't be fetched. Make the layout public or use `keyloom import keymapp`.
 - Combos, tap dance and the `TG`, `OSL`, `TT` and `DF` layer keys follow Oryx's format as far as it is
   known, but haven't been checked against a real layout that uses them. `OSM` and `LM` are rejected for now.

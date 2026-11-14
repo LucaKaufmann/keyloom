@@ -37,6 +37,7 @@ Drafts
 
 Apply
   keyloom guide <draft> [--step]                                Oryx change list; --step walks it with LEDs
+  keyloom push <draft> [--force]                                new Oryx layout holding the draft (docs/oryx-write-api.md)
   keyloom verify <draft> [--against ref]                        compare with the newest imported revision
 
 Live (Keymapp)

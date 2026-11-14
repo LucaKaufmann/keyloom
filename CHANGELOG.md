@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- `keyloom push <draft>` (MCP: `apply_guide` with `push: true`): creates a new Oryx layout holding the draft,
+  without a login, and prints its link. Your own layouts are never changed.
+
 ## 0.1.0 (2026-11-14)
 
 First release.

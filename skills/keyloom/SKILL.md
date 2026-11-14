@@ -6,7 +6,7 @@ description: See, audit and improve the user's ZSA keyboard layout (Voyager) wit
 # keyloom
 
 `keyloom` imports ZSA layouts from Oryx into a local workspace and lets you render, explore, audit and edit
-them in drafts. It can't write to Oryx or flash firmware: the result of an edit is a step-by-step guide the
+them in drafts. It never changes the user's Oryx layouts and can't flash firmware: the result of an edit is a step-by-step guide the
 user follows in Oryx. Add `--json` to any command for structured output.
 
 ## Keys and layers
@@ -59,6 +59,7 @@ keyloom draft show wow                                  # changes so far
 keyloom diff 9qMJK draft:wow
 keyloom validate wow                                    # fix every error
 keyloom guide wow                                       # steps for the user in Oryx: show them this
+keyloom push wow                                        # or, if the user agrees: a NEW public Oryx layout with the draft; give them the link
 ```
 
 `ops.json` is a JSON array, e.g. `[{"op":"set_key","layer":"WoW","key":"L.home.1","action":"KC_A"}]`. Ops:

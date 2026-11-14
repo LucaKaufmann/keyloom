@@ -318,6 +318,43 @@ pub fn guide_for(ws: &Workspace, draft_name: &str) -> Result<(Guide, Layout)> {
     Ok((g, draft))
 }
 
+/// Writes a draft into a new anonymous layout on Oryx (nothing in the user's account changes).
+/// Refuses a draft with validation errors unless `force`.
+pub fn push(ws: &Workspace, draft_name: &str, force: bool, oryx: &mut dyn keyloom::push::Transport) -> Result<keyloom::push::Pushed> {
+    let draft = ws.load_draft(draft_name)?;
+    let blockers = guide_blockers(ws, &draft);
+    if !blockers.is_empty() && !force {
+        anyhow::bail!(
+            "{}Nothing was sent to Oryx. Fix the errors, or push anyway with --force (MCP: force=true).",
+            blockers_text(&draft, &blockers)
+        );
+    }
+    let base = base_of(ws, &draft).ok();
+    Ok(keyloom::push::push_new(oryx, &draft, base.as_ref())?)
+}
+
+/// The push result as text.
+pub fn push_text(p: &keyloom::push::Pushed) -> String {
+    let mut out = format!("Created a new layout on Oryx from {}: {}\n", p.draft, p.url);
+    out.push_str(&format!(
+        "  copied {}, then wrote {} layer(s), added {}, removed {}\n",
+        p.copied_from, p.layers_written, p.layers_added, p.layers_removed
+    ));
+    if p.verified {
+        out.push_str("  ✓ read back from Oryx: layers and keys match the draft\n");
+    } else {
+        out.push_str(&format!("  ✗ read back from Oryx: {} difference(s) from the draft; check the layout in Oryx\n", p.differences.len()));
+    }
+    for w in &p.warnings {
+        out.push_str(&format!("  ! {w}\n"));
+    }
+    out.push_str(
+        "Next: open the link, check the layout, then compile and flash in Oryx. It is a new public layout that belongs to no account; \
+         your own layouts are unchanged.\n",
+    );
+    out
+}
+
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct VerifyResult {

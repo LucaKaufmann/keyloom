@@ -44,7 +44,7 @@ Write (drafts only):
 | `create_draft(name, from?)` | |
 | `edit_draft(draft, ops[])` | atomic list of edit operations (02): JSON objects whose actions are action-spec strings. Unknown fields are errors |
 | `undo(draft)` | undo the last `edit_draft` |
-| `apply_guide(draft)` | Oryx change list (03) |
+| `apply_guide(draft, push?, force?)` | Oryx change list (03); with `push` a new Oryx layout holding the draft and its link (docs/oryx-write-api.md) |
 | `verify_draft(draft, against?)` | after the user applied and flashed |
 
 Live:

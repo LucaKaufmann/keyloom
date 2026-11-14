@@ -216,6 +216,14 @@ color_layer{layer,color} · add_combo{layer,keys,action,name?} · remove_combo{l
         #[arg(long)]
         step: bool,
     },
+    /// Create a NEW layout on Oryx from a draft (no login; your own layouts are never changed). Prints its link.
+    Push {
+        /// Draft name
+        draft: String,
+        /// Push even if the draft has validation errors
+        #[arg(long)]
+        force: bool,
+    },
     /// After applying a draft in Oryx, flashing and re-importing: check it matches. Exit code 3 if not.
     Verify {
         /// Draft name
@@ -874,6 +882,18 @@ fn run(cmd: Command, out: &Out) -> Result<()> {
                 return guide_step(&ws, &g);
             }
             print!("{}", keyloom::guide::render(&g));
+            Ok(())
+        }
+        Command::Push { draft, force } => {
+            let p = app::push(&ws, &draft, force, &mut keyloom::push::OryxHttp::new())?;
+            if out.json {
+                out.json(&p)?;
+            } else {
+                print!("{}", app::push_text(&p));
+            }
+            if !p.verified {
+                std::process::exit(3);
+            }
             Ok(())
         }
         Command::Verify { draft, against } => {

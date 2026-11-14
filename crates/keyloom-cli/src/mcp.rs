@@ -29,8 +29,8 @@ Keys are named by position: `L.home.4` = left half, home row, column 4 counted f
 `L.thumb.2` (toward the centre). Layers by number or title. Start with layout_summary, then render_layer; nothing \
 imported yet: ask for the user's Oryx link, then import_layout. Never guess keycodes: lookup_keycode. Before designing \
 a layer read keyloom://guides/layer-design. Revisions are read-only: create_draft, then edit_draft; each edit returns \
-its diff and findings, fix errors. keyloom can't write to Oryx or flash: finish with apply_guide (steps for the user \
-in Oryx); after they flashed, import_layout again and verify_draft. The keyboard tool changes the physical \
+its diff and findings, fix errors. keyloom never changes the user's Oryx layouts and can't flash: finish with apply_guide (steps for the user \
+in Oryx, or with push=true and the user's OK a new Oryx layout holding the draft); after they flashed, import_layout again and verify_draft. The keyboard tool changes the physical \
 keyboard's lights/layer; use action=reset when done.";
 
 #[derive(Clone)]
@@ -195,6 +195,20 @@ pub struct EditArgs {
 pub struct DraftArg {
     /// Draft name.
     pub draft: String,
+}
+
+#[derive(Debug, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct GuideArgs {
+    /// Draft name.
+    pub draft: String,
+    /// Instead of steps, create a NEW public layout on Oryx holding the draft and return its link (no login; the
+    /// user's own layouts never change). Ask the user before pushing.
+    #[serde(default)]
+    pub push: bool,
+    /// With `push`: push even if the draft has validation errors.
+    #[serde(default)]
+    pub force: bool,
 }
 
 #[derive(Debug, Deserialize, JsonSchema)]
@@ -488,9 +502,20 @@ impl KeyloomServer {
     }
 
     #[tool(
-        description = "The draft's changes as step-by-step instructions for the user to make in Oryx (keyloom can't write to Oryx or flash). Show it to the user."
+        description = "Get a draft into Oryx. Default: step-by-step instructions for the user to make in Oryx; show them. push=true (ask the user first): create a new public Oryx layout holding the draft and return its link, for the user to check, compile and flash. keyloom never changes the user's own layouts and can't flash."
     )]
-    async fn apply_guide(&self, Parameters(a): Parameters<DraftArg>) -> Result<CallToolResult, ErrorData> {
+    async fn apply_guide(&self, Parameters(a): Parameters<GuideArgs>) -> Result<CallToolResult, ErrorData> {
+        if a.push {
+            // Blocking network calls: keep them off the async runtime.
+            let (draft, force) = (a.draft.clone(), a.force);
+            let pushed =
+                tokio::task::spawn_blocking(move || app::push(&app::open()?, &draft, force, &mut keyloom::push::OryxHttp::new())).await;
+            return Ok(match pushed {
+                Ok(Ok(p)) => json_result(&p),
+                Ok(Err(e)) => error_result(format!("{e:#}")),
+                Err(e) => error_result(e),
+            });
+        }
         let r = (|| -> anyhow::Result<String> {
             let ws = app::open()?;
             let (g, d) = app::guide_for(&ws, &a.draft)?;
