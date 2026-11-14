@@ -321,7 +321,8 @@ pub fn guide_for(ws: &Workspace, draft_name: &str) -> Result<(Guide, Layout)> {
 /// Where a push goes.
 #[derive(Debug, Clone, Default)]
 pub struct PushTarget {
-    /// One of the user's own Oryx layouts (id or link). None: a new anonymous layout.
+    /// One of the user's own Oryx layouts (id or link), or "new" for a new layout in their account.
+    /// None: a new anonymous layout.
     pub to: Option<String>,
     /// With `to`: write even if that loses changes on Oryx the draft doesn't have.
     pub overwrite: bool,
@@ -350,7 +351,7 @@ pub fn oryx_token() -> Result<String> {
     };
     if found.is_empty() {
         anyhow::bail!(
-            "Pushing into your own layout needs your Oryx login token, and none is set. Nothing was sent to Oryx.\n\
+            "Pushing into your own Oryx account needs your login token, and none is set. Nothing was sent to Oryx.\n\
              Get it: sign in at https://configure.zsa.io, open the browser console and run localStorage.getItem(\"jwtToken\").\n\
              Store it: export {ORYX_TOKEN_ENV}=…{}\n\
              Without a token, `keyloom push <draft>` (no --to) makes a new layout instead.",
@@ -411,6 +412,7 @@ pub fn push(
     let draft = push_check(ws, draft_name, force)?;
     let base = base_of(ws, &draft).ok();
     Ok(match &target.to {
+        Some(to) if to.trim().eq_ignore_ascii_case("new") => keyloom::push::push_new_owned(oryx, &draft, base.as_ref())?,
         Some(to) => keyloom::push::push_into(oryx, &draft, base.as_ref(), &oryx_layout_id(to), target.overwrite)?,
         None => keyloom::push::push_new(oryx, &draft, base.as_ref())?,
     })
@@ -418,7 +420,9 @@ pub fn push(
 
 /// The push result as text.
 pub fn push_text(p: &keyloom::push::Pushed) -> String {
-    let mut out = if p.new_layout {
+    let mut out = if p.new_layout && p.in_account {
+        format!("Created a new layout in your Oryx account from {}: {}\n", p.draft, p.url)
+    } else if p.new_layout {
         format!("Created a new layout on Oryx from {}: {}\n", p.draft, p.url)
     } else {
         format!("Wrote {} into your layout {} on Oryx as an uncompiled revision: {}\n", p.draft, p.layout_id, p.url)
@@ -439,7 +443,10 @@ pub fn push_text(p: &keyloom::push::Pushed) -> String {
     for w in &p.warnings {
         out.push_str(&format!("  ! {w}\n"));
     }
-    out.push_str(if p.new_layout {
+    out.push_str(if p.new_layout && p.in_account {
+        "Next: open the link, check the layout, then compile and flash in Oryx. It is a new layout in your account; \
+         your other layouts are unchanged.\n"
+    } else if p.new_layout {
         "Next: open the link, check the layout, then compile and flash in Oryx. It is a new public layout that belongs to no account; \
          your own layouts are unchanged.\n"
     } else {

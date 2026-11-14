@@ -551,7 +551,7 @@ fn round_five_fixes() {
     assert_eq!(keyloom(h, &["draft", "undo", "wow"]).0, 0);
     // Into the user's own layout needs their login token; without one nothing is sent.
     let (code, _, err) = keyloom(h, &["push", "wow", "--to", "https://configure.zsa.io/voyager/layouts/9qMJK/latest/0"]);
-    assert!(code == 1 && err.contains("needs your Oryx login token") && err.contains("Nothing was sent to Oryx"), "{err}");
+    assert!(code == 1 && err.contains("needs your login token") && err.contains("Nothing was sent to Oryx"), "{err}");
     assert_eq!(keyloom(h, &["push", "wow", "--overwrite"]).0, 2, "--overwrite only with --to");
     assert!(!keyloom(h, &["guide", "wow"]).1.contains("NOT READY"));
     // A draft-only layer can't be shown on the keyboard; an existing one maps to the firmware's number.

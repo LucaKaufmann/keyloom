@@ -223,7 +223,7 @@ color_layer{layer,color} · add_combo{layer,keys,action,name?} · remove_combo{l
     Push {
         /// Draft name
         draft: String,
-        /// Write into this layout of yours (id or Oryx link) instead of creating a new one
+        /// Write into this layout of yours (id or Oryx link), or "new" for a new layout in your account
         #[arg(long, value_name = "LAYOUT")]
         to: Option<String>,
         /// With --to: write even if that replaces changes on Oryx the draft doesn't have

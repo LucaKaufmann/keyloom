@@ -31,6 +31,10 @@ pub enum PushError {
 /// One GraphQL call. Returns the answer's `data`, or the first error as [`PushError::Oryx`].
 pub trait Transport {
     fn call(&mut self, query: &str, variables: Value) -> Result<Value, PushError>;
+    /// The same call sent without the user's login, if this transport has one.
+    fn anonymous(&mut self, query: &str, variables: Value) -> Result<Value, PushError> {
+        self.call(query, variables)
+    }
 }
 
 /// The real Oryx.
@@ -69,6 +73,13 @@ impl OryxHttp {
 }
 
 impl Transport for OryxHttp {
+    fn anonymous(&mut self, query: &str, variables: Value) -> Result<Value, PushError> {
+        let token = self.token.take();
+        let answer = self.call(query, variables);
+        self.token = token;
+        answer
+    }
+
     fn call(&mut self, query: &str, variables: Value) -> Result<Value, PushError> {
         let body = json!({ "query": query, "variables": variables }).to_string();
         // Oryx sometimes answers 502/503/429 for a moment. Every call here sets a value, so repeating it is
@@ -103,6 +114,9 @@ const LAYOUT: &str = "query($hashId: String!, $revisionId: String!, $geometry: S
     revision { hashId qmkVersion layers { hashId automouse title position color keys } combos { keyIndices layerIdx name trigger } }
   }
 }";
+const OWNER: &str = "query($hashId: String!, $revisionId: String!, $geometry: String) {
+  layout(hashId: $hashId, geometry: $geometry, revisionId: $revisionId) { hashId user { hashId } }
+}";
 const CREATE_LAYOUT: &str = "mutation($title: String!, $revisionHashId: String!, $geometry: String!, $parentHashId: String) {
   createLayout(title: $title, revisionHashId: $revisionHashId, parentHashId: $parentHashId, geometry: $geometry) { hashId revision { hashId } }
 }";
@@ -123,8 +137,10 @@ const AUTOMOUSE: &str = "mutation($revisionHash: String!, $layerPosition: Int!, 
 #[serde(rename_all = "camelCase")]
 pub struct Pushed {
     pub draft: String,
-    /// True for a new anonymous layout, false when the draft went into the user's own layout.
+    /// True when the push made a new layout, false when the draft went into an existing one of the user's.
     pub new_layout: bool,
+    /// True when the layout belongs to the user's Oryx account, false for a new anonymous layout.
+    pub in_account: bool,
     /// The layout on Oryx that now holds the draft.
     pub layout_id: String,
     pub revision_id: String,
@@ -175,19 +191,11 @@ pub fn layout_url(geometry: &str, layout_id: &str) -> String {
     format!("https://configure.zsa.io/{geometry}/layouts/{layout_id}/latest/0")
 }
 
-/// Creates a new anonymous layout on Oryx holding `draft`, and reads it back to check.
-/// `base` is the revision the draft started from (used to tell whether its combos changed).
-pub fn push_new(t: &mut dyn Transport, draft: &Layout, base: Option<&Layout>) -> Result<Pushed, PushError> {
-    let name = draft.draft.as_ref().map(|d| d.name.clone()).unwrap_or_else(|| draft.reference());
-    if draft.layers.is_empty() {
-        return Err(PushError::Unsupported("the draft has no layers".into()));
-    }
-    let mut warnings = Vec::new();
-
-    // 1. What to copy: the draft's base revision if Oryx has it (that carries trackball settings, RGB and
-    //    timing settings and combos over), otherwise ZSA's default layout for this keyboard.
-    let source = match fetch(t, &draft.layout_id, &draft.revision_id, &draft.geometry) {
-        Ok(r) if r.revision_compiled => r,
+/// What to copy for a new layout: the draft's base revision if Oryx has it compiled (that carries trackball,
+/// RGB and timing settings and combos over), otherwise ZSA's default layout for this keyboard.
+fn pick_source(t: &mut dyn Transport, draft: &Layout, warnings: &mut Vec<String>) -> Result<Remote, PushError> {
+    match fetch(t, &draft.layout_id, &draft.revision_id, &draft.geometry) {
+        Ok(r) if r.revision_compiled => Ok(r),
         other => {
             let why = match other {
                 Ok(_) => "it isn't compiled".to_string(),
@@ -200,17 +208,21 @@ pub fn push_new(t: &mut dyn Transport, draft: &Layout, base: Option<&Layout>) ->
                  trackball, RGB and timing settings are the defaults, set them in Oryx.",
                 draft.layout_id, draft.revision_id
             ));
-            fetch(t, "default", "latest", &draft.geometry)?
+            fetch(t, "default", "latest", &draft.geometry)
         }
-    };
-    let copied_base = source.layout.layout_id == draft.layout_id;
-    let copied_from = source.layout.reference();
+    }
+}
 
-    // 2. The copy.
-    let created = t.call(
+fn draft_name(draft: &Layout) -> String {
+    draft.draft.as_ref().map(|d| d.name.clone()).unwrap_or_else(|| draft.reference())
+}
+
+/// Asks Oryx, without a login, for a separate copy of `source`. Returns the copy's layout id.
+fn anonymous_copy(t: &mut dyn Transport, draft: &Layout, source: &Remote) -> Result<String, PushError> {
+    let created = t.anonymous(
         CREATE_LAYOUT,
         json!({
-            "title": format!("{} ({name})", draft.title),
+            "title": format!("{} ({})", draft.title, draft_name(draft)),
             "revisionHashId": source.layout.revision_id,
             "parentHashId": source.layout.layout_id,
             "geometry": draft.geometry,
@@ -219,10 +231,75 @@ pub fn push_new(t: &mut dyn Transport, draft: &Layout, base: Option<&Layout>) ->
     let layout_id =
         created["createLayout"]["hashId"].as_str().ok_or_else(|| PushError::Oryx("no layout id in the answer".into()))?.to_string();
     if layout_id == draft.layout_id || layout_id == source.layout.layout_id {
-        // Can only happen with a login, which keyloom doesn't send. Never edit an existing layout.
+        // Can only happen with a login, which this call doesn't send. Never edit an existing layout.
         return Err(PushError::Oryx(format!("Oryx answered with the existing layout {layout_id} instead of a copy; nothing was written")));
     }
-    write_draft(t, draft, base, Target { layout_id, copied_from, copied_base, new_layout: true }, warnings)
+    Ok(layout_id)
+}
+
+/// Creates a new anonymous layout on Oryx holding `draft`, and reads it back to check.
+/// `base` is the revision the draft started from (used to tell whether its combos changed).
+pub fn push_new(t: &mut dyn Transport, draft: &Layout, base: Option<&Layout>) -> Result<Pushed, PushError> {
+    if draft.layers.is_empty() {
+        return Err(PushError::Unsupported("the draft has no layers".into()));
+    }
+    let mut warnings = Vec::new();
+    let source = pick_source(t, draft, &mut warnings)?;
+    let layout_id = anonymous_copy(t, draft, &source)?;
+    let target = Target {
+        layout_id,
+        copied_from: source.layout.reference(),
+        copied_base: source.layout.layout_id == draft.layout_id,
+        new_layout: true,
+        in_account: false,
+    };
+    write_draft(t, draft, base, target, warnings)
+}
+
+/// Creates a new layout in the user's own Oryx account holding `draft`, and reads it back to check.
+/// `t` must carry the user's login. No existing layout changes.
+///
+/// With a login, Oryx turns "copy my revision" into "new revision of my layout", so the copy is made in two
+/// steps: an anonymous copy of the source first, then a copy of that into the account.
+pub fn push_new_owned(t: &mut dyn Transport, draft: &Layout, base: Option<&Layout>) -> Result<Pushed, PushError> {
+    if draft.layers.is_empty() {
+        return Err(PushError::Unsupported("the draft has no layers".into()));
+    }
+    let mut warnings = Vec::new();
+    let source = pick_source(t, draft, &mut warnings)?;
+    let stepping_stone = anonymous_copy(t, draft, &source)?;
+    let copy = fetch(t, &stepping_stone, "latest", &draft.geometry)?;
+    let created = t.call(
+        CREATE_LAYOUT,
+        json!({
+            "title": format!("{} ({})", draft.title, draft_name(draft)),
+            "revisionHashId": copy.layout.revision_id,
+            "parentHashId": stepping_stone,
+            "geometry": draft.geometry,
+        }),
+    )?;
+    let layout_id =
+        created["createLayout"]["hashId"].as_str().ok_or_else(|| PushError::Oryx("no layout id in the answer".into()))?.to_string();
+    if layout_id == stepping_stone || layout_id == draft.layout_id || layout_id == source.layout.layout_id {
+        return Err(PushError::Oryx(format!(
+            "Oryx answered with the existing layout {layout_id} instead of a new one in your account (is the token valid?); nothing was written"
+        )));
+    }
+    let owner = t.call(OWNER, json!({ "hashId": layout_id, "revisionId": "latest", "geometry": draft.geometry }))?;
+    if owner["layout"]["user"]["hashId"].as_str().is_none() {
+        return Err(PushError::Oryx(format!(
+            "the new layout {} doesn't belong to an account (is the token valid?); nothing was written to it",
+            layout_url(&draft.geometry, &layout_id)
+        )));
+    }
+    let target = Target {
+        layout_id,
+        copied_from: source.layout.reference(),
+        copied_base: source.layout.layout_id == draft.layout_id,
+        new_layout: true,
+        in_account: true,
+    };
+    write_draft(t, draft, base, target, warnings)
 }
 
 struct Target {
@@ -231,6 +308,7 @@ struct Target {
     /// The revision being written started as the draft's base (so its combos are the base's).
     copied_base: bool,
     new_layout: bool,
+    in_account: bool,
 }
 
 /// Makes the uncompiled latest revision of `target` hold `draft`'s layers, and reads it back to check.
@@ -241,7 +319,7 @@ fn write_draft(
     target: Target,
     mut warnings: Vec<String>,
 ) -> Result<Pushed, PushError> {
-    let Target { layout_id, copied_from, copied_base, new_layout } = target;
+    let Target { layout_id, copied_from, copied_base, new_layout, in_account } = target;
     let url = layout_url(&draft.geometry, &layout_id);
     let partial = |e: PushError| match e {
         PushError::Partial { .. } => e,
@@ -331,6 +409,7 @@ fn write_draft(
     Ok(Pushed {
         draft: draft.reference(),
         new_layout,
+        in_account,
         layout_id,
         revision_id,
         url,
@@ -420,7 +499,13 @@ pub fn push_into(
             latest.layout.reference()
         ));
     }
-    let target = Target { layout_id: layout_id.to_string(), copied_from: latest.layout.reference(), copied_base, new_layout: false };
+    let target = Target {
+        layout_id: layout_id.to_string(),
+        copied_from: latest.layout.reference(),
+        copied_base,
+        new_layout: false,
+        in_account: true,
+    };
     write_draft(t, draft, base, target, warnings)
 }
 
@@ -440,6 +525,9 @@ pub mod fake {
         /// Layouts that belong to the logged-in user: `createLayout` on one of these makes a new uncompiled
         /// revision of it (or returns the uncompiled one it has) instead of a separate layout.
         pub owned: std::collections::BTreeSet<String>,
+        /// A user is logged in: `createLayout` from a layout that isn't theirs makes a new layout of theirs.
+        pub login: bool,
+        anonymous_call: bool,
         /// Compiled revisions replaced by a newer one, by revision id.
         pub frozen: BTreeMap<String, Value>,
         next: u32,
@@ -496,6 +584,13 @@ pub mod fake {
     }
 
     impl Transport for FakeOryx {
+        fn anonymous(&mut self, query: &str, v: Value) -> Result<Value, PushError> {
+            self.anonymous_call = true;
+            let answer = self.call(query, v);
+            self.anonymous_call = false;
+            answer
+        }
+
         fn call(&mut self, query: &str, v: Value) -> Result<Value, PushError> {
             let op = ["createLayout", "updateLayerColor", "updateLayer", "createLayer", "deleteLayer", "updateRevisionAutomouse", "layout"]
                 .into_iter()
@@ -508,10 +603,17 @@ pub mod fake {
             }
             let s = |k: &str| v[k].as_str().unwrap_or_default().to_string();
             match op {
-                "layout" => Ok(json!({ "layout": self.layouts.get(&s("hashId")).cloned().unwrap_or(Value::Null) })),
+                "layout" => {
+                    let mut found = self.layouts.get(&s("hashId")).cloned().unwrap_or(Value::Null);
+                    if !found.is_null() {
+                        found["user"] = if self.owned.contains(&s("hashId")) { json!({ "hashId": "me" }) } else { Value::Null };
+                    }
+                    Ok(json!({ "layout": found }))
+                }
                 "createLayout" => {
                     let parent = self.layouts.get(&s("parentHashId")).cloned().ok_or_else(|| PushError::Oryx("NotFound".into()))?;
-                    if self.owned.contains(&s("parentHashId")) {
+                    let logged_in = self.login && !self.anonymous_call;
+                    if logged_in && self.owned.contains(&s("parentHashId")) {
                         let id = s("parentHashId");
                         if parent["revision"]["qmkVersion"].is_null() {
                             return Ok(json!({ "createLayout": { "hashId": id, "revision": { "hashId": parent["revision"]["hashId"] } } }));
@@ -540,6 +642,9 @@ pub mod fake {
                         l["hashId"] = id.into();
                     }
                     self.layouts.insert(layout_id.clone(), copy);
+                    if logged_in {
+                        self.owned.insert(layout_id.clone());
+                    }
                     Ok(json!({ "createLayout": { "hashId": layout_id, "revision": { "hashId": revision_id } } }))
                 }
                 "updateLayer" => {

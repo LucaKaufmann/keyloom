@@ -206,8 +206,8 @@ pub struct GuideArgs {
     /// user's own layouts never change). Ask the user before pushing.
     #[serde(default)]
     pub push: bool,
-    /// With `push`: write into this layout of the user's own (id or link) as an uncompiled revision instead of
-    /// a new layout. Needs the login token the user stored for keyloom. Only when the user asked for it.
+    /// With `push`: write into this layout of the user's own (id or link) as an uncompiled revision, or "new"
+    /// for a new layout in their account. Needs the login token the user stored for keyloom. Only when the user asked for it.
     #[serde(default)]
     pub to: Option<String>,
     /// With `to`: replace changes on Oryx the draft doesn't have. Only when the user said so.
@@ -509,7 +509,7 @@ impl KeyloomServer {
     }
 
     #[tool(
-        description = "Get a draft into Oryx. Default: step-by-step instructions for the user to make in Oryx; show them. push=true (ask the user first): create a new public Oryx layout holding the draft and return its link, for the user to check, compile and flash; the user's own layouts don't change. With to=<their layout> (only when they ask; needs their stored login token): an uncompiled revision of that layout instead. keyloom never compiles or flashes."
+        description = "Get a draft into Oryx. Default: step-by-step instructions for the user to make in Oryx; show them. push=true (ask the user first): create a new public Oryx layout holding the draft and return its link, for the user to check, compile and flash; the user's own layouts don't change. With to=<their layout> (only when they ask; needs their stored login token): an uncompiled revision of that layout instead; to=new: a new layout in their account. keyloom never compiles or flashes."
     )]
     async fn apply_guide(&self, Parameters(a): Parameters<GuideArgs>) -> Result<CallToolResult, ErrorData> {
         if a.push {

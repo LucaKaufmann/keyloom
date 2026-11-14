@@ -84,6 +84,13 @@ repeating it worked.
    `--overwrite`), then writes into it.
 4. Writes, reads back and diffs as above. Doesn't compile.
 
+`keyloom push <draft> --to new` (with the token): a new layout in the user's account.
+
+1. Picks the source as the no-login push does, and makes an anonymous copy of it, sent without the token.
+2. With the token, calls `createLayout` on that anonymous copy. Its source isn't the user's, so Oryx makes a
+   new layout owned by the user. keyloom checks the new layout has an owner before writing.
+3. Writes, reads back and diffs as above. Doesn't compile. The anonymous copy stays on Oryx.
+
 ## What was tried with a login
 
 On a throwaway layout in the owner's account, with the `jwtToken` from the web app's local storage:
@@ -93,6 +100,13 @@ On a throwaway layout in the owner's account, with the `jwtToken` from the web a
 - `compileRevision` worked (about 10 s). After it, `updateLayer` answered `Unauthorized` even for the owner.
 - `createLayout` with `parentHashId` = the layout itself returned the same layout id and a new uncompiled
   revision. Called again while that revision existed, it returned the same revision.
+- `createLayout` from ZSA's default layout, with the token, made a new layout owned by the user.
+- `createLayout` from a revision of the user's own layout always resolves to that layout, whatever
+  `parentHashId` says: with another layout as parent it still returned the own layout and its uncompiled
+  revision, and with no parent it answered HTTP 500. So a layout can't be copied to a second own layout
+  directly.
+- `createLayout` from an uncompiled anonymous layout, with the token, made a new layout owned by the user,
+  with the same navigators, config and combos.
 - Without the token, `latest` keeps returning the newest compiled revision; the uncompiled one is only visible
   to the owner.
 - The token is a JWT with `uid` and `exp`; the one seen was valid for about three months.

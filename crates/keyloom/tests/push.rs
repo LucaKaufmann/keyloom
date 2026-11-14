@@ -3,7 +3,7 @@
 use keyloom::model::{Kind, Layout};
 use keyloom::ops::{apply_ops, Op};
 use keyloom::push::fake::FakeOryx;
-use keyloom::push::{push_into, push_new, PushError};
+use keyloom::push::{push_into, push_new, push_new_owned, PushError};
 use keyloom::source;
 use serde_json::{json, Value};
 use std::path::PathBuf;
@@ -119,6 +119,7 @@ fn changed_combos_are_reported_not_written() {
 fn own(base: &Layout) -> FakeOryx {
     let mut oryx = oryx_with(base);
     oryx.owned.insert(base.layout_id.clone());
+    oryx.login = true;
     oryx
 }
 
@@ -185,5 +186,28 @@ fn into_a_layout_that_isnt_mine_writes_nothing_there() {
     let e = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap_err();
     assert!(e.to_string().contains("separate layout") && e.to_string().contains("Nothing was written to 9qMJK"), "{e}");
     assert_eq!(oryx.layouts[&base.layout_id], before);
+    assert!(!oryx.calls.iter().any(|c| c.starts_with("update") || c.ends_with("Layer")), "{:?}", oryx.calls);
+}
+
+#[test]
+fn a_new_layout_in_my_account_leaves_my_existing_layout_alone() {
+    let (base, draft) = base_and_draft(serde_json::from_str(WOW).unwrap());
+    let mut oryx = own(&base);
+    let before = oryx.layouts[&base.layout_id].clone();
+
+    let p = push_new_owned(&mut oryx, &draft, Some(&base)).unwrap();
+    assert!(p.verified && p.new_layout && p.in_account && p.warnings.is_empty(), "{p:?}");
+    assert_eq!(p.copied_from, "9qMJK@ZPjbXz");
+    // My layout has no new revision; the new layout is mine and holds the draft, auto-mouse layer included.
+    assert_eq!(oryx.layouts[&base.layout_id], before);
+    assert!(oryx.frozen.is_empty() && p.layout_id != base.layout_id && oryx.owned.contains(&p.layout_id));
+    let new = stored(&oryx, &p.layout_id);
+    assert!(new.layers.iter().any(|l| l.title == "WoW") && new.layers.len() == base.layers.len() + 1);
+    assert_eq!(oryx.layouts.len(), 3, "mine, the anonymous stepping stone, the new one");
+
+    // Without a login Oryx can't put it in an account: nothing is written anywhere.
+    let mut oryx = oryx_with(&base);
+    let e = push_new_owned(&mut oryx, &draft, Some(&base)).unwrap_err();
+    assert!(e.to_string().contains("doesn't belong to an account"), "{e}");
     assert!(!oryx.calls.iter().any(|c| c.starts_with("update") || c.ends_with("Layer")), "{:?}", oryx.calls);
 }

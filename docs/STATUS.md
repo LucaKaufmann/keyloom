@@ -4,7 +4,7 @@ Version 0.1.0, 2026-11-14.
 
 ## What works
 
-Everything below is implemented and covered by 120 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
+Everything below is implemented and covered by 121 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
 server, golden renders). The tests need no network and no keyboard.
 
 | Area | Commands | Spec |

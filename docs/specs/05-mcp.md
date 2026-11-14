@@ -44,7 +44,7 @@ Write (drafts only):
 | `create_draft(name, from?)` | |
 | `edit_draft(draft, ops[])` | atomic list of edit operations (02): JSON objects whose actions are action-spec strings. Unknown fields are errors |
 | `undo(draft)` | undo the last `edit_draft` |
-| `apply_guide(draft, push?, to?, overwrite?, force?)` | Oryx change list (03); with `push` a new Oryx layout holding the draft and its link, or with `to` an uncompiled revision of the user's own layout (docs/oryx-write-api.md). The login token is read by the server from the environment or keychain, never passed as an argument |
+| `apply_guide(draft, push?, to?, overwrite?, force?)` | Oryx change list (03); with `push` a new Oryx layout holding the draft and its link, or with `to` an uncompiled revision of the user's own layout (`to: "new"`: a new layout in their account) (docs/oryx-write-api.md). The login token is read by the server from the environment or keychain, never passed as an argument |
 | `verify_draft(draft, against?)` | after the user applied and flashed |
 
 Live:
