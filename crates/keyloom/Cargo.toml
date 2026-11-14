@@ -1,0 +1,26 @@
+[package]
+name = "keyloom"
+description = "keyloom engine: ZSA keyboard layouts as data (import, render, explore, validate, draft, diff, guide)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+readme = "../../README.md"
+keywords = ["keyboard", "zsa", "oryx", "qmk", "layout"]
+categories = ["hardware-support"]
+
+[dependencies]
+dirs = "6"
+rusqlite = { version = "0.42.0", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+thiserror = "2.0.21"
+toml = "1.2.1"
+toml_edit = "0.25.19"
+unicode-width = "0.2.3"
+ureq = { version = "2", default-features = false, features = ["tls"] }
+zip = { version = "9.5.1", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+tempfile = "3.27.0"

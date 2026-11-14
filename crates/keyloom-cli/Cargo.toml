@@ -1,0 +1,36 @@
+[package]
+name = "keyloom-cli"
+description = "keyloom: a CLI and MCP server for AI agents to see, audit and improve ZSA keyboard layouts"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+readme = "../../README.md"
+keywords = ["keyboard", "zsa", "oryx", "mcp", "cli"]
+categories = ["command-line-utilities", "hardware-support"]
+
+[[bin]]
+name = "keyloom"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.104"
+bytes = "1.12.1"
+clap = { version = "4.6.7", features = ["derive"] }
+dirs = "6"
+h2 = "0.4.20"
+http = "1.5.0"
+keyloom = { path = "../keyloom" }
+rmcp = { version = "3.10.0", features = ["server", "transport-io", "macros"] }
+schemars = "1.2.3"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+thiserror = "2.0.21"
+tokio = { version = "1.54.1", features = ["macros", "rt-multi-thread", "io-std", "signal", "net", "time", "sync"] }
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[target."cfg(unix)".dependencies]
+libc = "0.2.191"

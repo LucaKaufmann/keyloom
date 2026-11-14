@@ -1,0 +1,2969 @@
+[
+  {
+    "code": "KC_A",
+    "aliases": [
+      "A"
+    ],
+    "category": "basic",
+    "description": "Letter A",
+    "legend": "A",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_B",
+    "aliases": [
+      "B"
+    ],
+    "category": "basic",
+    "description": "Letter B",
+    "legend": "B",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_C",
+    "aliases": [
+      "C"
+    ],
+    "category": "basic",
+    "description": "Letter C",
+    "legend": "C",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_D",
+    "aliases": [
+      "D"
+    ],
+    "category": "basic",
+    "description": "Letter D",
+    "legend": "D",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_E",
+    "aliases": [
+      "E"
+    ],
+    "category": "basic",
+    "description": "Letter E",
+    "legend": "E",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F",
+    "aliases": [
+      "F"
+    ],
+    "category": "basic",
+    "description": "Letter F",
+    "legend": "F",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_G",
+    "aliases": [
+      "G"
+    ],
+    "category": "basic",
+    "description": "Letter G",
+    "legend": "G",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_H",
+    "aliases": [
+      "H"
+    ],
+    "category": "basic",
+    "description": "Letter H",
+    "legend": "H",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_I",
+    "aliases": [
+      "I"
+    ],
+    "category": "basic",
+    "description": "Letter I",
+    "legend": "I",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_J",
+    "aliases": [
+      "J"
+    ],
+    "category": "basic",
+    "description": "Letter J",
+    "legend": "J",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_K",
+    "aliases": [
+      "K"
+    ],
+    "category": "basic",
+    "description": "Letter K",
+    "legend": "K",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_L",
+    "aliases": [
+      "L"
+    ],
+    "category": "basic",
+    "description": "Letter L",
+    "legend": "L",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_M",
+    "aliases": [
+      "M"
+    ],
+    "category": "basic",
+    "description": "Letter M",
+    "legend": "M",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_N",
+    "aliases": [
+      "N"
+    ],
+    "category": "basic",
+    "description": "Letter N",
+    "legend": "N",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_O",
+    "aliases": [
+      "O"
+    ],
+    "category": "basic",
+    "description": "Letter O",
+    "legend": "O",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_P",
+    "aliases": [
+      "P"
+    ],
+    "category": "basic",
+    "description": "Letter P",
+    "legend": "P",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_Q",
+    "aliases": [
+      "Q"
+    ],
+    "category": "basic",
+    "description": "Letter Q",
+    "legend": "Q",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_R",
+    "aliases": [
+      "R"
+    ],
+    "category": "basic",
+    "description": "Letter R",
+    "legend": "R",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_S",
+    "aliases": [
+      "S"
+    ],
+    "category": "basic",
+    "description": "Letter S",
+    "legend": "S",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_T",
+    "aliases": [
+      "T"
+    ],
+    "category": "basic",
+    "description": "Letter T",
+    "legend": "T",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_U",
+    "aliases": [
+      "U"
+    ],
+    "category": "basic",
+    "description": "Letter U",
+    "legend": "U",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_V",
+    "aliases": [
+      "V"
+    ],
+    "category": "basic",
+    "description": "Letter V",
+    "legend": "V",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_W",
+    "aliases": [
+      "W"
+    ],
+    "category": "basic",
+    "description": "Letter W",
+    "legend": "W",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_X",
+    "aliases": [
+      "X"
+    ],
+    "category": "basic",
+    "description": "Letter X",
+    "legend": "X",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_Y",
+    "aliases": [
+      "Y"
+    ],
+    "category": "basic",
+    "description": "Letter Y",
+    "legend": "Y",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_Z",
+    "aliases": [
+      "Z"
+    ],
+    "category": "basic",
+    "description": "Letter Z",
+    "legend": "Z",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_1",
+    "aliases": [
+      "1"
+    ],
+    "category": "basic",
+    "description": "Digit 1 (number row; shifted gives the US symbol above it)",
+    "legend": "1",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_2",
+    "aliases": [
+      "2"
+    ],
+    "category": "basic",
+    "description": "Digit 2 (number row; shifted gives the US symbol above it)",
+    "legend": "2",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_3",
+    "aliases": [
+      "3"
+    ],
+    "category": "basic",
+    "description": "Digit 3 (number row; shifted gives the US symbol above it)",
+    "legend": "3",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_4",
+    "aliases": [
+      "4"
+    ],
+    "category": "basic",
+    "description": "Digit 4 (number row; shifted gives the US symbol above it)",
+    "legend": "4",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_5",
+    "aliases": [
+      "5"
+    ],
+    "category": "basic",
+    "description": "Digit 5 (number row; shifted gives the US symbol above it)",
+    "legend": "5",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_6",
+    "aliases": [
+      "6"
+    ],
+    "category": "basic",
+    "description": "Digit 6 (number row; shifted gives the US symbol above it)",
+    "legend": "6",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_7",
+    "aliases": [
+      "7"
+    ],
+    "category": "basic",
+    "description": "Digit 7 (number row; shifted gives the US symbol above it)",
+    "legend": "7",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_8",
+    "aliases": [
+      "8"
+    ],
+    "category": "basic",
+    "description": "Digit 8 (number row; shifted gives the US symbol above it)",
+    "legend": "8",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_9",
+    "aliases": [
+      "9"
+    ],
+    "category": "basic",
+    "description": "Digit 9 (number row; shifted gives the US symbol above it)",
+    "legend": "9",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_0",
+    "aliases": [
+      "0"
+    ],
+    "category": "basic",
+    "description": "Digit 0 (number row; shifted gives the US symbol above it)",
+    "legend": "0",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MINUS",
+    "aliases": [
+      "KC_MINS",
+      "-",
+      "Minus",
+      "Dash",
+      "Hyphen"
+    ],
+    "category": "basic",
+    "description": "Minus / hyphen (shift: _)",
+    "legend": "-",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_EQUAL",
+    "aliases": [
+      "KC_EQL",
+      "=",
+      "Equal",
+      "Equals"
+    ],
+    "category": "basic",
+    "description": "Equal sign (shift: +)",
+    "legend": "=",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LBRC",
+    "aliases": [
+      "KC_LEFT_BRACKET",
+      "[",
+      "Left Bracket",
+      "LBracket",
+      "KC_LBRACKET"
+    ],
+    "category": "basic",
+    "description": "Left square bracket (shift: {)",
+    "legend": "[",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RBRC",
+    "aliases": [
+      "KC_RIGHT_BRACKET",
+      "]",
+      "Right Bracket",
+      "RBracket",
+      "KC_RBRACKET"
+    ],
+    "category": "basic",
+    "description": "Right square bracket (shift: })",
+    "legend": "]",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_BSLS",
+    "aliases": [
+      "KC_BACKSLASH",
+      "\\",
+      "Backslash",
+      "KC_BSLASH"
+    ],
+    "category": "basic",
+    "description": "Backslash (shift: |)",
+    "legend": "\\",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_SCLN",
+    "aliases": [
+      "KC_SEMICOLON",
+      ";",
+      "Semicolon",
+      "KC_SCOLON"
+    ],
+    "category": "basic",
+    "description": "Semicolon (shift: :)",
+    "legend": ";",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_QUOTE",
+    "aliases": [
+      "KC_QUOT",
+      "'",
+      "Quote",
+      "Apostrophe",
+      "Single Quote"
+    ],
+    "category": "basic",
+    "description": "Apostrophe / single quote (shift: \")",
+    "legend": "'",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_GRAVE",
+    "aliases": [
+      "KC_GRV",
+      "`",
+      "Grave",
+      "Backtick",
+      "Backquote"
+    ],
+    "category": "basic",
+    "description": "Grave accent / backtick (shift: ~)",
+    "legend": "`",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_COMMA",
+    "aliases": [
+      "KC_COMM",
+      ",",
+      "Comma"
+    ],
+    "category": "basic",
+    "description": "Comma (shift: <)",
+    "legend": ",",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_DOT",
+    "aliases": [
+      ".",
+      "Dot",
+      "Period",
+      "Full Stop"
+    ],
+    "category": "basic",
+    "description": "Period / dot (shift: >)",
+    "legend": ".",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_SLASH",
+    "aliases": [
+      "KC_SLSH",
+      "/",
+      "Slash",
+      "Forward Slash"
+    ],
+    "category": "basic",
+    "description": "Forward slash (shift: ?)",
+    "legend": "/",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_NONUS_HASH",
+    "aliases": [
+      "KC_NUHS",
+      "ISO Hash",
+      "Non-US Hash"
+    ],
+    "category": "basic",
+    "description": "ISO key left of Enter (# and ~ on UK layouts). Rarely needed on US layouts",
+    "legend": "ISO#",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_NONUS_BACKSLASH",
+    "aliases": [
+      "KC_NUBS",
+      "ISO Backslash",
+      "Non-US Backslash"
+    ],
+    "category": "basic",
+    "description": "ISO key right of left Shift (< > on German, \\ | on UK layouts)",
+    "legend": "ISO\\",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_TILD",
+    "aliases": [
+      "KC_TILDE",
+      "~",
+      "Tilde"
+    ],
+    "category": "basic",
+    "description": "Tilde (Shift + `). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "~",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_EXLM",
+    "aliases": [
+      "KC_EXCLAIM",
+      "!",
+      "Exclamation",
+      "Exclamation Mark",
+      "Bang"
+    ],
+    "category": "basic",
+    "description": "Exclamation mark (Shift + 1). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "!",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_AT",
+    "aliases": [
+      "@",
+      "At",
+      "At Sign"
+    ],
+    "category": "basic",
+    "description": "At sign (Shift + 2). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "@",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_HASH",
+    "aliases": [
+      "#",
+      "Hash",
+      "Number Sign",
+      "Octothorpe"
+    ],
+    "category": "basic",
+    "description": "Hash (Shift + 3). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "#",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_DLR",
+    "aliases": [
+      "KC_DOLLAR",
+      "$",
+      "Dollar"
+    ],
+    "category": "basic",
+    "description": "Dollar (Shift + 4). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "$",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PERC",
+    "aliases": [
+      "KC_PERCENT",
+      "%",
+      "Percent"
+    ],
+    "category": "basic",
+    "description": "Percent (Shift + 5). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "%",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_CIRC",
+    "aliases": [
+      "KC_CIRCUMFLEX",
+      "^",
+      "Caret",
+      "Circumflex"
+    ],
+    "category": "basic",
+    "description": "Caret (Shift + 6). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "^",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_AMPR",
+    "aliases": [
+      "KC_AMPERSAND",
+      "&",
+      "Ampersand"
+    ],
+    "category": "basic",
+    "description": "Ampersand (Shift + 7). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "&",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_ASTR",
+    "aliases": [
+      "KC_ASTERISK",
+      "*",
+      "Asterisk",
+      "Star"
+    ],
+    "category": "basic",
+    "description": "Asterisk (Shift + 8). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "*",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LPRN",
+    "aliases": [
+      "KC_LEFT_PAREN",
+      "(",
+      "Left Paren",
+      "LParen",
+      "Open Paren"
+    ],
+    "category": "basic",
+    "description": "Left parenthesis (Shift + 9). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "(",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RPRN",
+    "aliases": [
+      "KC_RIGHT_PAREN",
+      ")",
+      "Right Paren",
+      "RParen",
+      "Close Paren"
+    ],
+    "category": "basic",
+    "description": "Right parenthesis (Shift + 0). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": ")",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_UNDS",
+    "aliases": [
+      "KC_UNDERSCORE",
+      "_",
+      "Underscore"
+    ],
+    "category": "basic",
+    "description": "Underscore (Shift + -). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "_",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PLUS",
+    "aliases": [
+      "+",
+      "Plus"
+    ],
+    "category": "basic",
+    "description": "Plus (Shift + =). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LCBR",
+    "aliases": [
+      "KC_LEFT_CURLY_BRACE",
+      "{",
+      "Left Brace",
+      "LBrace",
+      "Left Curly"
+    ],
+    "category": "basic",
+    "description": "Left curly brace (Shift + [). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "{",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RCBR",
+    "aliases": [
+      "KC_RIGHT_CURLY_BRACE",
+      "}",
+      "Right Brace",
+      "RBrace",
+      "Right Curly"
+    ],
+    "category": "basic",
+    "description": "Right curly brace (Shift + ]). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "}",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PIPE",
+    "aliases": [
+      "|",
+      "Pipe",
+      "Vertical Bar"
+    ],
+    "category": "basic",
+    "description": "Pipe (Shift + \\). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "|",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_COLN",
+    "aliases": [
+      "KC_COLON",
+      ":",
+      "Colon"
+    ],
+    "category": "basic",
+    "description": "Colon (Shift + ;). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": ":",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_DQUO",
+    "aliases": [
+      "KC_DOUBLE_QUOTE",
+      "KC_DQT",
+      "\"",
+      "Double Quote"
+    ],
+    "category": "basic",
+    "description": "Double quote (Shift + '). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "\"",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_LABK",
+    "aliases": [
+      "KC_LEFT_ANGLE_BRACKET",
+      "KC_LT",
+      "<",
+      "Less Than",
+      "Left Angle"
+    ],
+    "category": "basic",
+    "description": "Less-than (Shift + ,). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "<",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_RABK",
+    "aliases": [
+      "KC_RIGHT_ANGLE_BRACKET",
+      "KC_GT",
+      ">",
+      "Greater Than",
+      "Right Angle"
+    ],
+    "category": "basic",
+    "description": "Greater-than (Shift + .). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": ">",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_QUES",
+    "aliases": [
+      "KC_QUESTION",
+      "?",
+      "Question",
+      "Question Mark"
+    ],
+    "category": "basic",
+    "description": "Question mark (Shift + /). Sends Shift + the base key, so it can't be combined with other modifiers reliably",
+    "legend": "?",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_ESCAPE",
+    "aliases": [
+      "KC_ESC",
+      "Esc",
+      "Escape"
+    ],
+    "category": "editing",
+    "description": "Escape",
+    "legend": "Esc",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_ENTER",
+    "aliases": [
+      "KC_ENT",
+      "Enter",
+      "Return",
+      "Ret",
+      "⏎",
+      "↵"
+    ],
+    "category": "editing",
+    "description": "Enter / Return",
+    "legend": "⏎",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_TAB",
+    "aliases": [
+      "Tab",
+      "⇥"
+    ],
+    "category": "editing",
+    "description": "Tab",
+    "legend": "⇥",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_SPACE",
+    "aliases": [
+      "KC_SPC",
+      "Space",
+      "Spc",
+      "Spacebar",
+      "␣"
+    ],
+    "category": "editing",
+    "description": "Space bar",
+    "legend": "␣",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_BSPC",
+    "aliases": [
+      "KC_BACKSPACE",
+      "Backspace",
+      "Bksp",
+      "BS",
+      "⌫",
+      "KC_BSPACE"
+    ],
+    "category": "editing",
+    "description": "Backspace (delete left)",
+    "legend": "⌫",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_DELETE",
+    "aliases": [
+      "KC_DEL",
+      "Delete",
+      "Del",
+      "Forward Delete",
+      "⌦",
+      "KC_DELT"
+    ],
+    "category": "editing",
+    "description": "Forward delete",
+    "legend": "⌦",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_INSERT",
+    "aliases": [
+      "KC_INS",
+      "Insert",
+      "Ins"
+    ],
+    "category": "editing",
+    "description": "Insert",
+    "legend": "Ins",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_CAPS",
+    "aliases": [
+      "KC_CAPS_LOCK",
+      "Caps",
+      "Caps Lock",
+      "CapsLock",
+      "⇪",
+      "KC_CAPSLOCK"
+    ],
+    "category": "editing",
+    "description": "Caps Lock (consider CW_TOGG Caps Word instead)",
+    "legend": "⇪",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PSCR",
+    "aliases": [
+      "KC_PRINT_SCREEN",
+      "Print Screen",
+      "PrintScreen",
+      "PrtSc",
+      "PrtScr",
+      "KC_PSCREEN"
+    ],
+    "category": "editing",
+    "description": "Print Screen (macOS ignores it; use Cmd+Shift+3/4/5)",
+    "legend": "PrtSc",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_SCRL",
+    "aliases": [
+      "KC_SCROLL_LOCK",
+      "Scroll Lock",
+      "ScrLk",
+      "KC_SCROLLLOCK",
+      "KC_SLCK"
+    ],
+    "category": "editing",
+    "description": "Scroll Lock (on macOS: screen brightness down on some setups)",
+    "legend": "ScrLk",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_PAUSE",
+    "aliases": [
+      "KC_PAUS",
+      "KC_BRK",
+      "Pause",
+      "Break"
+    ],
+    "category": "editing",
+    "description": "Pause / Break",
+    "legend": "Pause",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_APPLICATION",
+    "aliases": [
+      "KC_APP",
+      "Menu",
+      "App",
+      "Context Menu"
+    ],
+    "category": "editing",
+    "description": "Application / context menu key (Windows, Linux)",
+    "legend": "Menu",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LEFT",
+    "aliases": [
+      "Left",
+      "Left Arrow",
+      "←"
+    ],
+    "category": "navigation",
+    "description": "Left arrow",
+    "legend": "←",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RIGHT",
+    "aliases": [
+      "KC_RGHT",
+      "Right",
+      "Right Arrow",
+      "→"
+    ],
+    "category": "navigation",
+    "description": "Right arrow",
+    "legend": "→",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_UP",
+    "aliases": [
+      "Up",
+      "Up Arrow",
+      "↑"
+    ],
+    "category": "navigation",
+    "description": "Up arrow",
+    "legend": "↑",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_DOWN",
+    "aliases": [
+      "Down",
+      "Down Arrow",
+      "↓"
+    ],
+    "category": "navigation",
+    "description": "Down arrow",
+    "legend": "↓",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_HOME",
+    "aliases": [
+      "Home"
+    ],
+    "category": "navigation",
+    "description": "Home (macOS apps mostly want Cmd+Left instead)",
+    "legend": "Home",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_END",
+    "aliases": [
+      "End"
+    ],
+    "category": "navigation",
+    "description": "End (macOS apps mostly want Cmd+Right instead)",
+    "legend": "End",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PAGE_UP",
+    "aliases": [
+      "KC_PGUP",
+      "Page Up",
+      "PageUp",
+      "PgUp"
+    ],
+    "category": "navigation",
+    "description": "Page Up",
+    "legend": "PgUp",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_PGDN",
+    "aliases": [
+      "KC_PAGE_DOWN",
+      "Page Down",
+      "PageDown",
+      "PgDn",
+      "KC_PGDOWN"
+    ],
+    "category": "navigation",
+    "description": "Page Down",
+    "legend": "PgDn",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LEFT_CTRL",
+    "aliases": [
+      "KC_LCTL",
+      "KC_LCTRL",
+      "LCTL",
+      "Ctrl",
+      "Control",
+      "LCtrl",
+      "Left Ctrl",
+      "⌃"
+    ],
+    "category": "modifier",
+    "description": "Left Control. Also usable as a hold action (mod-tap: tap = key, hold = this)",
+    "legend": "Ctrl",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LEFT_SHIFT",
+    "aliases": [
+      "KC_LSFT",
+      "KC_LSHIFT",
+      "LSFT",
+      "Shift",
+      "LShift",
+      "Left Shift",
+      "⇧"
+    ],
+    "category": "modifier",
+    "description": "Left Shift. Also usable as a hold action",
+    "legend": "⇧",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LEFT_ALT",
+    "aliases": [
+      "KC_LALT",
+      "KC_LOPT",
+      "LALT",
+      "Alt",
+      "Option",
+      "Opt",
+      "Left Alt",
+      "⌥"
+    ],
+    "category": "modifier",
+    "description": "Left Alt / Option. Also usable as a hold action",
+    "legend": "Alt",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_LEFT_GUI",
+    "aliases": [
+      "KC_LGUI",
+      "KC_LCMD",
+      "KC_LWIN",
+      "LGUI",
+      "GUI",
+      "Cmd",
+      "Command",
+      "Win",
+      "Windows",
+      "Super",
+      "Meta",
+      "Left Cmd",
+      "⌘"
+    ],
+    "category": "modifier",
+    "description": "Left GUI: Cmd on macOS, Win on Windows, Super on Linux. Also usable as a hold action",
+    "legend": "Gui",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RIGHT_CTRL",
+    "aliases": [
+      "KC_RCTL",
+      "KC_RCTRL",
+      "RCTL",
+      "RCtrl",
+      "Right Ctrl"
+    ],
+    "category": "modifier",
+    "description": "Right Control",
+    "legend": "RCtrl",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_RIGHT_SHIFT",
+    "aliases": [
+      "KC_RSFT",
+      "KC_RSHIFT",
+      "RSFT",
+      "RShift",
+      "Right Shift"
+    ],
+    "category": "modifier",
+    "description": "Right Shift",
+    "legend": "R⇧",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RIGHT_ALT",
+    "aliases": [
+      "KC_RALT",
+      "KC_ROPT",
+      "KC_ALGR",
+      "RALT",
+      "AltGr",
+      "Right Alt",
+      "Right Option"
+    ],
+    "category": "modifier",
+    "description": "Right Alt / Option. AltGr on international layouts (accents, €)",
+    "legend": "AltGr",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_RIGHT_GUI",
+    "aliases": [
+      "KC_RGUI",
+      "KC_RCMD",
+      "KC_RWIN",
+      "RGUI",
+      "Right Cmd",
+      "Right Win"
+    ],
+    "category": "modifier",
+    "description": "Right GUI (Cmd / Win / Super)",
+    "legend": "RGui",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F1",
+    "aliases": [
+      "F1"
+    ],
+    "category": "function",
+    "description": "F1",
+    "legend": "F1",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F2",
+    "aliases": [
+      "F2"
+    ],
+    "category": "function",
+    "description": "F2",
+    "legend": "F2",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F3",
+    "aliases": [
+      "F3"
+    ],
+    "category": "function",
+    "description": "F3",
+    "legend": "F3",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F4",
+    "aliases": [
+      "F4"
+    ],
+    "category": "function",
+    "description": "F4",
+    "legend": "F4",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F5",
+    "aliases": [
+      "F5"
+    ],
+    "category": "function",
+    "description": "F5",
+    "legend": "F5",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F6",
+    "aliases": [
+      "F6"
+    ],
+    "category": "function",
+    "description": "F6",
+    "legend": "F6",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F7",
+    "aliases": [
+      "F7"
+    ],
+    "category": "function",
+    "description": "F7",
+    "legend": "F7",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F8",
+    "aliases": [
+      "F8"
+    ],
+    "category": "function",
+    "description": "F8",
+    "legend": "F8",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F9",
+    "aliases": [
+      "F9"
+    ],
+    "category": "function",
+    "description": "F9",
+    "legend": "F9",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F10",
+    "aliases": [
+      "F10"
+    ],
+    "category": "function",
+    "description": "F10",
+    "legend": "F10",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F11",
+    "aliases": [
+      "F11"
+    ],
+    "category": "function",
+    "description": "F11",
+    "legend": "F11",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F12",
+    "aliases": [
+      "F12"
+    ],
+    "category": "function",
+    "description": "F12",
+    "legend": "F12",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_F13",
+    "aliases": [
+      "F13"
+    ],
+    "category": "function",
+    "description": "F13 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F13",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F14",
+    "aliases": [
+      "F14"
+    ],
+    "category": "function",
+    "description": "F14 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F14",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F15",
+    "aliases": [
+      "F15"
+    ],
+    "category": "function",
+    "description": "F15 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F15",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F16",
+    "aliases": [
+      "F16"
+    ],
+    "category": "function",
+    "description": "F16 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F16",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F17",
+    "aliases": [
+      "F17"
+    ],
+    "category": "function",
+    "description": "F17 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F17",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F18",
+    "aliases": [
+      "F18"
+    ],
+    "category": "function",
+    "description": "F18 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F18",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F19",
+    "aliases": [
+      "F19"
+    ],
+    "category": "function",
+    "description": "F19 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F19",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F20",
+    "aliases": [
+      "F20"
+    ],
+    "category": "function",
+    "description": "F20 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F20",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F21",
+    "aliases": [
+      "F21"
+    ],
+    "category": "function",
+    "description": "F21 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F21",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F22",
+    "aliases": [
+      "F22"
+    ],
+    "category": "function",
+    "description": "F22 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F22",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F23",
+    "aliases": [
+      "F23"
+    ],
+    "category": "function",
+    "description": "F23 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F23",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_F24",
+    "aliases": [
+      "F24"
+    ],
+    "category": "function",
+    "description": "F24 (no default meaning; handy for app or game binds that must not collide with typing)",
+    "legend": "F24",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_1",
+    "aliases": [
+      "KC_P1",
+      "Numpad 1",
+      "KP1"
+    ],
+    "category": "numpad",
+    "description": "Numpad 1. Games and apps see a different key than KC_1; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp1",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_2",
+    "aliases": [
+      "KC_P2",
+      "Numpad 2",
+      "KP2"
+    ],
+    "category": "numpad",
+    "description": "Numpad 2. Games and apps see a different key than KC_2; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp2",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_3",
+    "aliases": [
+      "KC_P3",
+      "Numpad 3",
+      "KP3"
+    ],
+    "category": "numpad",
+    "description": "Numpad 3. Games and apps see a different key than KC_3; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp3",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_4",
+    "aliases": [
+      "KC_P4",
+      "Numpad 4",
+      "KP4"
+    ],
+    "category": "numpad",
+    "description": "Numpad 4. Games and apps see a different key than KC_4; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp4",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_5",
+    "aliases": [
+      "KC_P5",
+      "Numpad 5",
+      "KP5"
+    ],
+    "category": "numpad",
+    "description": "Numpad 5. Games and apps see a different key than KC_5; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp5",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_6",
+    "aliases": [
+      "KC_P6",
+      "Numpad 6",
+      "KP6"
+    ],
+    "category": "numpad",
+    "description": "Numpad 6. Games and apps see a different key than KC_6; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp6",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_7",
+    "aliases": [
+      "KC_P7",
+      "Numpad 7",
+      "KP7"
+    ],
+    "category": "numpad",
+    "description": "Numpad 7. Games and apps see a different key than KC_7; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp7",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_8",
+    "aliases": [
+      "KC_P8",
+      "Numpad 8",
+      "KP8"
+    ],
+    "category": "numpad",
+    "description": "Numpad 8. Games and apps see a different key than KC_8; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp8",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_9",
+    "aliases": [
+      "KC_P9",
+      "Numpad 9",
+      "KP9"
+    ],
+    "category": "numpad",
+    "description": "Numpad 9. Games and apps see a different key than KC_9; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp9",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_0",
+    "aliases": [
+      "KC_P0",
+      "Numpad 0",
+      "KP0"
+    ],
+    "category": "numpad",
+    "description": "Numpad 0. Games and apps see a different key than KC_0; needs Num Lock on for digits on Windows/Linux",
+    "legend": "kp0",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_DOT",
+    "aliases": [
+      "KC_PDOT",
+      "Numpad .",
+      "Numpad Dot"
+    ],
+    "category": "numpad",
+    "description": "Numpad decimal point",
+    "legend": "kp.",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_PLUS",
+    "aliases": [
+      "KC_PPLS",
+      "Numpad +",
+      "Numpad Plus"
+    ],
+    "category": "numpad",
+    "description": "Numpad plus",
+    "legend": "kp+",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_MINUS",
+    "aliases": [
+      "KC_PMNS",
+      "Numpad -",
+      "Numpad Minus"
+    ],
+    "category": "numpad",
+    "description": "Numpad minus",
+    "legend": "kp-",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_ASTERISK",
+    "aliases": [
+      "KC_PAST",
+      "Numpad *",
+      "Numpad Multiply"
+    ],
+    "category": "numpad",
+    "description": "Numpad multiply",
+    "legend": "kp*",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_SLASH",
+    "aliases": [
+      "KC_PSLS",
+      "Numpad /",
+      "Numpad Divide"
+    ],
+    "category": "numpad",
+    "description": "Numpad divide",
+    "legend": "kp/",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_ENTER",
+    "aliases": [
+      "KC_PENT",
+      "Numpad Enter"
+    ],
+    "category": "numpad",
+    "description": "Numpad Enter",
+    "legend": "kp⏎",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_KP_EQUAL",
+    "aliases": [
+      "KC_PEQL",
+      "Numpad ="
+    ],
+    "category": "numpad",
+    "description": "Numpad equals (mostly macOS)",
+    "legend": "kp=",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_NUM",
+    "aliases": [
+      "KC_NUM_LOCK",
+      "KC_NLCK",
+      "Num Lock",
+      "NumLock",
+      "KC_NUMLOCK"
+    ],
+    "category": "numpad",
+    "description": "Num Lock (Windows/Linux numpad digits need it on; macOS calls it Clear)",
+    "legend": "NumLk",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_AUDIO_VOL_UP",
+    "aliases": [
+      "KC_VOLU",
+      "Volume Up",
+      "Vol Up",
+      "Vol+"
+    ],
+    "category": "media",
+    "description": "Volume up",
+    "legend": "Vol+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_AUDIO_VOL_DOWN",
+    "aliases": [
+      "KC_VOLD",
+      "Volume Down",
+      "Vol Down",
+      "Vol-"
+    ],
+    "category": "media",
+    "description": "Volume down",
+    "legend": "Vol−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_AUDIO_MUTE",
+    "aliases": [
+      "KC_MUTE",
+      "Mute"
+    ],
+    "category": "media",
+    "description": "Mute audio",
+    "legend": "Mute",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MEDIA_PLAY_PAUSE",
+    "aliases": [
+      "KC_MPLY",
+      "Play",
+      "Pause Media",
+      "Play/Pause",
+      "⏯"
+    ],
+    "category": "media",
+    "description": "Play / pause",
+    "legend": "⏯",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MEDIA_NEXT_TRACK",
+    "aliases": [
+      "KC_MNXT",
+      "Next Track",
+      "Next",
+      "⏭"
+    ],
+    "category": "media",
+    "description": "Next track",
+    "legend": "⏭",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MEDIA_PREV_TRACK",
+    "aliases": [
+      "KC_MPRV",
+      "Previous Track",
+      "Prev Track",
+      "Prev",
+      "⏮"
+    ],
+    "category": "media",
+    "description": "Previous track",
+    "legend": "⏮",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MEDIA_STOP",
+    "aliases": [
+      "KC_MSTP",
+      "Stop",
+      "Media Stop",
+      "⏹"
+    ],
+    "category": "media",
+    "description": "Stop playback",
+    "legend": "⏹",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MEDIA_FAST_FORWARD",
+    "aliases": [
+      "KC_MFFD",
+      "Fast Forward"
+    ],
+    "category": "media",
+    "description": "Fast forward",
+    "legend": "⏩",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MEDIA_REWIND",
+    "aliases": [
+      "KC_MRWD",
+      "Rewind"
+    ],
+    "category": "media",
+    "description": "Rewind",
+    "legend": "⏪",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MEDIA_EJECT",
+    "aliases": [
+      "KC_EJCT",
+      "Eject"
+    ],
+    "category": "media",
+    "description": "Eject (macOS)",
+    "legend": "⏏",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_BRIGHTNESS_UP",
+    "aliases": [
+      "KC_BRIU",
+      "Brightness Up",
+      "Bright+",
+      "KC_BRMU"
+    ],
+    "category": "media",
+    "description": "Screen brightness up",
+    "legend": "☀+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_BRIGHTNESS_DOWN",
+    "aliases": [
+      "KC_BRID",
+      "Brightness Down",
+      "Bright-",
+      "KC_BRMD"
+    ],
+    "category": "media",
+    "description": "Screen brightness down",
+    "legend": "☀−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_SYSTEM_SLEEP",
+    "aliases": [
+      "KC_SLEP",
+      "Sleep"
+    ],
+    "category": "system",
+    "description": "Put the computer to sleep",
+    "legend": "Sleep",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_SYSTEM_WAKE",
+    "aliases": [
+      "KC_WAKE",
+      "Wake"
+    ],
+    "category": "system",
+    "description": "Wake the computer",
+    "legend": "Wake",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_SYSTEM_POWER",
+    "aliases": [
+      "KC_PWR",
+      "Power"
+    ],
+    "category": "system",
+    "description": "System power (usually shows the shutdown dialog)",
+    "legend": "Power",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_CALCULATOR",
+    "aliases": [
+      "KC_CALC",
+      "Calculator",
+      "Calc"
+    ],
+    "category": "system",
+    "description": "Open the calculator (Windows, Linux)",
+    "legend": "Calc",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MAIL",
+    "aliases": [
+      "Mail",
+      "Email"
+    ],
+    "category": "system",
+    "description": "Open the mail app (Windows, Linux)",
+    "legend": "Mail",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MY_COMPUTER",
+    "aliases": [
+      "KC_MYCM",
+      "My Computer",
+      "File Manager"
+    ],
+    "category": "system",
+    "description": "Open the file manager (Windows, Linux)",
+    "legend": "MyPC",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_SEARCH",
+    "aliases": [
+      "KC_WSCH",
+      "Browser Search"
+    ],
+    "category": "system",
+    "description": "Browser search",
+    "legend": "WSrch",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_HOME",
+    "aliases": [
+      "KC_WHOM",
+      "Browser Home"
+    ],
+    "category": "system",
+    "description": "Browser home",
+    "legend": "WHome",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_BACK",
+    "aliases": [
+      "KC_WBAK",
+      "Browser Back"
+    ],
+    "category": "system",
+    "description": "Browser back",
+    "legend": "WBack",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_FORWARD",
+    "aliases": [
+      "KC_WFWD",
+      "Browser Forward"
+    ],
+    "category": "system",
+    "description": "Browser forward",
+    "legend": "WFwd",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_REFRESH",
+    "aliases": [
+      "KC_WREF",
+      "Browser Refresh",
+      "Refresh"
+    ],
+    "category": "system",
+    "description": "Browser refresh",
+    "legend": "WRef",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_STOP",
+    "aliases": [
+      "KC_WSTP",
+      "Browser Stop"
+    ],
+    "category": "system",
+    "description": "Browser stop",
+    "legend": "WStop",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_WWW_FAVORITES",
+    "aliases": [
+      "KC_WFAV",
+      "Browser Favorites",
+      "Bookmarks"
+    ],
+    "category": "system",
+    "description": "Browser favorites",
+    "legend": "WFav",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_UP",
+    "aliases": [
+      "KC_MS_U",
+      "MS_UP",
+      "Mouse Up"
+    ],
+    "category": "mouse",
+    "description": "Move the pointer up",
+    "legend": "M↑",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_DOWN",
+    "aliases": [
+      "KC_MS_D",
+      "MS_DOWN",
+      "Mouse Down"
+    ],
+    "category": "mouse",
+    "description": "Move the pointer down",
+    "legend": "M↓",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_LEFT",
+    "aliases": [
+      "KC_MS_L",
+      "MS_LEFT",
+      "Mouse Left"
+    ],
+    "category": "mouse",
+    "description": "Move the pointer left",
+    "legend": "M←",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_RIGHT",
+    "aliases": [
+      "KC_MS_R",
+      "MS_RGHT",
+      "Mouse Right"
+    ],
+    "category": "mouse",
+    "description": "Move the pointer right",
+    "legend": "M→",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_BTN1",
+    "aliases": [
+      "KC_BTN1",
+      "MS_BTN1",
+      "Click",
+      "Left Click",
+      "LClick",
+      "Mouse 1",
+      "Mouse Button 1"
+    ],
+    "category": "mouse",
+    "description": "Left mouse button",
+    "legend": "Click",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MS_BTN2",
+    "aliases": [
+      "KC_BTN2",
+      "MS_BTN2",
+      "Right Click",
+      "RClick",
+      "Mouse 2",
+      "Mouse Button 2"
+    ],
+    "category": "mouse",
+    "description": "Right mouse button",
+    "legend": "RClick",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MS_BTN3",
+    "aliases": [
+      "KC_BTN3",
+      "MS_BTN3",
+      "Middle Click",
+      "MClick",
+      "Mouse 3",
+      "Mouse Button 3"
+    ],
+    "category": "mouse",
+    "description": "Middle mouse button",
+    "legend": "MClick",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_MS_BTN4",
+    "aliases": [
+      "KC_BTN4",
+      "MS_BTN4",
+      "Mouse 4",
+      "Mouse Button 4",
+      "Mouse Back"
+    ],
+    "category": "mouse",
+    "description": "Mouse button 4 (usually Back)",
+    "legend": "M4",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_BTN5",
+    "aliases": [
+      "KC_BTN5",
+      "MS_BTN5",
+      "Mouse 5",
+      "Mouse Button 5",
+      "Mouse Forward"
+    ],
+    "category": "mouse",
+    "description": "Mouse button 5 (usually Forward)",
+    "legend": "M5",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_WH_UP",
+    "aliases": [
+      "KC_WH_U",
+      "MS_WHLU",
+      "Wheel Up",
+      "Scroll Up"
+    ],
+    "category": "mouse",
+    "description": "Scroll wheel up",
+    "legend": "W↑",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_WH_DOWN",
+    "aliases": [
+      "KC_WH_D",
+      "MS_WHLD",
+      "Wheel Down",
+      "Scroll Down"
+    ],
+    "category": "mouse",
+    "description": "Scroll wheel down",
+    "legend": "W↓",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_WH_LEFT",
+    "aliases": [
+      "KC_WH_L",
+      "MS_WHLL",
+      "Wheel Left",
+      "Scroll Left"
+    ],
+    "category": "mouse",
+    "description": "Scroll wheel left",
+    "legend": "W←",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_WH_RIGHT",
+    "aliases": [
+      "KC_WH_R",
+      "MS_WHLR",
+      "Wheel Right",
+      "Scroll Right"
+    ],
+    "category": "mouse",
+    "description": "Scroll wheel right",
+    "legend": "W→",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_ACCEL0",
+    "aliases": [
+      "KC_ACL0",
+      "MS_ACL0",
+      "Mouse Accel 0"
+    ],
+    "category": "mouse",
+    "description": "Mouse-key speed 0 (slow, while held)",
+    "legend": "Acc0",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_ACCEL1",
+    "aliases": [
+      "KC_ACL1",
+      "MS_ACL1",
+      "Mouse Accel 1"
+    ],
+    "category": "mouse",
+    "description": "Mouse-key speed 1 (medium, while held)",
+    "legend": "Acc1",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_MS_ACCEL2",
+    "aliases": [
+      "KC_ACL2",
+      "MS_ACL2",
+      "Mouse Accel 2"
+    ],
+    "category": "mouse",
+    "description": "Mouse-key speed 2 (fast, while held)",
+    "legend": "Acc2",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "MO",
+    "aliases": [
+      "Momentary"
+    ],
+    "category": "layer",
+    "description": "Momentary layer: active while held. LT (tap a key, hold a layer) is not a separate Oryx code: it is tap = key + hold = MO(n), written LT(n, KC_x) in keyloom",
+    "legend": "MO",
+    "oryx": true,
+    "verified": true,
+    "layer": true
+  },
+  {
+    "code": "TG",
+    "aliases": [
+      "Toggle Layer"
+    ],
+    "category": "layer",
+    "description": "Toggle layer: tap to turn on, tap again to turn off. Put a TG to the same layer on the layer itself so the user can leave",
+    "legend": "⇄",
+    "oryx": true,
+    "verified": false,
+    "layer": true
+  },
+  {
+    "code": "TO",
+    "aliases": [
+      "Switch Layer",
+      "Go To Layer"
+    ],
+    "category": "layer",
+    "description": "Switch to layer: turns that layer on and every other layer (except the default) off. TO(0) is the universal way home",
+    "legend": "→",
+    "oryx": true,
+    "verified": true,
+    "layer": true
+  },
+  {
+    "code": "TT",
+    "aliases": [
+      "Tap Toggle"
+    ],
+    "category": "layer",
+    "description": "Tap-toggle: hold for momentary, tap (QMK default: 5 taps, Oryx may differ) to toggle on. Uses tap-hold timing",
+    "legend": "TT",
+    "oryx": true,
+    "verified": false,
+    "layer": true
+  },
+  {
+    "code": "OSL",
+    "aliases": [
+      "One Shot Layer"
+    ],
+    "category": "layer",
+    "description": "One-shot layer: the next key press comes from that layer, then it turns off",
+    "legend": "1×",
+    "oryx": true,
+    "verified": false,
+    "layer": true
+  },
+  {
+    "code": "DF",
+    "aliases": [
+      "Default Layer",
+      "Set Default Layer"
+    ],
+    "category": "layer",
+    "description": "Set default (base) layer until power-off. Not yet seen in a real Oryx layout: check Oryx offers it before relying on it",
+    "legend": "⌂",
+    "oryx": true,
+    "verified": false,
+    "layer": true
+  },
+  {
+    "code": "LT",
+    "aliases": [
+      "Layer Tap",
+      "Layer-Tap"
+    ],
+    "category": "layer",
+    "description": "Layer-tap, written LT(layer, KC_x): tap sends the key, hold switches to the layer. Not an Oryx code: stored as tap = key + hold = MO(layer). (The '<' key is KC_LT.)",
+    "legend": "LT",
+    "oryx": true,
+    "verified": false,
+    "family": true
+  },
+  {
+    "code": "MT",
+    "aliases": [
+      "Mod Tap",
+      "Mod-Tap"
+    ],
+    "category": "mod-tap",
+    "description": "Mod-tap, written MT(LCTL, KC_x) or LCTL_T(KC_x): tap sends the key, hold is the modifier. Not an Oryx code: stored as tap = key + hold = modifier. Oryx mod-taps take one modifier",
+    "legend": "MT",
+    "oryx": true,
+    "verified": false,
+    "family": true
+  },
+  {
+    "code": "TAP_HOLD",
+    "aliases": [
+      "Tap Hold",
+      "Dual Function"
+    ],
+    "category": "mod-tap",
+    "description": "Tap one key, hold another, written TAP_HOLD(KC_x, KC_y); `_` leaves a side empty. Oryx compiles it to a custom dual-function key",
+    "legend": "T/H",
+    "oryx": true,
+    "verified": false,
+    "family": true
+  },
+  {
+    "code": "MEH_T",
+    "aliases": [
+      "MEH",
+      "KC_MEH"
+    ],
+    "category": "mod-tap",
+    "description": "Meh (Ctrl+Alt+Shift) as a hold action: tap = key, hold = Meh. Oryx compiles it to MEH_T(KC_x)",
+    "legend": "Meh",
+    "oryx": true,
+    "verified": true,
+    "modTap": true
+  },
+  {
+    "code": "ALL_T",
+    "aliases": [
+      "HYPR_T",
+      "HYPR",
+      "Hyper",
+      "KC_HYPR"
+    ],
+    "category": "mod-tap",
+    "description": "Hyper (Ctrl+Alt+Shift+GUI) as a hold action: tap = key, hold = Hyper. Assumed to mirror MEH_T; not yet seen in a real Oryx layout",
+    "legend": "Hyper",
+    "oryx": true,
+    "verified": false,
+    "modTap": true
+  },
+  {
+    "code": "OSM",
+    "aliases": [
+      "One Shot Mod",
+      "One Shot Modifier"
+    ],
+    "category": "one-shot",
+    "description": "One-shot modifier family: the modifier applies to the next key only. Not supported by keyloom yet (OSM(...) is rejected): Oryx offers one-shot modifiers but how it stores them isn't confirmed, so they are set by hand in Oryx",
+    "legend": "1×Mod",
+    "oryx": true,
+    "verified": false,
+    "oneShot": true
+  },
+  {
+    "code": "RGB_TOG",
+    "aliases": [
+      "RM_TOGG",
+      "RGB Toggle",
+      "Lights Toggle"
+    ],
+    "category": "rgb",
+    "description": "Turn the RGB lighting on or off",
+    "legend": "RGB",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_MODE_FORWARD",
+    "aliases": [
+      "RGB_MOD",
+      "RM_NEXT",
+      "RGB Next",
+      "Next Animation"
+    ],
+    "category": "rgb",
+    "description": "Next lighting animation",
+    "legend": "RGB▸",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_MODE_REVERSE",
+    "aliases": [
+      "RGB_RMOD",
+      "RM_PREV",
+      "RGB Previous",
+      "Previous Animation"
+    ],
+    "category": "rgb",
+    "description": "Previous lighting animation",
+    "legend": "◂RGB",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "RGB_SLD",
+    "aliases": [
+      "RGB_MODE_PLAIN",
+      "RGB_M_P",
+      "RGB Solid",
+      "Static Color"
+    ],
+    "category": "rgb",
+    "description": "Static (solid) lighting mode; ZSA's code for 'show the layer colors' set in Oryx",
+    "legend": "Solid",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_VAI",
+    "aliases": [
+      "RM_VALU",
+      "RGB Brightness Up",
+      "Light Up"
+    ],
+    "category": "rgb",
+    "description": "Lighting brightness up",
+    "legend": "☼+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_VAD",
+    "aliases": [
+      "RM_VALD",
+      "RGB Brightness Down",
+      "Light Down"
+    ],
+    "category": "rgb",
+    "description": "Lighting brightness down",
+    "legend": "☼−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_HUI",
+    "aliases": [
+      "RM_HUEU",
+      "RGB Hue Up",
+      "Hue Up"
+    ],
+    "category": "rgb",
+    "description": "Lighting hue up",
+    "legend": "Hue+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_HUD",
+    "aliases": [
+      "RM_HUED",
+      "RGB Hue Down",
+      "Hue Down"
+    ],
+    "category": "rgb",
+    "description": "Lighting hue down",
+    "legend": "Hue−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_SAI",
+    "aliases": [
+      "RM_SATU",
+      "RGB Saturation Up",
+      "Saturation Up"
+    ],
+    "category": "rgb",
+    "description": "Lighting saturation up",
+    "legend": "Sat+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_SAD",
+    "aliases": [
+      "RM_SATD",
+      "RGB Saturation Down",
+      "Saturation Down"
+    ],
+    "category": "rgb",
+    "description": "Lighting saturation down",
+    "legend": "Sat−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_SPI",
+    "aliases": [
+      "RM_SPDU",
+      "RGB Speed Up",
+      "Animation Speed Up"
+    ],
+    "category": "rgb",
+    "description": "Animation speed up",
+    "legend": "Spd+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB_SPD",
+    "aliases": [
+      "RM_SPDD",
+      "RGB Speed Down",
+      "Animation Speed Down"
+    ],
+    "category": "rgb",
+    "description": "Animation speed down",
+    "legend": "Spd−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "RGB",
+    "aliases": [
+      "Set Color",
+      "RGB Color",
+      "Color"
+    ],
+    "category": "zsa",
+    "description": "ZSA: set all LEDs to one color; the color is the action's `color` field (e.g. #ffab00)",
+    "legend": "●",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "TOGGLE_LAYER_COLOR",
+    "aliases": [
+      "Layer Color Toggle",
+      "Toggle Layer Colors"
+    ],
+    "category": "zsa",
+    "description": "ZSA: turn the per-layer colors from Oryx on or off",
+    "legend": "LyrClr",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "LED_LEVEL",
+    "aliases": [
+      "LED Level",
+      "Status LED Level"
+    ],
+    "category": "zsa",
+    "description": "ZSA: cycle the brightness of the status LEDs. Not yet seen in a real layout",
+    "legend": "LED",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "NAVIGATOR_INC_CPI",
+    "aliases": [
+      "CPI Up",
+      "Trackball Faster",
+      "Navigator CPI Up"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: raise trackball sensitivity (CPI)",
+    "legend": "CPI+",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "NAVIGATOR_DEC_CPI",
+    "aliases": [
+      "CPI Down",
+      "Trackball Slower",
+      "Navigator CPI Down"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: lower trackball sensitivity (CPI)",
+    "legend": "CPI−",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "NAVIGATOR_TURBO",
+    "aliases": [
+      "Turbo",
+      "Navigator Turbo"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: hold for fast pointer movement. Not yet seen in a real layout",
+    "legend": "Turbo",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "NAVIGATOR_AIM",
+    "aliases": [
+      "Aim",
+      "Navigator Aim",
+      "Precision"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: hold for slow, precise pointer movement. Not yet seen in a real layout",
+    "legend": "Aim",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "DRAG_SCROLL",
+    "aliases": [
+      "Drag Scroll",
+      "Hold Scroll"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: while held, the trackball scrolls instead of moving the pointer",
+    "legend": "Scroll",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "TOGGLE_SCROLL",
+    "aliases": [
+      "Toggle Scroll",
+      "Scroll Toggle"
+    ],
+    "category": "zsa",
+    "description": "ZSA Navigator: toggle scroll mode for the trackball",
+    "legend": "TgScrl",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "MAC_MISSION_CONTROL",
+    "aliases": [
+      "KC_MISSION_CONTROL",
+      "KC_MCTL",
+      "Mission Control"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: Mission Control",
+    "legend": "MsnCtl",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "MAC_LAUNCHPAD",
+    "aliases": [
+      "KC_LAUNCHPAD",
+      "KC_LPAD",
+      "Launchpad"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: Launchpad. Not yet seen in a real layout",
+    "legend": "Launch",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "MAC_SPOTLIGHT",
+    "aliases": [
+      "Spotlight"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: Spotlight search. Not yet seen in a real layout",
+    "legend": "Spot",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "MAC_DND",
+    "aliases": [
+      "Do Not Disturb",
+      "DND"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: toggle Do Not Disturb / Focus. Not yet seen in a real layout",
+    "legend": "DND",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "MAC_LOCK",
+    "aliases": [
+      "Lock Screen",
+      "Screen Lock"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: lock the screen. Not yet seen in a real layout",
+    "legend": "Lock",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "MAC_DICTATION",
+    "aliases": [
+      "Dictation",
+      "Dictate"
+    ],
+    "category": "zsa",
+    "description": "ZSA macOS key: start dictation. Not yet seen in a real layout",
+    "legend": "Dict",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_BOOT",
+    "aliases": [
+      "QK_BOOTLOADER",
+      "RESET",
+      "Bootloader",
+      "Boot",
+      "Flash Mode"
+    ],
+    "category": "quantum",
+    "description": "Reboot into the bootloader for flashing. Keep it on a hard-to-hit spot of a rarely used layer",
+    "legend": "Boot",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "QK_LLCK",
+    "aliases": [
+      "QK_LAYER_LOCK",
+      "Layer Lock",
+      "LLock"
+    ],
+    "category": "quantum",
+    "description": "Layer lock: keep the current layer on after releasing its MO/LT key; press again (or TO) to unlock. Useful on mouse and nav layers",
+    "legend": "LLock",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "CW_TOGG",
+    "aliases": [
+      "QK_CAPS_WORD_TOGGLE",
+      "Caps Word",
+      "CapsWord"
+    ],
+    "category": "quantum",
+    "description": "Caps Word: capitalise until a non-word key (space, punctuation). Not yet seen in a real layout",
+    "legend": "CapsWd",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_REP",
+    "aliases": [
+      "QK_REPEAT_KEY",
+      "Repeat",
+      "Repeat Key"
+    ],
+    "category": "quantum",
+    "description": "Repeat the last key. Not yet seen in a real layout",
+    "legend": "Repeat",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_AREP",
+    "aliases": [
+      "QK_ALT_REPEAT_KEY",
+      "Alt Repeat",
+      "Alternate Repeat"
+    ],
+    "category": "quantum",
+    "description": "Alternate repeat (the 'opposite' of the last key). Not yet seen in a real layout",
+    "legend": "AltRep",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_DYNAMIC_TAPPING_TERM_PRINT",
+    "aliases": [
+      "DT_PRNT",
+      "Print Tapping Term"
+    ],
+    "category": "quantum",
+    "description": "Type out the current tapping term in ms. Not yet seen in a real layout",
+    "legend": "DT?",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_DYNAMIC_TAPPING_TERM_UP",
+    "aliases": [
+      "DT_UP",
+      "Tapping Term Up"
+    ],
+    "category": "quantum",
+    "description": "Raise the tapping term by 5 ms. Not yet seen in a real layout",
+    "legend": "DT+",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "QK_DYNAMIC_TAPPING_TERM_DOWN",
+    "aliases": [
+      "DT_DOWN",
+      "Tapping Term Down"
+    ],
+    "category": "quantum",
+    "description": "Lower the tapping term by 5 ms. Not yet seen in a real layout",
+    "legend": "DT−",
+    "oryx": true,
+    "verified": false
+  },
+  {
+    "code": "KC_TRANSPARENT",
+    "aliases": [
+      "KC_TRNS",
+      "TRNS",
+      "_______",
+      "Transparent",
+      "Trans",
+      "▽"
+    ],
+    "category": "misc",
+    "description": "Transparent: falls through to the next active lower layer. A blank key in Oryx compiles to this too",
+    "legend": "▽",
+    "oryx": true,
+    "verified": true
+  },
+  {
+    "code": "KC_NO",
+    "aliases": [
+      "NO",
+      "XXXXXXX",
+      "Nothing",
+      "Disabled"
+    ],
+    "category": "misc",
+    "description": "No action: the key does nothing and blocks fall-through. Use it on gaming layers instead of transparent where the base has tap-hold keys",
+    "legend": "",
+    "oryx": true,
+    "verified": false
+  }
+]

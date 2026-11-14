@@ -1,0 +1,4252 @@
+{
+ "data": {
+  "layout": {
+   "geometry": "voyager",
+   "hashId": "9qMJK",
+   "revision": {
+    "combos": null,
+    "config": null,
+    "createdAt": "2026-11-12 09:56:22 UTC",
+    "hashId": "ZPjbXz",
+    "layers": [
+     {
+      "color": null,
+      "keys": [
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "KC_ESCAPE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_EQUAL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_1",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_2",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_3",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_4",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_5",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "KC_LEFT_CTRL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_TAB",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_Q",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_W",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_P",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_B",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LEFT_SHIFT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_A",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_R",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_S",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_T",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_G",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LEFT_ALT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_X",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_C",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_D",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_V",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_Z",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LEFT_GUI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "MO",
+         "color": null,
+         "description": null,
+         "layer": 1,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_SPACE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_6",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_7",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_8",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_9",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_0",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_BSPC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_J",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_L",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_U",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_Y",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_SCLN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_BSLS",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_M",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_N",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_E",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_I",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_O",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "KC_RIGHT_SHIFT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_QUOTE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_K",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_H",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_COMMA",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_DOT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "KC_RIGHT_ALT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_SLASH",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_ENTER",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "MO",
+         "color": null,
+         "description": null,
+         "layer": 2,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "MEH_T",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": {
+         "code": "KC_BSPC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       }
+      ],
+      "position": 0,
+      "title": "Main"
+     },
+     {
+      "color": null,
+      "keys": [
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_ESCAPE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F1",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F2",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F3",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F4",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F5",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_GRAVE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_1",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_2",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_3",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_4",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_5",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_CIRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_AMPR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_ASTR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LPRN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RPRN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LBRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RBRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LCBR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RCBR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F6",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F7",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F8",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F9",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F10",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F11",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_6",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_7",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_8",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_9",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_0",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_F12",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_4",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LEFT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_DOWN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_UP",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RIGHT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_BSPC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_1",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_2",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_3",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_DOT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_EQUAL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_ENTER",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_0",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       }
+      ],
+      "position": 1,
+      "title": "Sym+Num"
+     },
+     {
+      "color": null,
+      "keys": [
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_TOG",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "TOGGLE_LAYER_COLOR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_MODE_FORWARD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_SLD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_VAD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_VAI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_EXLM",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_AT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_HASH",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_DLR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_PERC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB",
+         "color": "#ffab00",
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MEDIA_PREV_TRACK",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MEDIA_NEXT_TRACK",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MEDIA_STOP",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MEDIA_PLAY_PAUSE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_HUD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_HUI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_SAD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_SAI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_SPD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "RGB_SPI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_BRIGHTNESS_DOWN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_BRIGHTNESS_UP",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_AUDIO_VOL_DOWN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_AUDIO_VOL_UP",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "QK_BOOT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_CIRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_AMPR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_ASTR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LPRN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RPRN",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_PIPE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MINUS",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_EQUAL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LCBR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "KC_RCBR",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_TILD",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_GRAVE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_UNDS",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_PLUS",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_LBRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_RBRC",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "glowColor": null,
+        "tap": {
+         "code": "KC_TRANSPARENT",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifiers": null
+        }
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null,
+        "tappingTerm": null
+       }
+      ],
+      "position": 2,
+      "title": "Brd+Sys"
+     },
+     {
+      "color": null,
+      "keys": [
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "lockGlowColor": null,
+        "tap": {
+         "code": "KC_SPACE",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null,
+        "tappingTerm": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "about": null,
+        "aboutPosition": null,
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       }
+      ],
+      "position": 3,
+      "title": "Gaming"
+     },
+     {
+      "color": null,
+      "keys": [
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "NAVIGATOR_DEC_CPI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "NAVIGATOR_INC_CPI",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "QK_LLCK",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MS_BTN3",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "TOGGLE_SCROLL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MS_BTN2",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": {
+         "code": "KC_MS_BTN1",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": {
+         "code": "DRAG_SCROLL",
+         "color": null,
+         "description": null,
+         "layer": null,
+         "macro": null,
+         "modifier": null,
+         "modifiers": null
+        },
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       },
+       {
+        "customLabel": null,
+        "doubleTap": null,
+        "emoji": null,
+        "glowColor": null,
+        "hold": null,
+        "icon": null,
+        "tap": null,
+        "tapHold": null
+       }
+      ],
+      "position": 4,
+      "title": "Mouse"
+     }
+    ],
+    "qmkVersion": "25.0",
+    "title": "Keyboard layout edited.",
+    "zipUrl": "https://oryx.zsa.io/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6OTQxMzUwNiwicHVyIjoiYmxvYl9pZCJ9fQ==--6abaa237c0ace3e528b77348871c12b70db7d29e/zsa_voyager_9qMJK_ZPjbXz_voyager_source.zip"
+   },
+   "title": "Voyager"
+  }
+ }
+}
