@@ -216,10 +216,19 @@ color_layer{layer,color} · add_combo{layer,keys,action,name?} · remove_combo{l
         #[arg(long)]
         step: bool,
     },
-    /// Create a NEW layout on Oryx from a draft (no login; your own layouts are never changed). Prints its link.
+    /// Put a draft on Oryx: a NEW layout (no login, your own layouts never change), or with --to your own layout.
+    ///
+    /// Never compiles or flashes. --to needs your Oryx login token in KEYLOOM_ORYX_TOKEN (or, on macOS, in the
+    /// keychain item "keyloom-oryx"); it writes an uncompiled revision for you to check and compile in Oryx.
     Push {
         /// Draft name
         draft: String,
+        /// Write into this layout of yours (id or Oryx link) instead of creating a new one
+        #[arg(long, value_name = "LAYOUT")]
+        to: Option<String>,
+        /// With --to: write even if that replaces changes on Oryx the draft doesn't have
+        #[arg(long, requires = "to")]
+        overwrite: bool,
         /// Push even if the draft has validation errors
         #[arg(long)]
         force: bool,
@@ -884,8 +893,8 @@ fn run(cmd: Command, out: &Out) -> Result<()> {
             print!("{}", keyloom::guide::render(&g));
             Ok(())
         }
-        Command::Push { draft, force } => {
-            let p = app::push(&ws, &draft, force, &mut keyloom::push::OryxHttp::new())?;
+        Command::Push { draft, to, overwrite, force } => {
+            let p = app::push_live(&ws, &draft, force, &app::PushTarget { to, overwrite })?;
             if out.json {
                 out.json(&p)?;
             } else {

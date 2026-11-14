@@ -3,7 +3,7 @@
 use keyloom::model::{Kind, Layout};
 use keyloom::ops::{apply_ops, Op};
 use keyloom::push::fake::FakeOryx;
-use keyloom::push::{push_new, PushError};
+use keyloom::push::{push_into, push_new, PushError};
 use keyloom::source;
 use serde_json::{json, Value};
 use std::path::PathBuf;
@@ -113,4 +113,77 @@ fn changed_combos_are_reported_not_written() {
     let mut oryx = oryx_with(&base);
     let p = push_new(&mut oryx, &draft, Some(&base)).unwrap();
     assert!(p.warnings.iter().any(|w| w.contains("combos")), "{:?}", p.warnings);
+}
+
+/// The user's own layout on Oryx, logged in.
+fn own(base: &Layout) -> FakeOryx {
+    let mut oryx = oryx_with(base);
+    oryx.owned.insert(base.layout_id.clone());
+    oryx
+}
+
+const WOW: &str = r#"[
+    {"op": "add_layer", "title": "WoW", "after": "Gaming", "fill": "none"},
+    {"op": "set_key", "layer": "Main", "key": "L.thumb.1", "action": "TG(WoW)"},
+    {"op": "set_key", "layer": "WoW", "key": "L.thumb.1", "action": "TG(WoW)"}
+]"#;
+
+#[test]
+fn into_my_own_layout_makes_an_uncompiled_revision_and_keeps_the_compiled_one() {
+    let (base, draft) = base_and_draft(serde_json::from_str(WOW).unwrap());
+    let mut oryx = own(&base);
+    let compiled = oryx.layouts[&base.layout_id].clone();
+
+    let p = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap();
+    assert!(p.verified && p.warnings.is_empty() && !p.new_layout, "{p:?}");
+    assert_eq!((p.layout_id.as_str(), p.copied_from.as_str(), p.layers_added), ("9qMJK", "9qMJK@ZPjbXz", 1));
+    assert_eq!(oryx.layouts.len(), 1, "no separate layout was made");
+    // The compiled revision is kept as it was; the new one isn't compiled.
+    assert_eq!(oryx.frozen["ZPjbXz"], compiled);
+    assert!(oryx.layouts["9qMJK"]["revision"]["qmkVersion"].is_null() && p.revision_id != "ZPjbXz");
+    assert!(stored(&oryx, "9qMJK").layers.iter().any(|l| l.title == "WoW"));
+
+    // Pushing the same draft again, or after more edits, goes into the same uncompiled revision.
+    let again = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap();
+    assert_eq!((again.revision_id, again.layers_written, again.layers_added), (p.revision_id, 0, 0));
+}
+
+#[test]
+fn into_refuses_to_lose_changes_made_on_oryx() {
+    let (base, draft) = base_and_draft(serde_json::from_str(WOW).unwrap());
+
+    // The layout moved on to a newer compiled revision than the draft's base.
+    let mut newer = base.clone();
+    newer.revision_id = "NEWER1".into();
+    let mut oryx = own(&newer);
+    let before = oryx.layouts.clone();
+    let e = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap_err();
+    assert!(matches!(e, PushError::Unsupported(_)) && e.to_string().contains("is at revision NEWER1"), "{e}");
+    assert_eq!(oryx.layouts, before);
+    assert!(!oryx.calls.iter().any(|c| c != "layout"), "only read: {:?}", oryx.calls);
+    let forced = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, true).unwrap();
+    assert!(forced.verified && forced.warnings.iter().any(|w| w.contains("replaced by the draft")), "{forced:?}");
+
+    // The layout has uncompiled edits of the user's own.
+    let mut oryx = own(&base);
+    oryx.layouts.get_mut("9qMJK").unwrap()["revision"]["qmkVersion"] = Value::Null;
+    oryx.layouts.get_mut("9qMJK").unwrap()["revision"]["hashId"] = "DRAFT1".into();
+    oryx.layouts.get_mut("9qMJK").unwrap()["revision"]["layers"][0]["title"] = "Mine".into();
+    let before = oryx.layouts.clone();
+    let e = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap_err();
+    assert!(e.to_string().contains("uncompiled changes"), "{e}");
+    assert_eq!(oryx.layouts, before);
+    let forced = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, true).unwrap();
+    assert!(forced.verified && forced.warnings.iter().any(|w| w.contains("Overwrote uncompiled changes")), "{forced:?}");
+}
+
+#[test]
+fn into_a_layout_that_isnt_mine_writes_nothing_there() {
+    let (base, draft) = base_and_draft(serde_json::from_str(WOW).unwrap());
+    let mut oryx = oryx_with(&base); // not owned: Oryx makes a separate layout
+    let before = oryx.layouts[&base.layout_id].clone();
+    let e = push_into(&mut oryx, &draft, Some(&base), &base.layout_id, false).unwrap_err();
+    assert!(e.to_string().contains("separate layout") && e.to_string().contains("Nothing was written to 9qMJK"), "{e}");
+    assert_eq!(oryx.layouts[&base.layout_id], before);
+    assert!(!oryx.calls.iter().any(|c| c.starts_with("update") || c.ends_with("Layer")), "{:?}", oryx.calls);
 }

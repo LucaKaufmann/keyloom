@@ -60,6 +60,7 @@ keyloom diff 9qMJK draft:wow
 keyloom validate wow                                    # fix every error
 keyloom guide wow                                       # steps for the user in Oryx: show them this
 keyloom push wow                                        # or, if the user agrees: a NEW public Oryx layout with the draft; give them the link
+keyloom push wow --to 9qMJK                             # only when the user asks: an uncompiled revision of THEIR layout (needs their token, see below)
 ```
 
 `ops.json` is a JSON array, e.g. `[{"op":"set_key","layer":"WoW","key":"L.home.1","action":"KC_A"}]`. Ops:
@@ -80,3 +81,11 @@ After the user applied the guide in Oryx and flashed: `keyloom import <layout id
 Needs Keymapp running with Settings → API on; check with `keyloom status`.
 `keyloom live highlight L.home.1 L.home.2`, `keyloom live layer <layer>`, `--show` on `show`/`find`, and
 `keyloom guide wow --step` (lights each step's key). Always finish with `keyloom live reset`.
+
+## Pushing into the user's own layout
+
+`keyloom push <draft> --to <layout>` changes the user's Oryx account, so run it only when they asked for it.
+It needs their login token in `KEYLOOM_ORYX_TOKEN` or the macOS keychain item `keyloom-oryx`; if it is missing,
+show them the command's message and let them set it up. Never ask them to paste the token into the chat. It
+writes an uncompiled revision and never compiles. If it refuses because Oryx has newer or uncompiled changes,
+tell the user what it said; use `--overwrite` only when they say to replace those changes.

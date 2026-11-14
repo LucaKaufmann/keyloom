@@ -20,8 +20,8 @@ Voyager · 9qMJK@ZPjbXz · layer 0 "Main"
 ```
 
 **Supported keyboard:** ZSA Voyager.
-**Not a flasher:** keyloom never changes your own Oryx layouts and never builds or flashes firmware. You
-compile and flash in Oryx as usual.
+**Not a flasher:** keyloom never builds or flashes firmware, and it only writes to one of your own Oryx
+layouts when you ask it to with `push --to`. You compile and flash in Oryx as usual.
 
 ## Contents
 
@@ -170,7 +170,8 @@ keyloom validate wow                           # 3. check it
 keyloom diff <id> draft:wow                    #    and see what changed
 keyloom guide wow                              # 4a. the steps to make in Oryx yourself
 keyloom push wow                               # 4b. or: a new Oryx layout with the draft in it
-#    … in Oryx: make the changes (4a) or open the link (4b), compile, flash …
+keyloom push wow --to <id>                     # 4c. or: an uncompiled revision of your own layout (needs a token)
+#    … in Oryx: make the changes (4a) or open the link (4b, 4c), compile, flash …
 keyloom import <id>                            # 5. fetch the new revision
 keyloom verify wow                             #    and confirm it matches the draft
 ```
@@ -198,6 +199,41 @@ Created a new layout on Oryx from draft:wow: https://configure.zsa.io/voyager/la
 - It doesn't compile or flash. Open the link, look it over, then compile and flash in Oryx.
 - It uses the calls Oryx's own website uses. They are undocumented and ZSA may change them; `keyloom guide`
   always works. See [docs/oryx-write-api.md](docs/oryx-write-api.md).
+
+### `keyloom push --to`: into your own layout
+
+`keyloom push <draft> --to <layout id or link>` writes the draft into a layout in your Oryx account, as a new
+uncompiled revision. You open it in Oryx, look at the changes, and compile and flash when you are happy.
+
+```
+Wrote draft:wow into your layout 9qMJK on Oryx as an uncompiled revision: https://configure.zsa.io/voyager/layouts/9qMJK/latest/0
+  started from 9qMJK@jZjnDa, then wrote 2 layer(s), added 1, removed 0
+  ✓ read back from Oryx: layers and keys match the draft
+```
+
+This needs your Oryx login token, because only you may change your layouts:
+
+1. Sign in at [configure.zsa.io](https://configure.zsa.io), open the browser's developer console and run
+   `localStorage.getItem("jwtToken")`.
+2. Give it to keyloom in one of two ways. keyloom reads it and never stores it anywhere else.
+
+   ```sh
+   export KEYLOOM_ORYX_TOKEN='eyJ…'                                    # for this shell
+   security add-generic-password -U -a oryx -s keyloom-oryx -w        # macOS keychain; asks for the token
+   ```
+
+The token gives full access to your Oryx account for months. Treat it like a password; signing out of Oryx is
+the way to stop using it.
+
+What `push --to` will and won't do:
+
+- It never compiles, and it can't change a revision you already compiled: Oryx freezes those.
+- It refuses, before writing anything, if the layout's newest compiled revision isn't the one your draft
+  started from. Import the layout again and redo the draft, so the push can't undo newer changes.
+- It refuses if the layout has uncompiled changes on Oryx that didn't come from this draft, because it would
+  write over them.
+- `--overwrite` skips both checks.
+- Pushing the same draft again updates the same uncompiled revision.
 
 ## Naming keys, layers and actions
 
@@ -259,13 +295,14 @@ keyloom commits to after every change, so you have a full history. Imported revi
 keep a log of their edits.
 
 keyloom talks to two things: Oryx (to fetch a layout you name and, only when you run `keyloom push`, to
-create a new layout from a draft) and Keymapp on your own machine. Nothing else leaves your computer.
+write a draft there) and Keymapp on your own machine. Nothing else leaves your computer. Your Oryx login
+token is only sent to Oryx, and only by `push --to`.
 
 ## Limits
 
 - Voyager only. Other ZSA boards (Moonlander, ErgoDox EZ) aren't supported yet.
-- keyloom never edits your existing Oryx layouts. `guide` gives you the steps to make yourself; `push`
-  creates a separate new layout.
+- keyloom doesn't edit your existing Oryx layouts unless you run `push --to`. `guide` gives you the steps to
+  make yourself; plain `push` creates a separate new layout.
 - Private Oryx layouts can't be fetched. Make the layout public or use `keyloom import keymapp`.
 - Combos, tap dance and the `TG`, `OSL`, `TT` and `DF` layer keys follow Oryx's format as far as it is
   known, but haven't been checked against a real layout that uses them. `OSM` and `LM` are rejected for now.

@@ -318,9 +318,75 @@ pub fn guide_for(ws: &Workspace, draft_name: &str) -> Result<(Guide, Layout)> {
     Ok((g, draft))
 }
 
-/// Writes a draft into a new anonymous layout on Oryx (nothing in the user's account changes).
-/// Refuses a draft with validation errors unless `force`.
-pub fn push(ws: &Workspace, draft_name: &str, force: bool, oryx: &mut dyn keyloom::push::Transport) -> Result<keyloom::push::Pushed> {
+/// Where a push goes.
+#[derive(Debug, Clone, Default)]
+pub struct PushTarget {
+    /// One of the user's own Oryx layouts (id or link). None: a new anonymous layout.
+    pub to: Option<String>,
+    /// With `to`: write even if that loses changes on Oryx the draft doesn't have.
+    pub overwrite: bool,
+}
+
+/// The environment variable holding the user's Oryx login token (set but empty: no token, don't look further).
+pub const ORYX_TOKEN_ENV: &str = "KEYLOOM_ORYX_TOKEN";
+/// The macOS keychain item holding it.
+pub const ORYX_KEYCHAIN_SERVICE: &str = "keyloom-oryx";
+
+/// The user's Oryx login token: `KEYLOOM_ORYX_TOKEN`, or on macOS the keychain item `keyloom-oryx`.
+/// keyloom never stores it itself.
+pub fn oryx_token() -> Result<String> {
+    let clean = |t: &str| t.trim().trim_matches(|c| c == '"' || c == '\'').to_string();
+    let found = match std::env::var(ORYX_TOKEN_ENV) {
+        Ok(t) => clean(&t),
+        Err(_) if cfg!(target_os = "macos") => std::process::Command::new("/usr/bin/security")
+            .args(["find-generic-password", "-s", ORYX_KEYCHAIN_SERVICE, "-w"])
+            .stderr(std::process::Stdio::null())
+            .output()
+            .ok()
+            .filter(|o| o.status.success())
+            .map(|o| clean(&String::from_utf8_lossy(&o.stdout)))
+            .unwrap_or_default(),
+        Err(_) => String::new(),
+    };
+    if found.is_empty() {
+        anyhow::bail!(
+            "Pushing into your own layout needs your Oryx login token, and none is set. Nothing was sent to Oryx.\n\
+             Get it: sign in at https://configure.zsa.io, open the browser console and run localStorage.getItem(\"jwtToken\").\n\
+             Store it: export {ORYX_TOKEN_ENV}=…{}\n\
+             Without a token, `keyloom push <draft>` (no --to) makes a new layout instead.",
+            if cfg!(target_os = "macos") {
+                format!(", or in the keychain: security add-generic-password -U -a oryx -s {ORYX_KEYCHAIN_SERVICE} -w")
+            } else {
+                String::new()
+            }
+        );
+    }
+    Ok(found)
+}
+
+/// The layout id in `https://configure.zsa.io/voyager/layouts/<id>/…`, or the id itself.
+pub fn oryx_layout_id(link_or_id: &str) -> String {
+    let s = link_or_id.trim();
+    match s.split("/layouts/").nth(1) {
+        Some(rest) => rest.split(['/', '?', '#']).next().unwrap_or_default().to_string(),
+        None => s.to_string(),
+    }
+}
+
+/// Pushes with the real Oryx: no login for a new layout, the user's token for `to`.
+pub fn push_live(ws: &Workspace, draft_name: &str, force: bool, target: &PushTarget) -> Result<keyloom::push::Pushed> {
+    // Check the draft before asking for a token, so a refused draft never needs one.
+    let mut oryx = match &target.to {
+        Some(_) => {
+            push_check(ws, draft_name, force)?;
+            keyloom::push::OryxHttp::with_token(&oryx_token()?)
+        }
+        None => keyloom::push::OryxHttp::new(),
+    };
+    push(ws, draft_name, force, target, &mut oryx)
+}
+
+fn push_check(ws: &Workspace, draft_name: &str, force: bool) -> Result<Layout> {
     let draft = ws.load_draft(draft_name)?;
     let blockers = guide_blockers(ws, &draft);
     if !blockers.is_empty() && !force {
@@ -329,16 +395,41 @@ pub fn push(ws: &Workspace, draft_name: &str, force: bool, oryx: &mut dyn keyloo
             blockers_text(&draft, &blockers)
         );
     }
+    Ok(draft)
+}
+
+/// Writes a draft to Oryx: into a new anonymous layout (nothing in the user's account changes), or with
+/// `target.to` into an uncompiled revision of the user's own layout (`oryx` must carry their login).
+/// Refuses a draft with validation errors unless `force`. Never compiles.
+pub fn push(
+    ws: &Workspace,
+    draft_name: &str,
+    force: bool,
+    target: &PushTarget,
+    oryx: &mut dyn keyloom::push::Transport,
+) -> Result<keyloom::push::Pushed> {
+    let draft = push_check(ws, draft_name, force)?;
     let base = base_of(ws, &draft).ok();
-    Ok(keyloom::push::push_new(oryx, &draft, base.as_ref())?)
+    Ok(match &target.to {
+        Some(to) => keyloom::push::push_into(oryx, &draft, base.as_ref(), &oryx_layout_id(to), target.overwrite)?,
+        None => keyloom::push::push_new(oryx, &draft, base.as_ref())?,
+    })
 }
 
 /// The push result as text.
 pub fn push_text(p: &keyloom::push::Pushed) -> String {
-    let mut out = format!("Created a new layout on Oryx from {}: {}\n", p.draft, p.url);
+    let mut out = if p.new_layout {
+        format!("Created a new layout on Oryx from {}: {}\n", p.draft, p.url)
+    } else {
+        format!("Wrote {} into your layout {} on Oryx as an uncompiled revision: {}\n", p.draft, p.layout_id, p.url)
+    };
     out.push_str(&format!(
-        "  copied {}, then wrote {} layer(s), added {}, removed {}\n",
-        p.copied_from, p.layers_written, p.layers_added, p.layers_removed
+        "  {} {}, then wrote {} layer(s), added {}, removed {}\n",
+        if p.new_layout { "copied" } else { "started from" },
+        p.copied_from,
+        p.layers_written,
+        p.layers_added,
+        p.layers_removed
     ));
     if p.verified {
         out.push_str("  ✓ read back from Oryx: layers and keys match the draft\n");
@@ -348,10 +439,13 @@ pub fn push_text(p: &keyloom::push::Pushed) -> String {
     for w in &p.warnings {
         out.push_str(&format!("  ! {w}\n"));
     }
-    out.push_str(
+    out.push_str(if p.new_layout {
         "Next: open the link, check the layout, then compile and flash in Oryx. It is a new public layout that belongs to no account; \
-         your own layouts are unchanged.\n",
-    );
+         your own layouts are unchanged.\n"
+    } else {
+        "Next: open the link, check the changes, then compile and flash in Oryx. Nothing was compiled, and the revisions you \
+         compiled before are unchanged.\n"
+    });
     out
 }
 

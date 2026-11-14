@@ -74,21 +74,39 @@ repeating it worked.
 4. Reads the copy back and diffs it against the draft; the result says whether it matches.
 5. Doesn't compile. The user opens the link, compiles and flashes in Oryx.
 
-Not built: writing into the user's own layout with a login. From the web app's code, `createLayout` with
-`parentHashId` set to one's own layout, sent with a login, adds a revision to that layout rather than making
-a copy. That hasn't been tried.
+`keyloom push <draft> --to <layout>` (with the user's token, sent as `Authorization: Bearer`):
+
+1. Reads the layout's latest revision as its owner.
+2. If that revision is compiled: refuses unless it is the draft's base (or `--overwrite`), then calls
+   `createLayout` with `parentHashId` set to the layout itself. Oryx answers with the same layout id and a new
+   uncompiled revision. If the id differs (not the user's layout, or a bad token), keyloom stops.
+3. If that revision is uncompiled: refuses unless its layers equal the draft's base or the draft itself (or
+   `--overwrite`), then writes into it.
+4. Writes, reads back and diffs as above. Doesn't compile.
+
+## What was tried with a login
+
+On a throwaway layout in the owner's account, with the `jwtToken` from the web app's local storage:
+
+- `updateLayer`, `createLayer` and `deleteLayer` on the uncompiled revision worked; the same calls without the
+  token answered `Unauthorized`.
+- `compileRevision` worked (about 10 s). After it, `updateLayer` answered `Unauthorized` even for the owner.
+- `createLayout` with `parentHashId` = the layout itself returned the same layout id and a new uncompiled
+  revision. Called again while that revision existed, it returned the same revision.
+- Without the token, `latest` keeps returning the newest compiled revision; the uncompiled one is only visible
+  to the owner.
+- The token is a JWT with `uid` and `exp`; the one seen was valid for about three months.
 
 ## Open questions and risks
 
-- **Not tried:** combos (`upsertCombo`), `updateRevisionConfig`, swatch, reordering layers, macros, anything
-  with a login.
+- **Not tried:** combos (`upsertCombo`), `updateRevisionConfig`, swatch, reordering layers, macros,
+  `loginWithEmail`, `forkRevision`, deleting a revision.
 - **Access control on uncompiled revisions:** the anonymous test layout could be edited with only its hash
-  ids. Whether an uncompiled revision in a user's account is protected from such calls was deliberately
-  not tested.
+  ids. An uncompiled revision in a user's account is protected: the same call without the token was refused.
 - **Undocumented:** ZSA can change or close these calls at any time, and hasn't said automated writes are
   welcome. Rate limits are unknown. Their terms of service haven't been checked. Worth asking ZSA before
   shipping this.
-- **Credentials:** the login route means handling a password or a token. A token pasted from the browser
-  avoids the password and two-factor flow.
+- **Credentials:** keyloom takes a token copied from the browser (environment variable or keychain), which
+  avoids handling the password and two-factor flow. The token is long-lived and gives full account access.
 - **Leftovers:** anonymous layouts can't be deleted without owning them, so each push leaves a public
   layout on Oryx.

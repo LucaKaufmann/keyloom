@@ -4,7 +4,7 @@ Version 0.1.0, 2026-11-14.
 
 ## What works
 
-Everything below is implemented and covered by 117 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
+Everything below is implemented and covered by 120 tests (engine, CLI, MCP over stdio, a fake Keymapp gRPC
 server, golden renders). The tests need no network and no keyboard.
 
 | Area | Commands | Spec |
@@ -58,7 +58,7 @@ Not planned in detail. Roughly in order of usefulness:
   what's missing is position names, the effort map and testing.
 - QMK `keymap.c` export.
 
-- `push` into the user's own Oryx layout (needs a login), and combos in `push`.
+- Combos in `push`.
 
 Out of scope for now: building or flashing firmware, a GUI.
 

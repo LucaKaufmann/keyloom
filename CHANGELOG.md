@@ -4,6 +4,9 @@
 
 - `keyloom push <draft>` (MCP: `apply_guide` with `push: true`): creates a new Oryx layout holding the draft,
   without a login, and prints its link. Your own layouts are never changed.
+- `keyloom push <draft> --to <layout>` (MCP: `apply_guide` with `to`): writes the draft into one of your own
+  Oryx layouts as an uncompiled revision, using your login token from `KEYLOOM_ORYX_TOKEN` or the macOS
+  keychain. Refuses to replace changes on Oryx the draft doesn't have unless `--overwrite` is given.
 
 ## 0.1.0 (2026-11-14)
 
