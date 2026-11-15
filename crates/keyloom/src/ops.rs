@@ -424,7 +424,8 @@ fn check_color(color: &str) -> Result<String, OpError> {
     let c = color.trim();
     let hex = c.strip_prefix('#').unwrap_or("");
     if hex.len() == 6 && hex.chars().all(|ch| ch.is_ascii_hexdigit()) {
-        Ok(c.to_lowercase())
+        // Oryx's editor stores colors in upper case (`#FF8800`); write them the same way.
+        Ok(c.to_uppercase())
     } else {
         err(format!("'{color}' isn't a color; write it as #rrggbb, e.g. #ff8800"))
     }

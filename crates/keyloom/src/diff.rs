@@ -341,7 +341,7 @@ pub fn diff(a: &Layout, b: &Layout, opts: DiffOptions) -> Diff {
         if la.title != lb.title {
             field("title", Some(la.title.clone()), Some(lb.title.clone()));
         }
-        // Oryx doesn't normalise the case of hex colors; keyloom writes lower case.
+        // Oryx doesn't normalise the case of hex colors (its editor writes upper case, as keyloom does).
         if la.color.as_deref().map(str::to_lowercase) != lb.color.as_deref().map(str::to_lowercase) {
             field("color", la.color.clone(), lb.color.clone());
         }

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Key and layer colors are stored in upper case (`#FF8800`), the way Oryx's editor stores them.
+
 ## 0.2.0 (2026-11-15)
 
 - `keyloom push <draft>` (MCP: `apply_guide` with `push: true`): creates a new Oryx layout holding the draft,

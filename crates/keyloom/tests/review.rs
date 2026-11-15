@@ -166,7 +166,7 @@ fn set_key_replaces_the_whole_key_but_keeps_the_led_color() {
     let w = edit(&mut d, json!([{"op": "set_key", "layer": 0, "key": "L.home.1", "action": "KC_B"}]));
     assert!(w.iter().any(|w| w.contains("custom label \"Copy\" removed")), "{w:?}");
     let k = &d.layers[0].keys[13];
-    assert_eq!((k.custom_label.as_deref(), k.glow_color.as_deref()), (None, Some("#ff0000")));
+    assert_eq!((k.custom_label.as_deref(), k.glow_color.as_deref()), (None, Some("#FF0000")));
 }
 
 #[test]
@@ -523,7 +523,7 @@ fn swapping_keys_takes_combos_along_and_clear_keeps_the_led_color() {
     );
     assert_eq!(keyloom::ops::sorted_keys(&d.combos[0]), vec![15, 39], "the combo moved with its key");
     let k = &d.layers[0].keys[13];
-    assert_eq!((qmk::key(k).as_str(), k.glow_color.as_deref()), ("KC_NO", Some("#ff0000")));
+    assert_eq!((qmk::key(k).as_str(), k.glow_color.as_deref()), ("KC_NO", Some("#FF0000")));
     for bad in ["red", "#12", "banana", "#12345g"] {
         assert!(fail(&mut d, json!([{"op": "color_layer", "layer": 0, "color": bad}])).contains("#rrggbb"), "{bad}");
         assert!(
