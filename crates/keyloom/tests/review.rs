@@ -297,17 +297,19 @@ fn tap_toggle_and_default_layer_exits() {
     let mut d = draft();
     edit(&mut d, json!([{"op": "set_key", "layer": 0, "key": "L.thumb.1", "action": "TT(Gaming)"}]));
     assert!(!rules(&d).contains(&"layer-no-exit"), "{:?}", rules(&d));
-    // Overriding that key on the layer removes the way out.
+    // A key there on the layer doesn't survive Oryx's editor (it keeps the position transparent),
+    // so the way out stays.
     edit(&mut d, json!([{"op": "set_key", "layer": "Gaming", "key": "L.thumb.1", "action": "KC_A"}]));
-    assert!(rules(&d).contains(&"layer-no-exit"));
+    assert!(rules(&d).contains(&"oryx-clears-key") && !rules(&d).contains(&"layer-no-exit"), "{:?}", rules(&d));
 
-    // TG in, only DF(0) on the layer: DF doesn't switch the layer off.
+    // TO in, only DF(0) on the layer: DF doesn't switch the layer off.
     let mut d = draft();
     edit(
         &mut d,
-        json!([{"op": "set_key", "layer": 0, "key": "L.thumb.1", "action": "TG(Gaming)"}, {"op": "set_key", "layer": "Gaming", "key": "L.thumb.1", "action": "DF(0)"}]),
+        json!([{"op": "set_key", "layer": 0, "key": "L.thumb.1", "action": "TO(Gaming)"}, {"op": "set_key", "layer": "Gaming", "key": "L.thumb.1", "action": "DF(0)"}]),
     );
     assert!(rules(&d).contains(&"layer-no-exit"));
+    assert!(!rules(&d).contains(&"oryx-clears-key"), "TO isn't a key Oryx reserves the position for");
     // DF in needs DF out.
     let mut d = draft();
     edit(&mut d, json!([{"op": "set_key", "layer": 0, "key": "L.thumb.1", "action": "DF(Gaming)"}]));
@@ -754,8 +756,50 @@ fn a_held_lower_layer_is_shadowed_by_the_toggled_layer() {
         ]),
     );
     assert!(!rules(&d).contains(&"layer-no-exit"), "Gaming is transparent at R.num.0: the toggle is reachable");
+    // A key at R.num.0 on Gaming would hide the toggle, but Oryx's editor clears it.
     edit(&mut d, json!([{"op": "set_key", "layer": "Gaming", "key": "R.num.0", "action": "KC_A"}]));
-    assert!(rules(&d).contains(&"layer-no-exit"), "Gaming's own key now hides the toggle");
+    assert!(rules(&d).contains(&"oryx-clears-key") && !rules(&d).contains(&"layer-no-exit"), "{:?}", rules(&d));
+    // Gaming's own key at L.thumb.2 does hide the hold, so Sym+Num (and its toggle) can't be reached.
+    edit(&mut d, json!([{"op": "set_key", "layer": "Gaming", "key": "L.thumb.2", "action": "KC_SPACE"}]));
+    assert!(rules(&d).contains(&"layer-no-exit"), "Gaming's own key now hides the hold");
+}
+
+#[test]
+fn a_toggle_back_where_oryx_keeps_the_key_transparent_is_no_exit() {
+    // As on a real gaming layout: TG(Gaming) on a held layer, and TG(Gaming) at the same position on
+    // Gaming to leave again. Oryx's editor clears that second key when it shows the layer, and the
+    // held layer's toggle isn't reachable from Gaming, so after opening it in Oryx there is no way out.
+    let mut d = draft();
+    edit(
+        &mut d,
+        json!([
+            {"op": "set_key", "layer": "Gaming", "key": "L.thumb.2", "action": "KC_SPACE"},
+            {"op": "set_key", "layer": "Sym+Num", "key": "R.num.0", "action": "TG(Gaming)"},
+            {"op": "set_key", "layer": "Gaming", "key": "R.num.0", "action": "TG(Gaming)"}
+        ]),
+    );
+    let f = validate(&d, &Context::default());
+    assert!(f.iter().any(|f| f.rule == "oryx-clears-key" && f.key.as_deref() == Some("R.num.0") && f.message.contains("TG(3)")), "{f:#?}");
+    assert!(f.iter().any(|f| f.rule == "layer-no-exit" && f.hint.contains("TO(0)")), "{f:#?}");
+    // TO(0) at the same position is cleared just the same.
+    edit(&mut d, json!([{"op": "set_key", "layer": "Gaming", "key": "R.num.0", "action": "TO(0)"}]));
+    assert!(rules(&d).contains(&"layer-no-exit") && rules(&d).contains(&"oryx-clears-key"));
+    // At another position it stays.
+    edit(
+        &mut d,
+        json!([{"op": "clear_key", "layer": "Gaming", "key": "R.num.0"}, {"op": "set_key", "layer": "Gaming", "key": "R.top.0", "action": "TO(0)"}]),
+    );
+    assert!(!rules(&d).contains(&"layer-no-exit") && !rules(&d).contains(&"oryx-clears-key"), "{:?}", rules(&d));
+
+    // MO reserves the position too, unless the layout has Oryx's `ambidexLT` option on.
+    let mut d = draft();
+    edit(
+        &mut d,
+        json!([{"op": "set_key", "layer": 0, "key": "L.thumb.1", "action": "MO(Gaming)"}, {"op": "set_key", "layer": "Gaming", "key": "L.thumb.1", "action": "KC_A"}]),
+    );
+    assert_eq!(explore::oryx_cleared(&d).len(), 1, "{:?}", explore::oryx_cleared(&d));
+    d.oryx.revision.insert("config".into(), json!({"ambidexLT": true}));
+    assert!(explore::oryx_cleared(&d).is_empty());
 }
 
 #[test]

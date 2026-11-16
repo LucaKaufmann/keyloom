@@ -81,7 +81,8 @@ Findings: `{rule, severity (error|warn|info), layer?, key?, message, hint}`.
 | Rule | Sev | Check |
 | --- | --- | --- |
 | `layer-ref-missing` | error | a key or combo refers to a layer that doesn't exist, or a layer key has no layer |
-| `layer-no-exit` | error | a layer entered with `TG`/`TO`/`TT` has no `TG`/`TT`(itself) or `TO`(other) on it, own or resolved; a layer entered with `DF` has no `DF`(other). Combos count as keys |
+| `layer-no-exit` | error | a layer entered with `TG`/`TO`/`TT` has no `TG`/`TT`(itself) or `TO`(other) on it, own or resolved; a layer entered with `DF` has no `DF`(other). Combos count as keys. Keys `oryx-clears-key` reports count as transparent |
+| `oryx-clears-key` | warn | a key on layer n where a lower layer has `TG`/`TT`/`MO`/`LM`(n) at the same position (`MO`/`LM`/`TT` not when the revision's `config.ambidexLT` is on). Oryx's editor clears such keys when it shows the layer, so the lower layer's key shows through |
 | `layer-unreachable` | warn | non-base layer with no path from base. Exempt: the auto-mouse layer (detected on import) and layers tagged `auto` |
 | `too-many-layers` | warn | more than 8 layers (Oryx's real limit is unknown; 8 is what keyloom has seen compile) |
 | `key-count` | error | a layer doesn't have exactly the geometry's key count |

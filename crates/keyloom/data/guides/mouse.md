@@ -29,7 +29,8 @@ shows `autoMouseLayer` when the layout has one set in Oryx.
   the nav layer's arrow shape (same positions as arrows → easy to learn).
 - Buttons under the holding hand's home row, wheel (`KC_MS_WH_UP`/`DOWN`) beside the movement keys,
   speed keys `KC_MS_ACCEL0`–`2` on column 0 or 5.
-- Reach with `MO(mouse)` / `LT` on a thumb, or `TG(mouse)` with an exit at the same position.
+- Reach with `MO(mouse)` / `LT` on a thumb, or `TG(mouse)` on the base with that position transparent on
+  the layer (the same key leaves).
 
 ## Gaming and the auto-mouse layer
 

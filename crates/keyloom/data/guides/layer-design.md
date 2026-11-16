@@ -33,11 +33,18 @@ term) to the tap; fine for typing, bad for games.
 
 - Momentary layers (`MO`, `LT`, `OSL`) exit by themselves. Toggled or switched layers (`TG`, `TO`, `TT`, `DF`)
   need an exit key ON that layer, or the user is stuck until replug. `validate` reports `layer-no-exit`.
-- Put the exit on the same physical key that entered: `TG(gaming)` on the base and `TG(gaming)` at the same
-  position on the gaming layer. Muscle memory works both ways.
-- If the layer can be reached from several places, add `TO(0)` as the exit instead; it always lands on base.
-- With `MO(n)`, the key you hold to reach layer n must stay transparent (or the same `MO`) on layer n. Don't
-  bind something else there (`mo-target-overrides`).
+- Oryx decides part of this for you. When a lower layer has `TG(n)`, `TT(n)`, `MO(n)` or `LM(n)` at a position,
+  Oryx's editor keeps that position transparent on layer n: anything else there is cleared as soon as the
+  editor shows the layer, which happens before every compile (`oryx-clears-key`). Oryx's API stores such a key,
+  so a pushed draft looks fine until the layout is opened.
+- Toggled from the base layer: leave the entry position transparent on the layer. The base `TG(n)` shows
+  through and toggles it off again, so the same key goes in and out.
+- Toggled from another layer (e.g. `TG(gaming)` on a held symbol layer): that layer is off once you let go,
+  so the entry position falls through to the base layer instead. Put `TO(0)` on the toggled layer at a
+  different position; `validate` reports `layer-no-exit` until there is one.
+- If the layer can be reached from several places, add `TO(0)` as the exit as well; it always lands on base.
+- With `MO(n)`, the key you hold to reach layer n must stay transparent on layer n (Oryx clears anything
+  else there, `oryx-clears-key`).
 - `QK_LLCK` (layer lock) keeps a momentary layer on after release; press it again to unlock. Good on nav and
   mouse layers, and an alternative to a separate `TG`.
 

@@ -140,7 +140,8 @@ fn wow_layer_end_to_end() {
     apply_ops(&mut d, &wow_ops()).unwrap();
     // Not reachable yet: validation says so.
     assert!(rules(&validate(&d, &Context::default())).contains(&"layer-unreachable"));
-    // A toggle in and nothing out: validation catches the trap.
+    // A toggle on the base layer, and something else at that position on WoW: Oryx's editor
+    // clears that key (it keeps the position transparent), so the base toggle is the way out.
     apply_ops(
         &mut d,
         &ops(json!([{"op": "set_key", "layer": "Main", "key": "L.thumb.1", "action": "TG(WoW)"},
@@ -148,11 +149,12 @@ fn wow_layer_end_to_end() {
     )
     .unwrap();
     let f = validate(&d, &Context::default());
-    assert!(rules(&f).contains(&"layer-no-exit"), "{f:#?}");
-    // Way out: the same key toggles back.
-    apply_ops(&mut d, &ops(json!([{"op": "set_key", "layer": "WoW", "key": "L.thumb.1", "action": "TG(WoW)"}]))).unwrap();
-    let f = validate(&d, &Context::default());
+    assert!(f.iter().any(|x| x.rule == "oryx-clears-key" && x.key.as_deref() == Some("L.thumb.1")), "{f:#?}");
     assert!(!rules(&f).contains(&"layer-no-exit"), "{f:#?}");
+    // Transparent there, the way Oryx keeps it: the same key toggles back.
+    apply_ops(&mut d, &ops(json!([{"op": "clear_key", "layer": "WoW", "key": "L.thumb.1"}]))).unwrap();
+    let f = validate(&d, &Context::default());
+    assert!(!rules(&f).contains(&"layer-no-exit") && !rules(&f).contains(&"oryx-clears-key"), "{f:#?}");
     assert!(!rules(&f).contains(&"layer-unreachable"), "{f:#?}");
     // Keys left transparent fall through to base mod-taps (Tab/Ctrl etc. are overridden above,
     // but e.g. R.bot.0 = /‍/RALT is not): gaming-home-row-mods warns about them.

@@ -1,6 +1,6 @@
 //! Validation rules (spec 02). Each finding names its rule so rules can be switched off.
 
-use crate::explore::layer_graph;
+use crate::explore::{layer_graph, oryx_cleared};
 use crate::knowledge;
 use crate::model::{Action, Key, Layout};
 use crate::positions::{display_name, PositionMap};
@@ -34,6 +34,7 @@ pub const RULES: &[(&str, Severity)] = &[
     ("layer-no-exit", Severity::Error),
     ("key-count", Severity::Error),
     ("combo-duplicate", Severity::Error),
+    ("oryx-clears-key", Severity::Warn),
     ("layer-unreachable", Severity::Warn),
     ("too-many-layers", Severity::Warn),
     ("unknown-keycode", Severity::Warn),
@@ -208,6 +209,26 @@ pub fn validate(layout: &Layout, ctx: &Context) -> Vec<Finding> {
         }
     }
 
+    // Keys Oryx's editor clears when it shows the layer (explore::oryx_cleared).
+    for c in oryx_cleared(layout) {
+        let (Some(layer), Some(by)) = (layout.layer(c.layer), layout.layer(c.by_layer)) else { continue };
+        let Some(key) = layer.keys.get(c.index) else { continue };
+        out.push(
+            "oryx-clears-key",
+            Some(c.layer),
+            Some(name(c.index)),
+            format!(
+                "{} is here, but Oryx's editor clears it as soon as it shows layer \"{}\": \"{}\" has {}({}) at the same position, and Oryx keeps this one transparent so that key is reached",
+                qmk::key(key),
+                layer.title,
+                by.title,
+                c.action,
+                c.layer
+            ),
+            "leave it transparent; a key that leaves the layer (TO(0)) has to go at another position",
+        );
+    }
+
     // Reachability and exits.
     let graph = layer_graph(layout);
     for node in &graph.layers {
@@ -231,7 +252,7 @@ pub fn validate(layout: &Layout, ctx: &Context) -> Vec<Finding> {
                 Some(node.position),
                 None,
                 format!("layer \"{}\" is entered with a toggle/go-to key but has no key that leaves it", node.title),
-                "add TG(this layer) or TO(0) on the layer (or keep the toggling key transparent there)",
+                "add TO(0) on the layer, at a position where no lower layer has a layer key (Oryx clears those); if the layer is toggled from the base layer, leaving that position transparent also works",
             );
         }
         if node.entered_by_default && node.default_exits.is_empty() {

@@ -40,7 +40,8 @@ fn cli_flow() {
     assert!(keyloom(h, &["find", "Esc"]).1.contains("hold L.thumb.2 (MO(1))"));
     assert_eq!(keyloom(h, &["validate"]).0, 0, "warnings only");
     assert_eq!(keyloom(h, &["draft", "new", "wow"]).0, 0);
-    assert_eq!(keyloom(h, &["set", "wow", "Main", "L.thumb.1", "TG(Gaming)"]).0, 0);
+    // TO(Gaming) in (Oryx doesn't reserve its position on Gaming), and Alt there on Gaming: no way out.
+    assert_eq!(keyloom(h, &["set", "wow", "Main", "L.thumb.1", "TO(Gaming)"]).0, 0);
     let (_, out, _) = keyloom(h, &["set", "wow", "Gaming", "L.thumb.1", "KC_LALT"]);
     assert!(out.contains("layer-no-exit"), "errors are shown right after the edit: {out}");
     assert_eq!(keyloom(h, &["validate", "draft:wow"]).0, 3, "exit code 3 on validation errors");
@@ -50,7 +51,7 @@ fn cli_flow() {
     let (code, out, _) = keyloom(h, &["validate", "draft:wow"]);
     assert_eq!(code, 0, "{out}");
     let (_, guide, _) = keyloom(h, &["guide", "wow"]);
-    assert!(guide.contains("Tap: KC_LEFT_GUI → TG(3 Gaming)") && guide.contains("Oryx: Layer → Toggle (TG)"), "{guide}");
+    assert!(guide.contains("Tap: KC_LEFT_GUI → TO(3 Gaming)") && guide.contains("Oryx: Layer → Toggle (TG)"), "{guide}");
     let (code, json, _) = keyloom(h, &["--json", "diff", "9qMJK", "draft:wow"]);
     assert_eq!(code, 0);
     let d: Value = serde_json::from_str(&json).unwrap();
@@ -541,8 +542,8 @@ fn round_five_fixes() {
     assert_eq!(keyloom(h, &["export", "wow", "--format", "oryx", "-o", exported.to_str().unwrap()]).0, 0);
     let (code, _, err) = keyloom(h, &["import", exported.to_str().unwrap()]);
     assert!(code == 1 && err.contains("keyloom draft"), "{err}");
-    // A guide for a draft with errors says so first.
-    assert_eq!(keyloom(h, &["set", "wow", "WoW", "L.thumb.1", "KC_LALT"]).0, 0);
+    // A guide for a draft with errors says so first (DF in needs DF out).
+    assert_eq!(keyloom(h, &["set", "wow", "Main", "L.thumb.1", "DF(WoW)"]).0, 0);
     let (_, guide, _) = keyloom(h, &["guide", "wow"]);
     assert!(guide.starts_with("NOT READY TO FLASH: this draft has 1 validation error(s)") && guide.contains("[layer-no-exit]"), "{guide}");
     // …and it isn't pushed to Oryx (refused before any network call).

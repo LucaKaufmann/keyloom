@@ -641,7 +641,8 @@ Read keyloom://guides/gaming (and keyloom://guides/mmo for MMOs like World of Wa
 if there is already an unused or unreachable gaming layer, offer to reuse it. Ask me which hand is on the mouse, \
 which game keys I use (movement, abilities/action bars, modifiers, chat, push-to-talk), and how I want to enter and leave the layer. \
 Use plain keys only (no hold/tap-hold), bind every key the game needs explicitly so base-layer mod-taps don't fall through \
-(a new layer with fill=none, or NO on unused keys), tag the layer `gaming`, enter it with TG(layer) and leave it with the same key. \
+(a new layer with fill=none, or NO on unused keys), tag the layer `gaming`, enter it with TG(layer) on the base and leave that position transparent on the layer so the same key leaves \
+(if the toggle is on another layer, put TO(0) on the gaming layer at a different position; Oryx clears keys at the toggle's position). \
 Propose the layout as a table first.\n\n{FINISH}",
                 game = a.game,
                 layout = layout_hint(&a.layout)

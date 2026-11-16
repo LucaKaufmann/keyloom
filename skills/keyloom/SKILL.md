@@ -72,7 +72,10 @@ keyloom push wow --to 9qMJK                             # only when the user ask
 
 Actions: `KC_A`, `Esc`, `LCTL(KC_C)`, `MO(3)`, `TG(Gaming)`, `TO(0)`, `OSL(sym)`, `TT(2)`, `DF(0)`,
 `LT(3, KC_SPC)`, `LCTL_T(KC_A)`, `TAP_HOLD(KC_EQL, KC_ESC)`, `TRNS` (falls through), `NO` (does nothing).
-Gaming layers: `--fill none`, plain keys only (no tap-hold), entered and left with the same `TG(layer)` key.
+Gaming layers: `--fill none`, plain keys only (no tap-hold). A toggle and a way out: `TG(layer)` on the base
+with that position left transparent (`clear`) on the layer, so the same key leaves; or, when the toggle is on
+another layer, `TO(0)` on the toggled layer at a different position. Oryx's editor clears any key at a
+position where a lower layer has `TG`/`TT`/`MO`/`LM` to that layer: fix every `oryx-clears-key` warning.
 
 After the user applied the guide in Oryx and flashed: `keyloom import <layout id>`, then
 `keyloom verify wow` (exit code 3 if something is still missing), then `keyloom draft archive wow`.

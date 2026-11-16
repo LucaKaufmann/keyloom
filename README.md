@@ -163,8 +163,7 @@ Imported revisions never change. You edit a draft, then carry the draft over to 
 ```sh
 keyloom draft new wow                          # 1. an editable copy of your layout
 keyloom layer add wow WoW --after Gaming --fill none   # 2. edit it
-keyloom set wow Main L.thumb.1 'TG(WoW)'
-keyloom set wow WoW L.thumb.1 'TG(WoW)'           #    the same key leaves the layer again
+keyloom set wow Main L.thumb.1 'TG(WoW)'          #    left transparent on WoW, the same key leaves again
 keyloom set wow WoW L.home.1 A
 keyloom validate wow                           # 3. check it
 keyloom diff <id> draft:wow                    #    and see what changed

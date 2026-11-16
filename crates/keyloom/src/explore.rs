@@ -317,6 +317,54 @@ pub fn free_keys(layout: &Layout, layer: i64) -> Vec<FreeKey> {
 
 // MARK: layer graph
 
+/// A key Oryx's editor clears, because a lower layer has a layer key to this layer at the same
+/// position.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OryxCleared {
+    pub layer: i64,
+    pub index: usize,
+    /// The lower layer whose key reserves this position.
+    pub by_layer: i64,
+    /// That key's layer action, e.g. `TG`.
+    pub action: String,
+}
+
+/// Layer actions that make Oryx keep the same position on the target layer transparent. Read from
+/// the Oryx editor's code: a key on layer N is "preceded" when a lower layer has a layer key to N at
+/// the same position (keycodes whose layer parameter is `forwardLayers`, except `OSL`), and the
+/// editor clears a preceded key as soon as it shows it, so that the key falls through to the layer
+/// key below. `MO`, `LM` and `TT` stop counting when the layout's `ambidexLT` option is on. Whether
+/// `TO` and `DF` count wasn't checked, so they're left out.
+const ORYX_PRECEDING: &[&str] = &["TG", "TT", "MO", "LM"];
+
+/// Keys that Oryx's editor turns transparent the next time it shows their layer (see
+/// `ORYX_PRECEDING`). A draft can hold such keys, and Oryx's API stores them, but they don't survive
+/// opening the layout in Oryx, which is where it gets compiled.
+pub fn oryx_cleared(layout: &Layout) -> Vec<OryxCleared> {
+    let ambidex = layout.oryx.revision.get("config").and_then(|c| c.get("ambidexLT")).and_then(|v| v.as_bool()) == Some(true);
+    let mut out = Vec::new();
+    for layer in layout.layers.iter().filter(|l| l.position != 0) {
+        for (index, key) in layer.keys.iter().enumerate() {
+            if key.is_transparent() {
+                continue;
+            }
+            let by = layout.layers.iter().filter(|l| l.position < layer.position).find_map(|lower| {
+                let k = lower.keys.get(index)?;
+                k.slots().into_iter().find_map(|(_, a)| {
+                    let code = a.code()?;
+                    let counts = ORYX_PRECEDING.contains(&code) && !(ambidex && matches!(code, "MO" | "LM" | "TT"));
+                    (counts && a.layer == Some(layer.position)).then(|| (lower.position, code.to_string()))
+                })
+            });
+            if let Some((by_layer, action)) = by {
+                out.push(OryxCleared { layer: layer.position, index, by_layer, action });
+            }
+        }
+    }
+    out
+}
+
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Edge {
@@ -404,9 +452,18 @@ pub fn layer_graph(layout: &Layout) -> LayerGraph {
     let mut edges = Vec::new();
     // A key that targets its own layer only matters when it toggles: TG(self), TT(self).
     let relevant = |code: &str, from: i64, to: i64| LAYER_CODES.contains(&code) && (to != from || matches!(code, "TG" | "TT"));
+    // Keys Oryx's editor will clear count as what they become: transparent.
+    let cleared: BTreeSet<(i64, usize)> = oryx_cleared(layout).iter().map(|c| (c.layer, c.index)).collect();
+    let transparent =
+        |l: &crate::model::Layer, i: usize| cleared.contains(&(l.position, i)) || l.keys.get(i).is_some_and(Key::is_transparent);
     for layer in &layout.layers {
         for i in 0..layer.keys.len() {
-            let Some((key, from)) = layout.effective_key(layer.position, i) else { continue };
+            let resolved = if cleared.contains(&(layer.position, i)) {
+                layout.layers.first().and_then(|base| base.keys.get(i).map(|k| (k, base.position)))
+            } else {
+                layout.effective_key(layer.position, i)
+            };
+            let Some((key, from)) = resolved else { continue };
             for (slot, a) in key.slots() {
                 let (Some(code), Some(to)) = (a.code(), a.layer) else { continue };
                 if !relevant(code, layer.position, to) {
@@ -494,7 +551,7 @@ pub fn layer_graph(layout: &Layout) -> LayerGraph {
             // On a held layer only its own keys count: a transparent key there falls through to
             // this layer, not to the base layer. And the higher-numbered layer wins: a key of a
             // lower held layer is only reachable where this layer is transparent.
-            let shadowed = |e: &Edge| e.from < l.position && !e.combo && l.keys.get(e.index).is_some_and(|k| !k.is_transparent());
+            let shadowed = |e: &Edge| e.from < l.position && !e.combo && l.keys.get(e.index).is_some() && !transparent(l, e.index);
             let usable = |e: &Edge| e.from == l.position || (within.contains(&e.from) && !e.via_transparent && !shadowed(e));
             let own = || edges.iter().filter(|e| usable(e));
             let exits = own()

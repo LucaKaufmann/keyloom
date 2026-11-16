@@ -111,6 +111,22 @@ On a throwaway layout in the owner's account, with the `jwtToken` from the web a
   to the owner.
 - The token is a JWT with `uid` and `exp`; the one seen was valid for about three months.
 
+## Oryx's editor rewrites keys
+
+Read from the editor's code (configure.zsa.io, November 2026) and seen on a real layout. A key on layer n
+is "preceded" when a lower layer has a layer key to n at the same position. That covers keycodes whose
+layer parameter is `forwardLayers`, except `OSL`: at least `TG`, `TT`, `MO` and `LM`. `MO`, `LM` and `TT`
+don't count when the revision's `config.ambidexLT` is on. Whether `TO` and `DF` count wasn't checked.
+The editor shows preceded keys as disabled ("needed to return you to your original layer"), and when it
+mounts one that isn't transparent it calls `clear()`, which saves straight away. So opening a layer in
+Oryx, which happens before every compile, wipes such keys. The API itself stores them, so a read-back
+right after a push matches.
+
+This bit a pushed gaming layer: `TG(Gaming)` on a held symbol layer, and `TG(Gaming)` at the same
+position on Gaming to leave again. After the layout was opened in Oryx, the second key was gone. The
+transparent key then fell through to the base layer, so the layer had no way out. keyloom treats these
+keys as transparent when it works out exits, and reports them as `oryx-clears-key`.
+
 ## Open questions and risks
 
 - **Not tried:** combos (`upsertCombo`), `updateRevisionConfig`, swatch, reordering layers, macros,

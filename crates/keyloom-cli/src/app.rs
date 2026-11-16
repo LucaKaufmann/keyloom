@@ -411,11 +411,30 @@ pub fn push(
 ) -> Result<keyloom::push::Pushed> {
     let draft = push_check(ws, draft_name, force)?;
     let base = base_of(ws, &draft).ok();
-    Ok(match &target.to {
+    let mut pushed = match &target.to {
         Some(to) if to.trim().eq_ignore_ascii_case("new") => keyloom::push::push_new_owned(oryx, &draft, base.as_ref())?,
         Some(to) => keyloom::push::push_into(oryx, &draft, base.as_ref(), &oryx_layout_id(to), target.overwrite)?,
         None => keyloom::push::push_new(oryx, &draft, base.as_ref())?,
-    })
+    };
+    // Oryx stores these keys, so the read-back matches, but its editor clears them on opening.
+    let cleared: Vec<String> = keyloom::explore::oryx_cleared(&draft)
+        .iter()
+        .map(|c| {
+            format!(
+                "{} {}",
+                draft.layer_title(c.layer),
+                keyloom::positions::display_name(keyloom::positions::PositionMap::for_geometry(&draft.geometry).as_ref(), c.index)
+            )
+        })
+        .collect();
+    if !cleared.is_empty() {
+        pushed.warnings.push(format!(
+            "Oryx's editor will clear {} key(s) as soon as it shows their layer, because a lower layer has a layer key at the same position: {}. See `keyloom validate`.",
+            cleared.len(),
+            cleared.join(", ")
+        ));
+    }
+    Ok(pushed)
 }
 
 /// The push result as text.
@@ -531,5 +550,28 @@ mod tests {
         assert!(keyboard_layer_on(&ws, &draft, 1, Some("9qMJK/ZPjbXz")).is_err());
         // A serial of another layout or an unknown revision is ignored.
         assert_eq!(keyboard_layer_on(&ws, &draft, 2, Some("Other/Rev")).unwrap(), 2);
+    }
+
+    #[test]
+    fn push_warns_about_keys_oryx_will_clear() {
+        let dir = tempfile::tempdir().unwrap();
+        let ws = Workspace::open(dir.path()).unwrap();
+        let base = fixture();
+        ws.store_revision(&base, None).unwrap();
+        let mut draft = ws.create_draft("wow", &ws.resolve(None).unwrap()).unwrap();
+        // Oryx keeps Gaming's L.thumb.1 transparent (Main toggles Gaming there), so Alt won't last.
+        let ops: Vec<Op> = serde_json::from_value(serde_json::json!([
+            {"op": "set_key", "layer": "Main", "key": "L.thumb.1", "action": "TG(Gaming)"},
+            {"op": "set_key", "layer": "Gaming", "key": "L.thumb.1", "action": "KC_LALT"}
+        ]))
+        .unwrap();
+        apply_ops(&mut draft, &ops).unwrap();
+        ws.save_draft(&mut draft, &ops).unwrap();
+        let mut oryx = keyloom::push::fake::FakeOryx::default();
+        oryx.add_compiled(&base);
+        let p = push(&ws, "wow", false, &PushTarget::default(), &mut oryx).unwrap();
+        assert!(p.verified, "Oryx's API stores the key: {p:?}");
+        assert!(p.warnings.iter().any(|w| w.contains("will clear 1 key(s)") && w.contains("Gaming L.thumb.1")), "{:?}", p.warnings);
+        assert!(push_text(&p).contains("Gaming L.thumb.1"), "{}", push_text(&p));
     }
 }

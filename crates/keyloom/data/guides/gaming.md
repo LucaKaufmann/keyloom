@@ -22,11 +22,14 @@ input delay and zero surprises. Read `layer-design.md` first; for MMOs also read
    `validate` flags `gaming-home-row-mods`. Two ways: `add_layer` with `fill none` and set what you need (the
    guide then has one step "set the other keys to None"), or the default `fill trans` and put `NO` only on the
    keys where the base has a tap-hold (fewer clicks in Oryx; plain base keys keep working in the game).
-3. **Enter and leave with the same key.** `TG(gaming)` on the base at a spot that's hard to hit by accident
-   (e.g. `R.num.0`, or a thumb on a symbol layer; not the key that is Esc on the gaming layer), and `TG(gaming)` at the same position on the
-   gaming layer. `TO(0)` also works as the exit. Never leave a gaming layer without an exit (`layer-no-exit`).
+3. **A way in and a way out.** `TG(gaming)` on the base at a spot that's hard to hit by accident (e.g.
+   `R.num.0`; not the key that is Esc on the gaming layer), with that position transparent on the gaming layer:
+   the base toggle shows through and the same key leaves. Oryx keeps that position transparent anyway and clears
+   anything put there (`oryx-clears-key`). If the toggle lives on another layer (say a symbol layer held with a
+   thumb), put `TO(0)` on the gaming layer at a different position: the symbol layer is off once you let go, so
+   the toggle's position falls through to the base. Never leave a gaming layer without an exit (`layer-no-exit`).
 4. **Keep Esc and Enter.** Esc for menus, Enter for chat. Usually `L.num.0` = Esc is natural; put Enter on a
-   thumb or `L.bot.0`. For typing longer chat messages the user leaves the layer with the `TG` key and comes
+   thumb or `L.bot.0`. For typing longer chat messages the user leaves the layer with the exit key and comes
    back; don't add tap-hold just for chat.
 5. **Games read key codes, not legends.** The game sees `KC_W`, not "the key labelled W". You can move the
    physical position of a bind freely as long as the code stays the same, so no in-game rebinding is needed.
@@ -77,5 +80,6 @@ or tell the user how the auto-mouse layer behaves in the game.
 - [ ] Movement cluster placed (ESDF positions sending WASD, or classic WASD) and the user agreed.
 - [ ] Space and Shift/Ctrl on thumbs as plain keys; `KC_LEFT_GUI` not on the layer.
 - [ ] Esc and Enter reachable on the layer.
-- [ ] Entry `TG(gaming)` (or `TO`) on base, exit at the same position on the gaming layer.
-- [ ] `validate` has no `gaming-tap-hold`, `gaming-home-row-mods` or `layer-no-exit` findings.
+- [ ] Entry `TG(gaming)` on base with that position transparent on the gaming layer, or `TO(0)` on the gaming
+      layer at another position when the entry is on another layer.
+- [ ] `validate` has no `gaming-tap-hold`, `gaming-home-row-mods`, `oryx-clears-key` or `layer-no-exit` findings.

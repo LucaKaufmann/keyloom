@@ -3,6 +3,16 @@
 ## Unreleased
 
 - Key and layer colors are stored in upper case (`#FF8800`), the way Oryx's editor stores them.
+- New validation warning `oryx-clears-key`. When a lower layer has `TG(n)`, `TT(n)`, `MO(n)` or `LM(n)` at a
+  position, Oryx's editor clears any key at that position on layer n as soon as it shows the layer, so
+  the lower key shows through. Oryx's API stores such a key, so a pushed draft read back fine and then
+  lost it on opening. `push` now warns about these keys too.
+- `layer-no-exit` judges exits by what survives Oryx's editor. A layer toggled from a held layer with
+  `TG` at the same position to leave again has no way out once opened in Oryx; this is now an error. Its
+  hint suggests `TO(0)` at a different position.
+- The gaming, MMO, numbers, mouse and layer-design guides, the skill and the gaming prompt no longer
+  suggest the same `TG` key on the toggled layer. They suggest leaving that position transparent when
+  the toggle is on the base layer, and `TO(0)` at another position when it isn't.
 
 ## 0.2.0 (2026-11-15)
 

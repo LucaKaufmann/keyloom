@@ -57,7 +57,7 @@ Ask these before touching the draft, and write the answers into your plan:
 | `L.thumb.2` | `KC_LEFT_SHIFT` | bar page modifier |
 | `R.thumb.1` | `KC_ENTER` | chat |
 | `R.thumb.2` | `KC_F13` | push-to-talk (bind in Discord) |
-| `R.num.0` | `TG(WoW)` | exit; same position as the entry on base |
+| `R.num.0` | `TRNS` | exit: the base `TG(WoW)` shows through (Oryx keeps this position transparent) |
 | rest of `R.*` | `NO` | mouse-hand half stays inert |
 
 Adjust to the answers: if the user has a Navigator on the right half, they may prefer Enter and
@@ -65,7 +65,8 @@ push-to-talk on the left thumbs; if they want 12 slots unmodified, keep the eigh
 slots of the table where they are and put `KC_9`, `KC_0`, `KC_MINUS`, `KC_EQUAL` on four keys the user
 doesn't need (e.g. `L.bot.2`–`L.bot.5`, in place of Z/X/C/V). Map (`KC_M`) and bags
 (`KC_B`) are pressed out of combat, so they can live on the right half (`R.top.*` / `R.home.*`) next to
-the Enter thumb. Positions here put the exit on `R.num.0`; put the base `TG(WoW)` at the same spot.
+the Enter thumb. Positions here put the toggle on the base `R.num.0`. If it lives on another layer instead, put `TO(0)`
+on the WoW layer at a different position (e.g. `R.top.0`).
 
 ## Checklist
 
@@ -77,5 +78,5 @@ the Enter thumb. Positions here put the exit on `R.num.0`; put the base `TG(WoW)
 - [ ] Push-to-talk and interact are adjacent to movement or on a thumb.
 - [ ] Esc, Enter (chat), Space (jump) present.
 - [ ] Unused keys on the mouse-hand half are `NO`, not `TRNS`.
-- [ ] Entry and exit `TG` at the same position; `validate` clean.
+- [ ] A way out: the base `TG` showing through, or `TO(0)` at another position; `validate` clean.
 - [ ] Told the user which binds they must set in game (interact, push-to-talk, moved bar slots).

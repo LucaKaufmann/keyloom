@@ -29,8 +29,8 @@ on column 5 and column 1. Index finger gets the 7-4-1 column like a real numpad.
 - Digit codes: `KC_1`…`KC_0` work everywhere, regardless of Num Lock. Numpad codes (`KC_KP_1`…) need Num Lock
   on Windows/Linux and are different keys to games and apps (some spreadsheets and Blender treat them
   specially). Default to `KC_1`…; use `KC_KP_*` only if the user asks for real numpad keys.
-- Entry: `MO(num)` / `LT(num, KC_x)` for short bursts. For data entry offer `TG(num)` with a `TG(num)` exit at
-  the same position, or `QK_LLCK` to lock the held layer.
+- Entry: `MO(num)` / `LT(num, KC_x)` for short bursts. For data entry offer `TG(num)` on the base with that position
+  transparent on the layer (the same key leaves; Oryx keeps it transparent), or `QK_LLCK` to lock the held layer.
 - Holding half: keep Tab, Enter, Backspace and arithmetic operators reachable; leave the rest transparent.
 - A numbers layer can also host F-keys on the other half (`L.top.*`/`L.home.*`/`L.bot.*` = F1–F12 in the
   same 7-8-9 / 4-5-6 / 1-2-3 pattern), which keeps F-keys memorable.
@@ -41,5 +41,5 @@ on column 5 and column 1. Index finger gets the 7-4-1 column like a real numpad.
 - [ ] Digits laid out as 7-8-9 top, 4-5-6 home, 1-2-3 bottom, 0 on a thumb or next to 1.
 - [ ] `KC_1`… vs `KC_KP_1`… chosen on purpose; Num Lock caveat told if `KC_KP_*` used.
 - [ ] Operators and `.` reachable without leaving the layer.
-- [ ] Toggled variant has its exit at the entry position; held variant's holding key is transparent.
+- [ ] Toggled variant leaves with the same key (transparent there); held variant's holding key is transparent.
 - [ ] Tagged `numbers`; `validate` clean.
