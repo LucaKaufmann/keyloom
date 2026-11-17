@@ -108,7 +108,7 @@ Everywhere a key is expected, accept:
 | --- | --- | --- |
 | Position | `L.home.4` | physical key |
 | Index | `#17` | Oryx index |
-| Legend on base layer | `key:F`, `key:Esc` | the key whose base-layer tap is that key; error if ambiguous |
+| Legend | `key:F`, `key:Esc` | the key that sends it (on tap, else in any slot) on the layer the edit or query names: that layer's own keys first, then base keys showing through transparent ones; the base layer when none is named. Error if ambiguous |
 
 ## Layer selectors
 
@@ -118,12 +118,18 @@ Everywhere a key is expected, accept:
 
 ```
 <ref>      := [<layoutId>][@<revision>] | draft:<name> | <file path ending in .json>
-<revision> := <revisionId> | latest
+<revision> := <revisionId> | latest | oryx
 ```
 
 - No `layoutId` → the active layout (`keyloom use <layoutId>`; the first import sets it), else the only one.
 - No `@revision` → the newest stored revision.
 - `@latest` → fetch from Oryx first, then use it.
+- `@oryx` → the newest revision on Oryx, read with the user's login token, so an uncompiled one in their account
+  counts. A compiled one is imported as usual; an uncompiled one is used as it is and never stored (it can still
+  change), so it can't be a draft's base.
+- Only compiled revisions are imported. Asked for an uncompiled revision id, Oryx answers anonymous requests with
+  the newest compiled revision instead; keyloom notices, retries with the token if one is set, and otherwise says
+  so. Private layouts are read with the token too.
 - Draft names are unique across the workspace and can't be a layout id; a bare name that isn't a layout is taken as a draft (`wow` = `draft:wow`).
 
 ## Import sources

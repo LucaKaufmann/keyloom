@@ -95,3 +95,5 @@ It needs their login token in `KEYLOOM_ORYX_TOKEN` or the macOS keychain item `k
 show them the command's message and let them set it up. Never ask them to paste the token into the chat. It
 never compiles. If it refuses because Oryx has newer or uncompiled changes,
 tell the user what it said; use `--overwrite` only when they say to replace those changes.
+To see what is in their account now, uncompiled changes included, use `<id>@oryx` (`keyloom diff <id>@oryx
+draft:wow`); only compiled revisions can be imported or used as a draft's base.

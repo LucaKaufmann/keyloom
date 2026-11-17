@@ -810,6 +810,26 @@ fn selectors_follow_titles_and_hold_actions() {
     // Esc is a hold action on the base layer: key:Esc still finds that key.
     assert_eq!(keyloom::ops::resolve_key(&l, &json!("key:Esc")).unwrap(), 0);
     assert_eq!(keyloom::ops::resolve_key(&l, &json!("key:Space")).unwrap(), 25);
+    // An edit on another layer means the key that sends it THERE: E on a QWERTY gaming layer is not
+    // where the base layer has E.
+    let base_e = keyloom::ops::resolve_key(&l, &json!("key:KC_E")).unwrap();
+    let mut d = draft();
+    edit(&mut d, json!([{"op": "set_key", "layer": "Gaming", "key": "L.top.3", "action": "KC_E"}]));
+    let gaming_e = keyloom::ops::resolve_key_on(&d, 3, &json!("key:KC_E")).unwrap();
+    assert!(gaming_e != base_e, "{gaming_e} vs {base_e}");
+    edit(&mut d, json!([{"op": "set_color", "layer": "Gaming", "key": "key:KC_E", "color": "#FF0000"}]));
+    assert_eq!(d.layer(3).unwrap().keys[gaming_e].glow_color.as_deref(), Some("#FF0000"));
+    assert!(d.layer(3).unwrap().keys[base_e].glow_color.is_none() || base_e == gaming_e);
+    // Where the layer is transparent, the base key shows through and is the one meant.
+    let (i, code) = (0..d.key_count())
+        .find_map(|i| {
+            let code = d.layer(0)?.keys[i].tap.as_ref()?.code.clone()?;
+            let unique =
+                d.layer(0)?.keys.iter().filter(|k| k.tap.as_ref().and_then(|a| a.code.as_deref()) == Some(code.as_str())).count() == 1;
+            (d.layer(3)?.keys[i].is_transparent() && unique && code.starts_with("KC_")).then_some((i, code))
+        })
+        .expect("a transparent Gaming key over a unique base key");
+    assert_eq!(keyloom::ops::resolve_key_on(&d, 3, &json!(format!("key:{code}"))).unwrap(), i);
     // A hold-only Meh key is written the way it is shown.
     let key = parse_binding(&l, "TAP_HOLD(_, MEH_T)").unwrap().key;
     assert_eq!(qmk::key(&key), "TAP_HOLD(_, MEH_T)");

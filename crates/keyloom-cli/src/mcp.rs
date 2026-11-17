@@ -77,7 +77,7 @@ pub enum StyleArg {
 #[derive(Debug, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct LayoutArg {
-    /// `layoutId`, `layoutId@revisionId`, a draft (`draft:wow` or `wow`), or omit for the active layout's newest revision.
+    /// `layoutId`, `layoutId@revisionId`, `layoutId@oryx` (Oryx now, uncompiled changes included; needs the login token), a draft (`draft:wow` or `wow`), or omit for the active layout's newest revision.
     #[serde(default)]
     pub layout: Option<String>,
 }
@@ -113,7 +113,7 @@ pub struct KeyArgs {
     /// Layout or draft; default the active layout.
     #[serde(default)]
     pub layout: Option<String>,
-    /// Position like `L.home.4`, key index like 17 or `#17`, or `key:Esc` (the base-layer key sending Esc).
+    /// Position like `L.home.4`, key index like 17 or `#17`, or `key:Esc` (the key sending Esc on the layer named, else the base layer).
     pub key: Sel,
     /// Limit to one layer (number or title).
     #[serde(default)]
@@ -430,8 +430,8 @@ impl KeyloomServer {
     async fn key_info(&self, Parameters(a): Parameters<KeyArgs>) -> Result<CallToolResult, ErrorData> {
         run(|| {
             let layout = app::resolve(&app::open()?, a.layout.as_deref())?;
-            let index = ops::resolve_key(&layout, &a.key.value())?;
             let layer = a.layer.as_ref().map(|l| ops::resolve_layer(&layout, &l.value())).transpose()?;
+            let index = ops::resolve_key_on(&layout, layer.unwrap_or(0), &a.key.value())?;
             Ok(explore::key_info(&layout, index, layer))
         })
     }
@@ -481,6 +481,7 @@ impl KeyloomServer {
         run(|| {
             let ws = app::open()?;
             let from = app::resolve(&ws, a.from.as_deref())?;
+            app::check_draft_base(&from)?;
             let d = ws.create_draft(&a.name, &from)?;
             Ok(json!({"draft": d.reference(), "basedOn": from.reference(), "summary": explore::summary(&d)}))
         })
@@ -562,8 +563,12 @@ impl KeyloomServer {
                     if !highlight && a.layer.is_none() {
                         anyhow::bail!("show_layer needs `layer`");
                     }
-                    let keys = a.keys.iter().map(|k| ops::resolve_key(&layout, &k.value())).collect::<Result<Vec<_>, _>>()?;
                     let layer = a.layer.as_ref().map(|l| ops::resolve_layer(&layout, &l.value())).transpose()?;
+                    let keys = a
+                        .keys
+                        .iter()
+                        .map(|k| ops::resolve_key_on(&layout, layer.unwrap_or(0), &k.value()))
+                        .collect::<Result<Vec<_>, _>>()?;
                     // A draft's layer numbers aren't the keyboard's.
                     let layer = layer.map(|l| app::keyboard_layer(&ws, &layout, l)).transpose()?;
                     let color = a.color.clone().unwrap_or(ws.config()?.live.highlight_color);

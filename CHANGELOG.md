@@ -10,6 +10,14 @@
 - `layer-no-exit` judges exits by what survives Oryx's editor. A layer toggled from a held layer with
   `TG` at the same position to leave again has no way out once opened in Oryx; this is now an error. Its
   hint suggests `TO(0)` at a different position.
+- `key:X` in an edit or query that names a layer means the key that sends X on that layer: the layer's own
+  keys first, then base keys showing through. Before, it always meant the base layer's key, so on a gaming
+  layer over a non-QWERTY base, `set_color Gaming key:KC_E` coloured the wrong key.
+- `<id>@oryx` reads the layout as Oryx has it now, uncompiled changes in your account included, with your
+  login token. It works with show, diff, validate and the other read commands, and is never stored.
+- Importing an uncompiled revision by id used to store the newest compiled revision instead, because that's
+  what Oryx answers anonymously. keyloom now notices: with a token it reads the revision you asked for, and
+  either way it says that only compiled revisions are imported. Private layouts are read with the token.
 - The gaming, MMO, numbers, mouse and layer-design guides, the skill and the gaming prompt no longer
   suggest the same `TG` key on the toggled layer. They suggest leaving that position transparent when
   the toggle is on the base layer, and `TO(0)` at another position when it isn't.

@@ -15,10 +15,18 @@ pub fn open() -> Result<Workspace> {
     Workspace::open_default().context("opening the keyloom workspace")
 }
 
+/// What `<id>@oryx` layouts carry as their source: fetched from Oryx just now, not stored.
+pub const LIVE_SOURCE: &str = "oryx-live";
+
 /// `[layoutId][@revisionId]`, `draft:<name>` (or a bare draft name), or a path to a layout
-/// `.json` file. `@latest` imports from Oryx first.
+/// `.json` file. `@latest` imports from Oryx first. `@oryx` is the layout as Oryx has it right now,
+/// uncompiled changes in the user's account included (needs their login token); it isn't stored.
 pub fn resolve(ws: &Workspace, reference: Option<&str>) -> Result<Layout> {
     if let Some(r) = reference.map(str::trim).filter(|r| !r.is_empty()) {
+        if let Some(layout_id) = r.strip_suffix("@oryx") {
+            let layout_id = if layout_id.is_empty() { ws.default_layout()? } else { oryx_layout_id(layout_id) };
+            return live_layout(ws, &layout_id);
+        }
         if let Some(layout_id) = r.strip_suffix("@latest") {
             let layout_id = if layout_id.is_empty() { ws.default_layout()? } else { layout_id.to_string() };
             let (layout, _) = import_oryx(ws, &LayoutRef::new(&layout_id, "latest", None), true)?;
@@ -31,9 +39,84 @@ pub fn resolve(ws: &Workspace, reference: Option<&str>) -> Result<Layout> {
     Ok(ws.resolve(reference)?)
 }
 
+/// The user's login token if one is set (reads use it only when they need it).
+fn token_if_set() -> Option<String> {
+    oryx_token().ok()
+}
+
+/// Fetches a revision, signing in with the user's token when the layout is private or the revision
+/// asked for isn't compiled (Oryx then answers anonymous requests with another revision).
+fn fetch_oryx(r: &LayoutRef) -> Result<(serde_json::Value, Layout), source::SourceError> {
+    let signed_in = |e: source::SourceError| match token_if_set() {
+        Some(token) => source::fetch_oryx_with(r, Some(&token)),
+        None => Err(e),
+    };
+    let (raw, layout) = match source::fetch_oryx(r) {
+        Err(e @ source::SourceError::Private(_)) => signed_in(source::SourceError::Private(format!(
+            "{}; set your Oryx login token ({ORYX_TOKEN_ENV}{}) and keyloom can read your own private layouts",
+            e.to_string().trim_start_matches("Oryx: "),
+            if cfg!(target_os = "macos") { format!(" or the keychain item {ORYX_KEYCHAIN_SERVICE}") } else { String::new() }
+        )))?,
+        other => other?,
+    };
+    if r.is_latest() || layout.revision_id == r.revision_id {
+        return Ok((raw, layout));
+    }
+    // Asked for a revision Oryx doesn't show anonymously: it isn't compiled.
+    let (raw, layout) = signed_in(source::SourceError::Oryx(format!(
+        "it answered with revision {} instead of {}: {} isn't compiled, and only its owner, signed in, can see it. Set your Oryx login token ({ORYX_TOKEN_ENV}) to look at it as {}@oryx",
+        layout.revision_id, r.revision_id, r.revision_id, r.hash_id
+    )))?;
+    if layout.revision_id != r.revision_id {
+        return Err(source::SourceError::Oryx(format!("Oryx has no revision {} of {} that you can see", r.revision_id, r.hash_id)));
+    }
+    Ok((raw, layout))
+}
+
+/// `<id>@oryx`: the newest revision on Oryx, compiled or not, read with the user's login token.
+/// A compiled one is imported as usual; an uncompiled one is returned without storing it.
+fn live_layout(ws: &Workspace, layout_id: &str) -> Result<Layout> {
+    let token = oryx_token_for("Reading the uncompiled changes in your Oryx account (`@oryx`)")?;
+    let r = LayoutRef::new(layout_id, "latest", None);
+    let (raw, mut layout) = source::fetch_oryx_with(&r, Some(&token))?;
+    if source::is_compiled(&raw) {
+        ws.store_revision(&layout, Some(&raw))?;
+        return Ok(ws.load_revision(&layout.layout_id, &layout.revision_id)?);
+    }
+    // No generated source for an uncompiled revision: take the auto-mouse layer from the newest
+    // imported revision, by layer title.
+    if let Ok(known) = ws.resolve(Some(layout_id)) {
+        let title = known.settings.auto_mouse_layer.and_then(|n| known.layer(n)).map(|l| l.title.clone());
+        layout.settings.auto_mouse_layer = title.and_then(|t| layout.layers.iter().find(|l| l.title == t)).map(|l| l.position);
+    }
+    layout.source.kind = LIVE_SOURCE.into();
+    Ok(layout)
+}
+
+/// Drafts are based on imported (compiled) revisions; an uncompiled one from `@oryx` can't be one.
+pub fn check_draft_base(layout: &Layout) -> Result<()> {
+    if layout.source.kind == LIVE_SOURCE {
+        bail!(
+            "{} is an uncompiled revision read live from Oryx. Drafts are based on compiled revisions, which don't change: compile it in Oryx and import it, or start from the compiled revision ({}) and make the changes again",
+            layout.reference(),
+            layout.layout_id
+        );
+    }
+    Ok(())
+}
+
 /// Imports from Oryx; when Oryx can't be reached, optionally falls back to Keymapp's copy.
+/// Only compiled revisions are stored: uncompiled ones can still change in Oryx (`<id>@oryx` shows them).
 pub fn import_oryx(ws: &Workspace, r: &LayoutRef, keymapp_fallback: bool) -> Result<(Layout, Stored)> {
-    match source::fetch_oryx(r) {
+    match fetch_oryx(r) {
+        Ok((raw, _)) if !source::is_compiled(&raw) => {
+            let rev = raw["data"]["layout"]["revision"]["hashId"].as_str().unwrap_or("?");
+            bail!(
+                "{}@{rev} isn't compiled yet, so it wasn't imported: keyloom only imports compiled revisions, because uncompiled ones can still change in Oryx. Look at it as `{}@oryx` (show, diff, validate), or compile it in Oryx and import it again",
+                r.hash_id,
+                r.hash_id
+            );
+        }
         Ok((raw, layout)) => {
             let stored = ws.store_revision(&layout, Some(&raw))?;
             // What is stored is the truth (it may have settings the fetch didn't get this time).
@@ -336,6 +419,11 @@ pub const ORYX_KEYCHAIN_SERVICE: &str = "keyloom-oryx";
 /// The user's Oryx login token: `KEYLOOM_ORYX_TOKEN`, or on macOS the keychain item `keyloom-oryx`.
 /// keyloom never stores it itself.
 pub fn oryx_token() -> Result<String> {
+    oryx_token_for("Pushing into your own Oryx account")
+}
+
+/// The login token, or an error that says what needed it.
+pub fn oryx_token_for(what: &str) -> Result<String> {
     let clean = |t: &str| t.trim().trim_matches(|c| c == '"' || c == '\'').to_string();
     let found = match std::env::var(ORYX_TOKEN_ENV) {
         Ok(t) => clean(&t),
@@ -351,14 +439,18 @@ pub fn oryx_token() -> Result<String> {
     };
     if found.is_empty() {
         anyhow::bail!(
-            "Pushing into your own Oryx account needs your login token, and none is set. Nothing was sent to Oryx.\n\
+            "{what} needs your Oryx login token, and none is set. Nothing was sent to Oryx.\n\
              Get it: sign in at https://configure.zsa.io, open the browser console and run localStorage.getItem(\"jwtToken\").\n\
-             Store it: export {ORYX_TOKEN_ENV}=…{}\n\
-             Without a token, `keyloom push <draft>` (no --to) makes a new layout instead.",
+             Store it: export {ORYX_TOKEN_ENV}=…{}{}",
             if cfg!(target_os = "macos") {
                 format!(", or in the keychain: security add-generic-password -U -a oryx -s {ORYX_KEYCHAIN_SERVICE} -w")
             } else {
                 String::new()
+            },
+            if what.starts_with("Pushing") {
+                "\nWithout a token, `keyloom push <draft>` (no --to) makes a new layout instead."
+            } else {
+                ""
             }
         );
     }
@@ -550,6 +642,15 @@ mod tests {
         assert!(keyboard_layer_on(&ws, &draft, 1, Some("9qMJK/ZPjbXz")).is_err());
         // A serial of another layout or an unknown revision is ignored.
         assert_eq!(keyboard_layer_on(&ws, &draft, 2, Some("Other/Rev")).unwrap(), 2);
+    }
+
+    #[test]
+    fn a_live_uncompiled_revision_cant_be_a_draft_base() {
+        let mut live = fixture();
+        assert!(check_draft_base(&live).is_ok());
+        live.source.kind = LIVE_SOURCE.into();
+        let e = check_draft_base(&live).unwrap_err().to_string();
+        assert!(e.contains("uncompiled revision read live from Oryx"), "{e}");
     }
 
     #[test]

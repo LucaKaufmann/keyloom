@@ -51,7 +51,8 @@ Other
 ```
 
 A reference (`ref`) is `layoutId`, `layoutId@revisionId`, `@revisionId`, a draft (`draft:wow` or just `wow`), or a
-`.json` layout file; `layoutId@latest` fetches from Oryx first. Draft commands take the draft's name.
+`.json` layout file; `layoutId@latest` fetches from Oryx first; `layoutId@oryx` reads what Oryx has now, uncompiled
+changes in the user's account included (login token needed; never stored). Draft commands take the draft's name.
 
 `--show` is best effort: if Keymapp isn't reachable the command still prints its result and says why nothing lit
 up. What `--show` and `keyloom live …` change stays on the keyboard until `keyloom live reset`; a failing

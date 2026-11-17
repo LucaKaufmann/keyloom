@@ -66,8 +66,15 @@ pub fn resolve_layer_str(layout: &Layout, s: &str) -> Result<i64, OpError> {
 }
 
 /// A key given as a position name (`L.home.4`), an index (`#17` or 17), or `key:X` (the key whose
-/// base-layer tap is X).
+/// base-layer tap is X). With a layer, use `resolve_key_on`.
 pub fn resolve_key(layout: &Layout, sel: &Value) -> Result<usize, OpError> {
+    resolve_key_on(layout, 0, sel)
+}
+
+/// Like `resolve_key`, for an edit or query about `layer`: `key:X` is the key that sends X on that
+/// layer. The layer's own keys come first; failing those, a base key showing through a transparent
+/// key there.
+pub fn resolve_key_on(layout: &Layout, layer: i64, sel: &Value) -> Result<usize, OpError> {
     let n = layout.key_count();
     let map = PositionMap::for_geometry(&layout.geometry);
     match sel {
@@ -82,21 +89,27 @@ pub fn resolve_key(layout: &Layout, sel: &Value) -> Result<usize, OpError> {
         Value::String(s) => {
             if let Some(legend) = s.strip_prefix("key:") {
                 let code = knowledge::canonical(legend).unwrap_or_else(|| legend.to_string());
-                let base = layout.layers.first().map(|l| &l.keys[..]).unwrap_or(&[]);
+                let Some(own) = layout.layer(layer) else { return err(format!("layer {layer} doesn't exist")) };
+                let shown: Vec<&Key> = (0..n).filter_map(|i| layout.effective_key(layer, i).map(|(k, _)| k)).collect();
                 let sends = |a: Option<&Action>| a.and_then(Action::code).is_some_and(|c| knowledge::same_code(c, &code));
-                // The key that sends it on tap; failing that, in any slot (e.g. Esc on hold).
-                let by_tap: Vec<usize> = base.iter().enumerate().filter(|(_, k)| sends(k.tap.as_ref())).map(|(i, _)| i).collect();
-                let hits = if by_tap.is_empty() {
-                    base.iter().enumerate().filter(|(_, k)| k.slots().iter().any(|(_, a)| sends(Some(a)))).map(|(i, _)| i).collect()
-                } else {
-                    by_tap
-                };
+                let on_tap = |k: &Key| sends(k.tap.as_ref());
+                let in_any = |k: &Key| k.slots().iter().any(|(_, a)| sends(Some(a)));
+                // The layer's own keys first, then base keys showing through transparent ones; on tap
+                // before any slot (e.g. Esc on hold).
+                let own_keys: Vec<(usize, &Key)> = own.keys.iter().enumerate().filter(|(_, k)| !k.is_transparent()).collect();
+                let shown_keys: Vec<(usize, &Key)> = shown.iter().copied().enumerate().collect();
+                let hits = [(&own_keys, true), (&own_keys, false), (&shown_keys, true), (&shown_keys, false)]
+                    .into_iter()
+                    .map(|(keys, tap)| {
+                        keys.iter().filter(|(_, k)| if tap { on_tap(k) } else { in_any(k) }).map(|(i, _)| *i).collect::<Vec<_>>()
+                    })
+                    .find(|h| !h.is_empty())
+                    .unwrap_or_default();
+                let on = if layer == 0 { "the base layer".to_string() } else { format!("layer \"{}\"", layout.layer_title(layer)) };
                 return match hits.as_slice() {
                     [one] => Ok(*one),
-                    [] => {
-                        err(format!("no key on the base layer sends {legend} (`keyloom find {legend}` / find_keycode shows where it is)"))
-                    }
-                    _ => err(format!("several base-layer keys send {legend}; use a position")),
+                    [] => err(format!("no key on {on} sends {legend} (`keyloom find {legend}` / find_keycode shows where it is)")),
+                    _ => err(format!("several keys on {on} send {legend}; use a position")),
                 };
             }
             if let Ok(i) = s.trim().parse::<usize>() {
@@ -659,8 +672,8 @@ fn key_mut(layout: &mut Layout, layer: i64, index: usize) -> &mut Key {
     &mut layout.layer_mut(layer).expect("resolved").keys[index]
 }
 
-fn combo_keys(layout: &Layout, keys: &[Value]) -> Result<Vec<i64>, OpError> {
-    let mut out = keys.iter().map(|k| resolve_key(layout, k).map(|i| i as i64)).collect::<Result<Vec<_>, _>>()?;
+fn combo_keys(layout: &Layout, layer: i64, keys: &[Value]) -> Result<Vec<i64>, OpError> {
+    let mut out = keys.iter().map(|k| resolve_key_on(layout, layer, k).map(|i| i as i64)).collect::<Result<Vec<_>, _>>()?;
     out.sort();
     out.dedup();
     if out.len() < 2 {
@@ -674,7 +687,8 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
     let mut applied = Applied::default();
     match op {
         Op::SetKey { layer, key, action } => {
-            let (l, i) = (resolve_layer(layout, layer)?, resolve_key(layout, key)?);
+            let l = resolve_layer(layout, layer)?;
+            let i = resolve_key_on(layout, l, key)?;
             let b = parse_binding(layout, action)?;
             applied.warnings = b.warnings;
             let k = key_mut(layout, l, i);
@@ -686,7 +700,8 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
             }
         }
         Op::SetSlot { layer, key, slot, action } => {
-            let (l, i) = (resolve_layer(layout, layer)?, resolve_key(layout, key)?);
+            let l = resolve_layer(layout, layer)?;
+            let i = resolve_key_on(layout, l, key)?;
             let a = match action {
                 Some(spec) => {
                     let (a, w) = parse_slot_action(layout, spec, Some(*slot))?;
@@ -704,14 +719,16 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
             }
         }
         Op::ClearKey { layer, key, to } => {
-            let (l, i) = (resolve_layer(layout, layer)?, resolve_key(layout, key)?);
+            let l = resolve_layer(layout, layer)?;
+            let i = resolve_key_on(layout, l, key)?;
             // Like set_key: the LED color belongs to the position and stays.
             let k = key_mut(layout, l, i);
             let glow = k.glow_color.take();
             *k = Key { glow_color: glow, ..fill_key(*to) };
         }
         Op::SetLabel { layer, key, label } => {
-            let (l, i) = (resolve_layer(layout, layer)?, resolve_key(layout, key)?);
+            let l = resolve_layer(layout, layer)?;
+            let i = resolve_key_on(layout, l, key)?;
             let label = label.as_deref().map(str::trim).filter(|s| !s.is_empty());
             if label.is_some_and(|s| s.chars().any(char::is_control)) {
                 return err("a label is one line of text (no tabs or line breaks)");
@@ -719,7 +736,8 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
             key_mut(layout, l, i).custom_label = label.map(str::to_string);
         }
         Op::SetColor { layer, key, color } => {
-            let (l, i) = (resolve_layer(layout, layer)?, resolve_key(layout, key)?);
+            let l = resolve_layer(layout, layer)?;
+            let i = resolve_key_on(layout, l, key)?;
             key_mut(layout, l, i).glow_color = optional_color(color)?;
         }
         Op::AddLayer { title, after, copy_from, fill, tags, color } => {
@@ -859,7 +877,7 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
         }
         Op::AddCombo { layer, keys, action, name } => {
             let l = resolve_layer(layout, layer)?;
-            let keys = combo_keys(layout, keys)?;
+            let keys = combo_keys(layout, l, keys)?;
             let (trigger, w) = parse_slot_action(layout, action, None)?;
             applied.warnings = w;
             let exists = layout.combos.iter().any(|c| c["layerIdx"].as_i64() == Some(l) && sorted_keys(c) == keys);
@@ -874,7 +892,7 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
         }
         Op::RemoveCombo { layer, keys } => {
             let l = resolve_layer(layout, layer)?;
-            let keys = combo_keys(layout, keys)?;
+            let keys = combo_keys(layout, l, keys)?;
             let before = layout.combos.len();
             layout.combos.retain(|c| !(c["layerIdx"].as_i64() == Some(l) && sorted_keys(c) == keys));
             if layout.combos.len() == before {
@@ -882,10 +900,12 @@ pub fn apply_op(layout: &mut Layout, op: &Op) -> Result<Applied, OpError> {
             }
         }
         Op::SwapKeys { layer, a, b } => {
-            let (ia, ib) = (resolve_key(layout, a)?, resolve_key(layout, b)?);
             let all = matches!(layer, Value::String(s) if s.eq_ignore_ascii_case("all"));
             let targets: Vec<i64> =
                 if all { layout.layers.iter().map(|l| l.position).collect() } else { vec![resolve_layer(layout, layer)?] };
+            // `key:X` on one layer means X there; across all layers, the base key.
+            let on = if all { 0 } else { targets[0] };
+            let (ia, ib) = (resolve_key_on(layout, on, a)?, resolve_key_on(layout, on, b)?);
             for &t in &targets {
                 layout.layer_mut(t).expect("resolved").keys.swap(ia, ib);
             }

@@ -44,7 +44,7 @@ Things to ask an agent once keyloom is set up:
 | You ask | What happens |
 |---|---|
 | "Explain my layout to me." | The agent reads every layer and walks you through it: what each layer is for and how you get in and out. |
-| "Review my layout. What would you change?" | Runs the 14 validation rules, then an ergonomics review: awkward reaches, wasted easy keys, conflicting hold keys. |
+| "Review my layout. What would you change?" | Runs the 15 validation rules, then an ergonomics review: awkward reaches, wasted easy keys, conflicting hold keys. |
 | "Where is Esc? How do I type `~`?" | Finds the key on every layer and the keys you hold to get there. |
 | "Add a gaming layer I can toggle from the left thumb." | Creates a draft, adds the layer following the gaming guide (no tap-hold keys, a way back out), and gives you the Oryx steps. |
 | "Add a WoW layer with my action bars on the left hand." | Same, using the MMO guide: number row and modifiers under the left hand. |
@@ -234,6 +234,9 @@ What `push --to` will and won't do:
   write over them.
 - `--overwrite` skips both checks.
 - Pushing the same draft again updates the same uncompiled revision.
+- `<id>@oryx` shows what Oryx has right now, uncompiled changes included, with the same token:
+  `keyloom diff <id>@oryx draft:wow`, `keyloom show <id>@oryx`. keyloom imports only compiled revisions,
+  because uncompiled ones can still change.
 
 ### `keyloom push --to new`: a new layout in your account
 
@@ -260,7 +263,7 @@ belongs to no account and then copies that one. The first copy stays on Oryx as 
   index column.
 - Thumbs: `L.thumb.1` (next to the main block) and `L.thumb.2` (toward the centre).
 
-You can also write `key:Esc` (the base-layer key that sends Esc) or an index like `#17`.
+You can also write `key:Esc` (the key that sends Esc on the layer you name, or on the base layer) or an index like `#17`.
 
 **Layers** are named by number or title. Case doesn't matter and a unique prefix is enough: `num` finds
 "Num+Nav".

@@ -20,9 +20,9 @@ use serde_json::{json, Value};
 use std::io::IsTerminal;
 use std::path::PathBuf;
 
-const REF_HELP: &str = "Layout: `layoutId`, `layoutId@revisionId`, `@revisionId`, a draft (`draft:wow` or just `wow`), or a .json file. `layoutId@latest` fetches from Oryx first. Default: the active layout's newest revision";
+const REF_HELP: &str = "Layout: `layoutId`, `layoutId@revisionId`, `@revisionId`, a draft (`draft:wow` or just `wow`), or a .json file. `layoutId@latest` fetches from Oryx first; `layoutId@oryx` is what Oryx has now, uncompiled changes in your account included (needs your login token, not stored). Default: the active layout's newest revision";
 const LAYER_HELP: &str = "Layer number or title (case-insensitive, a unique prefix is enough); `base` is layer 0";
-const KEY_HELP: &str = "Key: a position like `L.home.4` (half.row.column, columns 0-5 from the OUTER edge; thumbs `L.thumb.1`, `L.thumb.2`), an index like `#17`, or `key:Esc` (the base-layer key that sends Esc)";
+const KEY_HELP: &str = "Key: a position like `L.home.4` (half.row.column, columns 0-5 from the OUTER edge; thumbs `L.thumb.1`, `L.thumb.2`), an index like `#17`, or `key:Esc` (the key that sends Esc on the layer named, or on the base layer)";
 const ACTION_HELP: &str = "Action: `KC_A` or `A`, `Esc`, `LCTL(KC_C)`, `MO(3)`, `TG(Gaming)`, `TO(0)`, `OSL(sym)`, `TT(2)`, `DF(0)`, `LT(3, KC_SPC)`, `LCTL_T(KC_A)`, `MEH_T(KC_BSPC)`, `TAP_HOLD(KC_EQL, KC_ESC)`, `RGB(#ff0000)`, `TRNS`, `NO`. Quote it in the shell";
 const AFTER_HELP: &str = "\
 Key positions: L.home.4 = left half, home row, column 4 counted from the OUTER edge
@@ -679,8 +679,8 @@ fn run(cmd: Command, out: &Out) -> Result<()> {
         }
         Command::Key { key, reference, layer, in_ref, show } => {
             let layout = app::resolve(&ws, reference.or(in_ref).as_deref())?;
-            let index = ops::resolve_key(&layout, &v(&key))?;
             let layer = layer.as_deref().map(|l| ops::resolve_layer_str(&layout, l)).transpose()?;
+            let index = ops::resolve_key_on(&layout, layer.unwrap_or(0), &v(&key))?;
             let info = explore::key_info(&layout, index, layer);
             if show {
                 highlight(&ws, &layout, vec![index], layer)?;
@@ -988,8 +988,8 @@ fn run(cmd: Command, out: &Out) -> Result<()> {
             }
             LiveCmd::Highlight { keys, layer, color, reference } => {
                 let layout = app::resolve(&ws, reference.as_deref())?;
-                let idx = keys.iter().map(|k| ops::resolve_key(&layout, &v(k))).collect::<Result<Vec<_>, _>>()?;
                 let layer = layer.as_deref().map(|l| ops::resolve_layer_str(&layout, l)).transpose()?;
+                let idx = keys.iter().map(|k| ops::resolve_key_on(&layout, layer.unwrap_or(0), &v(k))).collect::<Result<Vec<_>, _>>()?;
                 let layer = layer.map(|l| app::keyboard_layer(&ws, &layout, l)).transpose()?;
                 let color = color.unwrap_or(ws.config()?.live.highlight_color);
                 live_do(&ws, |s| Box::pin(async move { s.highlight(&idx, layer, &color).await }))?;
@@ -1200,6 +1200,7 @@ fn draft_cmd(ws: &Workspace, cmd: DraftCmd, out: &Out) -> Result<()> {
     match cmd {
         DraftCmd::New { name, from } => {
             let base = app::resolve(ws, from.as_deref())?;
+            app::check_draft_base(&base)?;
             let d = ws.create_draft(&name, &base)?;
             out.done(
                 format!(

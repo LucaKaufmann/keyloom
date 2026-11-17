@@ -33,6 +33,9 @@ pub enum SourceError {
     Network(String),
     #[error("Oryx: {0}")]
     Oryx(String),
+    /// The layout is private: only its owner, signed in, can read it.
+    #[error("Oryx: {0}")]
+    Private(String),
     #[error("{0}")]
     Model(#[from] ModelError),
     #[error("{path}: {message}")]
@@ -80,6 +83,18 @@ fn source(kind: &str) -> Source {
 
 /// Fetches a revision from Oryx. Returns the raw answer (kept for debugging) and the layout.
 pub fn fetch_oryx(r: &LayoutRef) -> Result<(Value, Layout), SourceError> {
+    fetch_oryx_with(r, None)
+}
+
+/// Whether the revision in an Oryx answer is compiled. Compiled revisions never change; an
+/// uncompiled one (changes in the owner's account not compiled yet) can change under the same id.
+pub fn is_compiled(answer: &Value) -> bool {
+    !answer["data"]["layout"]["revision"]["qmkVersion"].is_null()
+}
+
+/// Like `fetch_oryx`, signed in with the user's login token when given: then private layouts can be
+/// read, and for the owner `latest` is the newest revision even if it isn't compiled.
+pub fn fetch_oryx_with(r: &LayoutRef, token: Option<&str>) -> Result<(Value, Layout), SourceError> {
     let body = serde_json::json!({
         "operationName": "getLayout",
         "query": ORYX_QUERY,
@@ -90,11 +105,14 @@ pub fn fetch_oryx(r: &LayoutRef) -> Result<(Value, Layout), SourceError> {
         },
     });
     let agent = ureq::AgentBuilder::new().timeout(Duration::from_secs(30)).user_agent("keyloom").build();
-    let response =
-        agent.post(ORYX_ENDPOINT).set("Content-Type", "application/json").send_string(&body.to_string()).map_err(|e| match e {
-            ureq::Error::Status(code, _) => SourceError::Oryx(format!("HTTP {code}")),
-            other => SourceError::Network(format!("Could not reach Oryx: {other}")),
-        })?;
+    let mut request = agent.post(ORYX_ENDPOINT).set("Content-Type", "application/json");
+    if let Some(token) = token.map(str::trim).filter(|t| !t.is_empty()) {
+        request = request.set("Authorization", &format!("Bearer {token}"));
+    }
+    let response = request.send_string(&body.to_string()).map_err(|e| match e {
+        ureq::Error::Status(code, _) => SourceError::Oryx(format!("HTTP {code}")),
+        other => SourceError::Network(format!("Could not reach Oryx: {other}")),
+    })?;
     let text = response.into_string().map_err(|e| SourceError::Network(e.to_string()))?;
     let answer: Value = serde_json::from_str(&text).map_err(|e| SourceError::Oryx(format!("bad answer: {e}")))?;
     let mut layout = layout_from_graphql(&answer, r)?;
@@ -149,6 +167,9 @@ fn layout_from_graphql(answer: &Value, r: &LayoutRef) -> Result<Layout, SourceEr
             return Err(SourceError::Oryx(format!(
                 "there is no public layout {r} (check the id or link; a private layout can't be fetched; a file needs its path ending in .json)"
             )));
+        }
+        if message.to_lowercase().contains("private") {
+            return Err(SourceError::Private(format!("layout {r} is private, so only its owner, signed in, can read it")));
         }
         return Err(SourceError::Oryx(message.to_string()));
     }
@@ -225,4 +246,22 @@ pub fn parse_value(value: &Value) -> Result<Layout, SourceError> {
     }
     let layout = if value["layout"].is_object() { &value["layout"] } else { value };
     Ok(Layout::from_oryx(layout, source("file"))?)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn compiled_revisions_have_a_qmk_version() {
+        assert!(is_compiled(&serde_json::json!({"data": {"layout": {"revision": {"qmkVersion": "25.0"}}}})));
+        assert!(!is_compiled(&serde_json::json!({"data": {"layout": {"revision": {"qmkVersion": null}}}})));
+    }
+
+    #[test]
+    fn a_private_layout_is_its_own_error() {
+        let r = LayoutRef::new("ABCDE", "latest", None);
+        let e = layout_from_graphql(&serde_json::json!({"errors": [{"message": "PrivateLayout"}]}), &r).unwrap_err();
+        assert!(matches!(e, SourceError::Private(_)), "{e:?}");
+    }
 }
