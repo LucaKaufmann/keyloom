@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.1 (2026-11-17)
 
 - Key and layer colors are stored in upper case (`#FF8800`), the way Oryx's editor stores them.
 - New validation warning `oryx-clears-key`. When a lower layer has `TG(n)`, `TT(n)`, `MO(n)` or `LM(n)` at a
